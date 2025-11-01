@@ -4,13 +4,18 @@ import { ArrowRight, Download, Github, Linkedin, Mail, ExternalLink, Instagram }
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
+// ---------- CONFIG ----------
+const BG_URL = "/images/purple-digital-bg.jpg"; // <-- place your image here
+
+// Lightweight UI primitives so you don't need shadcn/ui
 const Button = ({ children, asChild, variant = "default", size = "md", className = "", ...props }) => {
-  const base = "inline-flex items-center justify-center rounded-md border text-sm font-medium transition disabled:opacity-50 disabled:pointer-events-none";
+  const base =
+    "inline-flex items-center justify-center rounded-md border text-sm font-medium transition disabled:opacity-50 disabled:pointer-events-none";
   const variants = {
-    default: "bg-primary text-primary-foreground hover:opacity-90 border-transparent px-4 py-2",
-    secondary: "bg-muted text-foreground hover:bg-muted/80 border-transparent px-4 py-2",
-    outline: "bg-transparent border-border px-4 py-2",
-    ghost: "bg-transparent border-transparent px-2 py-1",
+    default: "bg-primary text-white hover:opacity-90 border-transparent px-4 py-2",
+    secondary: "bg-white/10 text-white hover:bg-white/15 border-white/10 px-4 py-2",
+    outline: "bg-transparent border-white/20 text-white px-4 py-2 hover:bg-white/5",
+    ghost: "bg-transparent border-transparent px-2 py-1 text-white/90 hover:bg-white/5",
   };
   const sizes = { sm: "text-sm px-3 py-1.5", md: "text-sm px-4 py-2" };
   const cls = `${base} ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className}`;
@@ -25,13 +30,13 @@ const Button = ({ children, asChild, variant = "default", size = "md", className
 };
 
 const Card = ({ className = "", children }) => (
-  <div className={`rounded-xl border bg-card shadow-sm ${className}`}>{children}</div>
+  <div className={`rounded-xl border border-white/10 bg-black/40 shadow-lg backdrop-blur ${className}`}>{children}</div>
 );
-const CardHeader = ({ children }) => <div className="p-5 border-b">{children}</div>;
+const CardHeader = ({ children }) => <div className="p-5 border-b border-white/10">{children}</div>;
 const CardTitle = ({ className = "", children }) => (
-  <h3 className={`text-base font-semibold ${className}`}>{children}</h3>
+  <h3 className={`text-base font-semibold text-white drop-shadow ${className}`}>{children}</h3>
 );
-const CardContent = ({ children }) => <div className="p-5">{children}</div>;
+const CardContent = ({ children }) => <div className="p-5 text-white/85">{children}</div>;
 
 /* ---------------- Helpers ---------------- */
 const Section = ({ id, title, subtitle, children }) => {
@@ -45,10 +50,8 @@ const Section = ({ id, title, subtitle, children }) => {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
-          {subtitle && (
-            <p className="mt-2 text-muted-foreground max-w-3xl">{subtitle}</p>
-          )}
+          <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow-sm">{title}</h2>
+          {subtitle && <p className="mt-2 max-w-3xl text-white/80">{subtitle}</p>}
         </motion.div>
         {children}
       </div>
@@ -83,105 +86,47 @@ const LINKS = {
 };
 
 const SKILLS = [
-  // Programming languages
-  "Python",
-  "Java",
-  "JavaScript",
-  "C",
-  "C++",
-  "C#",
-  "Go",
-  "R",
-  "Swift",
-
-  // Core web
-  "HTML",
-  "CSS",
-  "Web Design",
-  "API Integration",
-  "REST APIs",
-
-  // Frameworks & libraries
-  "React",
-  "Redux",
-  "Node.js",
-  "Express.js",
-  "Spring Boot",
-  ".NET",
-  "Thymeleaf",
-  "Bootstrap",
-  "Pygame",
-
-  // Data / DB
-  "SQL",
-  "MySQL",
-
-  // DevOps / Cloud
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "Azure",
-  "Google Cloud",
-  "Cloud Deployment",
-
-  // CS & Engineering concepts
-  "OOP",
-  "Data Structures",
-  "Algorithms",
-  "SDLC",
-  "Agile",
-  "TDD",
-
-  // Tools & platforms
-  "Git",
-  "GitHub",
-  "Linux",
-
-  // Platforms
-  "Web Development",
-  "Mobile Development",
-  "Android",
+  "Python","Java","JavaScript","C","C++","C#","Go","R","Swift",
+  "HTML","CSS","Web Design","API Integration","REST APIs",
+  "React","Redux","Node.js","Express.js","Spring Boot",".NET","Thymeleaf","Bootstrap","Pygame",
+  "SQL","MySQL",
+  "Docker","Kubernetes","AWS","Azure","Google Cloud","Cloud Deployment",
+  "OOP","Data Structures","Algorithms","SDLC","Agile","TDD",
+  "Git","GitHub","Linux",
+  "Web Development","Mobile Development","Android",
 ];
 
 const PROJECTS = [
   {
     title: "ShareMeal App",
-    blurb:
-      "Cross-platform app connecting donors with local food banks; auth + Azure App Services + REST APIs for listings and real-time updates.",
-    stack: [".NET MAUI", "C#", "Azure", "REST"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    blurb: "Cross-platform app connecting donors with local food banks; auth + Azure App Services + REST APIs for listings and real-time updates.",
+    stack: [".NET MAUI","C#","Azure","REST"],
+    links: { demo: "#", code: "https://github.com/asma675" }
   },
   {
     title: "GDG Frontend Project",
-    blurb:
-      "Responsive web interface for a GDG challenge with reusable components, hooks, and Tailwind UI.",
-    stack: ["React", "Tailwind", "Vercel"],
-    links: {
-      demo: "#",
-      code: "https://github.com/asma675/gdg-frontend-Asma-Ahmed-Final-Copy",
-    },
+    blurb: "Responsive web interface for a GDG challenge with reusable components, hooks, and Tailwind UI.",
+    stack: ["React","Tailwind","Vercel"],
+    links: { demo: "#", code: "https://github.com/asma675/gdg-frontend-Asma-Ahmed-Final-Copy" }
   },
   {
     title: "PasswordStore",
-    blurb:
-      "Secure password manager with CRUD, encryption, and MVC architecture.",
-    stack: ["Java", "Spring Boot", "Thymeleaf", "H2"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    blurb: "Secure password manager with CRUD, encryption, and MVC architecture.",
+    stack: ["Java","Spring Boot","Thymeleaf","H2"],
+    links: { demo: "#", code: "https://github.com/asma675" }
   },
   {
     title: "DriveWellApp",
-    blurb:
-      "Cross-platform app for tracking automotive data with cloud sync and async data flows.",
-    stack: [".NET MAUI", "C#"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    blurb: "Cross-platform app for tracking automotive data with cloud sync and async data flows.",
+    stack: [".NET MAUI","C#"],
+    links: { demo: "#", code: "https://github.com/asma675" }
   },
   {
     title: "Student Records Portal",
-    blurb:
-      "Secure portal to manage academic records with validation and access control.",
-    stack: ["SQL", "HTML", "CSS"],
-    links: { demo: "#", code: "https://github.com/asma675" },
-  },
+    blurb: "Secure portal to manage academic records with validation and access control.",
+    stack: ["SQL","HTML","CSS"],
+    links: { demo: "#", code: "https://github.com/asma675" }
+  }
 ];
 
 const EXPERIENCE = [
@@ -201,12 +146,10 @@ const EXPERIENCE = [
 const EDUCATION = [
   {
     school: "Sheridan College, Oakville, ON",
-    degree:
-      "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
+    degree: "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
     gpa: "GPA: 3.27 | 2023–Present",
     clubs: "Google Developer Club, MSA",
-    coursework:
-      "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
+    coursework: "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
   },
 ];
 
@@ -231,10 +174,7 @@ const particlesOptions = {
     shape: { type: "circle" },
     size: { value: { min: 1, max: 3 } },
   },
-  interactivity: {
-    events: { onHover: { enable: true, mode: "repulse" }, resize: true },
-    modes: { repulse: { distance: 100 } },
-  },
+  interactivity: { events: { onHover: { enable: true, mode: "repulse" }, resize: true }, modes: { repulse: { distance: 100 } } },
 };
 
 export default function Portfolio() {
@@ -256,29 +196,27 @@ export default function Portfolio() {
 
   return (
     <div
-      className="min-h-screen bg-background text-foreground antialiased relative"
+      className="min-h-screen relative text-white"
       style={{
-        background: "url('/images/9a05921b-e911-47c3-8e27-fc24776cbc99.png') center / cover fixed no-repeat"
+        background: `url('${BG_URL}') center / cover fixed no-repeat`,
       }}
     >
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/45 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/60 -z-10" />
 
       {/* Floating background particles */}
       <Particles
         id="tsparticles"
         className="pointer-events-none absolute inset-0 -z-20"
         options={particlesOptions}
-        init={async (engine) => {
-          await loadFull(engine);
-        }}
+        init={async (engine) => { await loadFull(engine); }}
       />
 
       {/* Header / Nav */}
-      <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur supports-[backdrop-filter]:bg-black/30">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <a href="#home" className="flex items-center gap-2 font-semibold">
-            <div className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">AA</div>
+          <a href="#home" className="flex items-center gap-2 font-semibold text-white">
+            <div className="grid h-8 w-8 place-items-center rounded-md bg-primary text-white">AA</div>
             <span className="hidden sm:inline">{NAME}</span>
           </a>
           <nav className="hidden gap-6 md:flex">
@@ -290,45 +228,22 @@ export default function Portfolio() {
               { href: "#education", label: "Education" },
               { href: "#achievements", label: "Achievements" },
             ].map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
+              <a key={item.href} href={item.href} className="text-sm text-white/80 hover:text-white">
                 {item.label}
               </a>
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a
-              aria-label="GitHub"
-              href={LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 hover:bg-muted"
-            >
+            <a aria-label="GitHub" href={LINKS.github} target="_blank" rel="noreferrer" className="rounded-md p-2 hover:bg-white/10">
               <Github className="h-5 w-5" />
             </a>
-            <a
-              aria-label="LinkedIn"
-              href={LINKS.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 hover:bg-muted"
-            >
+            <a aria-label="LinkedIn" href={LINKS.linkedin} target="_blank" rel="noreferrer" className="rounded-md p-2 hover:bg-white/10">
               <Linkedin className="h-5 w-5" />
             </a>
-            <a aria-label="Email" href={LINKS.email} className="rounded-md p-2 hover:bg-muted">
+            <a aria-label="Email" href={LINKS.email} className="rounded-md p-2 hover:bg-white/10">
               <Mail className="h-5 w-5" />
             </a>
-            {/* Instagram button beside Email */}
-            <a
-              aria-label="Instagram"
-              href={LINKS.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 hover:bg-muted"
-            >
+            <a aria-label="Instagram" href={LINKS.instagram} target="_blank" rel="noreferrer" className="rounded-md p-2 hover:bg-white/10">
               <Instagram className="h-5 w-5" />
             </a>
           </div>
@@ -339,10 +254,10 @@ export default function Portfolio() {
       <section id="home" className="relative overflow-hidden pb-20 pt-24">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
-            <p className="text-sm uppercase tracking-widest text-primary/80">Portfolio</p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">{NAME}</h1>
-            <p className="mt-3 text-lg text-muted-foreground">{TAGLINE}</p>
-            <p className="mt-5 max-w-3xl text-balance text-muted-foreground">{INTRO}</p>
+            <p className="text-sm uppercase tracking-widest text-white/80 drop-shadow">Portfolio</p>
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl text-white drop-shadow-md">{NAME}</h1>
+            <p className="mt-3 text-lg text-white/85 drop-shadow">{TAGLINE}</p>
+            <p className="mt-5 max-w-3xl text-white/80">{INTRO}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button asChild className="gap-2">
                 <a href={LINKS.resumeUrl} download="Asma_Ahmed_Resume.pdf">
@@ -362,7 +277,6 @@ export default function Portfolio() {
             </div>
           </FadeIn>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-primary/10 to-transparent" />
       </section>
 
       {/* Skills */}
@@ -370,7 +284,7 @@ export default function Portfolio() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {SKILLS.map((s, i) => (
             <FadeIn key={s} delay={i * 0.02}>
-              <div className="group rounded-xl border bg-card p-4 text-center shadow-sm transition hover:shadow">
+              <div className="group rounded-xl border border-white/10 bg-black/40 p-4 text-center shadow-sm transition hover:shadow text-white">
                 <span className="text-sm font-medium">{s}</span>
               </div>
             </FadeIn>
@@ -387,31 +301,19 @@ export default function Portfolio() {
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     <span>{p.title}</span>
-                    <span className="text-xs font-normal text-muted-foreground">
-                      {p.stack.join(" · ")}
-                    </span>
+                    <span className="text-xs font-normal text-white/70">{p.stack.join(" · ")}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{p.blurb}</p>
+                  <p className="text-white/80">{p.blurb}</p>
                   <div className="mt-4 flex gap-2">
                     <Button size="sm" variant="secondary" asChild>
-                      <a
-                        href={p.links.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1"
-                      >
+                      <a href={p.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
                         <ExternalLink className="h-3.5 w-3.5" /> Demo
                       </a>
                     </Button>
                     <Button size="sm" variant="outline" asChild>
-                      <a
-                        href={p.links.code}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1"
-                      >
+                      <a href={p.links.code} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
                         <Github className="h-3.5 w-3.5" /> Code
                       </a>
                     </Button>
@@ -426,21 +328,20 @@ export default function Portfolio() {
       {/* Experience */}
       <Section id="experience" title="Relevant Experience" subtitle="Highlights from roles and internships.">
         <div className="relative mx-auto max-w-3xl">
-          <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-border md:block" />
+          <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-white/10 md:block" />
           <ul className="space-y-8">
             {EXPERIENCE.map((e, i) => (
               <FadeIn key={e.role} delay={i * 0.05}>
                 <li className="relative md:pl-10">
                   <div className="hidden md:block absolute left-[14px] top-1 h-3 w-3 rounded-full bg-primary" />
-                  <div className="rounded-xl border bg-card p-5 shadow-sm">
+                  <div className="rounded-xl border border-white/10 bg-black/40 p-5 shadow-sm">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="text-base font-semibold">
-                        {e.role} {" "}
-                        <span className="text-muted-foreground font-normal">• {e.org}</span>
+                      <h3 className="text-base font-semibold text-white">
+                        {e.role} <span className="text-white/70 font-normal">• {e.org}</span>
                       </h3>
-                      <span className="text-sm text-muted-foreground">{e.when}</span>
+                      <span className="text-sm text-white/70">{e.when}</span>
                     </div>
-                    <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                    <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-white/80">
                       {e.bullets.map((b) => (
                         <li key={b}>{b}</li>
                       ))}
@@ -457,24 +358,24 @@ export default function Portfolio() {
       <Section id="education" title="Education" subtitle="Academic background and coursework.">
         {EDUCATION.map((ed) => (
           <FadeIn key={ed.school}>
-            <div className="rounded-xl border bg-card p-6 shadow-sm">
-              <h3 className="text-lg font-semibold">{ed.school}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{ed.degree}</p>
-              <p className="text-sm text-muted-foreground mt-1">{ed.gpa}</p>
-              <p className="text-sm text-muted-foreground mt-1">Clubs: {ed.clubs}</p>
-              <p className="text-sm text-muted-foreground mt-1">Relevant Coursework: {ed.coursework}</p>
+            <div className="rounded-xl border border-white/10 bg-black/40 p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-white">{ed.school}</h3>
+              <p className="text-sm text-white/80 mt-1">{ed.degree}</p>
+              <p className="text-sm text-white/70 mt-1">{ed.gpa}</p>
+              <p className="text-sm text-white/70 mt-1">Clubs: {ed.clubs}</p>
+              <p className="text-sm text-white/70 mt-1">Relevant Coursework: {ed.coursework}</p>
             </div>
           </FadeIn>
         ))}
       </Section>
 
-      {/* Achievements (boxed like Education) */}
+      {/* Achievements */}
       <Section id="achievements" title="Achievements" subtitle="Recognition & hackathons.">
         <div className="grid gap-4 max-w-3xl">
           {ACHIEVEMENTS.map((item, i) => (
             <FadeIn key={i} delay={i * 0.05}>
-              <div className="rounded-xl border bg-card p-5 shadow-sm">
-                <p className="text-sm text-muted-foreground">{item}</p>
+              <div className="rounded-xl border border-white/10 bg-black/40 p-5 shadow-sm">
+                <p className="text-sm text-white/85">{item}</p>
               </div>
             </FadeIn>
           ))}
@@ -482,30 +383,18 @@ export default function Portfolio() {
       </Section>
 
       {/* Footer */}
-      <footer className="border-t py-10">
+      <footer className="border-t border-white/10 py-10 bg-black/30 backdrop-blur">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} {NAME}. All rights reserved.
-            </p>
+            <p className="text-sm text-white/70">© {new Date().getFullYear()} {NAME}. All rights reserved.</p>
             <div className="flex items-center gap-2">
               <Button asChild variant="ghost" size="sm">
-                <a
-                  href={LINKS.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gap-2 inline-flex items-center"
-                >
+                <a href={LINKS.github} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
                   <Github className="h-4 w-4" />GitHub
                 </a>
               </Button>
               <Button asChild variant="ghost" size="sm">
-                <a
-                  href={LINKS.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gap-2 inline-flex items-center"
-                >
+                <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
                   <Linkedin className="h-4 w-4" />LinkedIn
                 </a>
               </Button>
