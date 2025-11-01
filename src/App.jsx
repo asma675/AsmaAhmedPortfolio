@@ -1,24 +1,11 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
-
-// particles
+import { ArrowRight, Download, Github, Linkedin, Mail, ExternalLink, Instagram } from "lucide-react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-// icons for skill tiles
-import {
-  SiTypescript, SiJavascript, SiPython, SiJava, SiCsharp, SiGo,
-  SiReact, SiRedux, SiNodedotjs, SiExpress, SiSpringboot, SiDotnet,
-  SiMysql, SiPostgresql, SiDocker, SiKubernetes,
-  SiAmazonaws, SiMicrosoftazure, SiGooglecloud,
-  SiHtml5, SiCss3, SiBootstrap, SiPygame, SiGit, SiGithub
-} from "react-icons/si";
-
-/* ---------------- Minimal UI ---------------- */
 const Button = ({ children, asChild, variant = "default", size = "md", className = "", ...props }) => {
-  const base =
-    "inline-flex items-center justify-center rounded-md border text-sm font-medium transition disabled:opacity-50 disabled:pointer-events-none";
+  const base = "inline-flex items-center justify-center rounded-md border text-sm font-medium transition disabled:opacity-50 disabled:pointer-events-none";
   const variants = {
     default: "bg-primary text-primary-foreground hover:opacity-90 border-transparent px-4 py-2",
     secondary: "bg-muted text-foreground hover:bg-muted/80 border-transparent px-4 py-2",
@@ -27,7 +14,6 @@ const Button = ({ children, asChild, variant = "default", size = "md", className
   };
   const sizes = { sm: "text-sm px-3 py-1.5", md: "text-sm px-4 py-2" };
   const cls = `${base} ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className}`;
-
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children, { className: `${children.props.className || ""} ${cls}`.trim(), ...props });
   }
@@ -38,9 +24,13 @@ const Button = ({ children, asChild, variant = "default", size = "md", className
   );
 };
 
-const Card = ({ className = "", children }) => <div className={`rounded-xl border bg-card shadow-sm ${className}`}>{children}</div>;
+const Card = ({ className = "", children }) => (
+  <div className={`rounded-xl border bg-card shadow-sm ${className}`}>{children}</div>
+);
 const CardHeader = ({ children }) => <div className="p-5 border-b">{children}</div>;
-const CardTitle = ({ className = "", children }) => <h3 className={`text-base font-semibold ${className}`}>{children}</h3>;
+const CardTitle = ({ className = "", children }) => (
+  <h3 className={`text-base font-semibold ${className}`}>{children}</h3>
+);
 const CardContent = ({ children }) => <div className="p-5">{children}</div>;
 
 /* ---------------- Helpers ---------------- */
@@ -55,10 +45,10 @@ const Section = ({ id, title, subtitle, children }) => {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent">
-            {title}
-          </h2>
-          {subtitle && <p className="mt-2 text-muted-foreground max-w-3xl">{subtitle}</p>}
+          <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
+          {subtitle && (
+            <p className="mt-2 text-muted-foreground max-w-3xl">{subtitle}</p>
+          )}
         </motion.div>
         {children}
       </div>
@@ -67,36 +57,15 @@ const Section = ({ id, title, subtitle, children }) => {
 };
 
 const FadeIn = ({ children, delay = 0 }) => (
-  <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay }}>
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay }}
+  >
     {children}
   </motion.div>
 );
-
-/* ---------------- Particles background ---------------- */
-function ParticlesBG() {
-  const init = async (engine) => {
-    await loadFull(engine);
-  };
-  const options = {
-    fullScreen: { enable: false },
-    background: { color: "transparent" },
-    fpsLimit: 60,
-    particles: {
-      number: { value: 90, density: { enable: true, area: 800 } },
-      color: { value: "#06b6d4" },
-      links: { enable: true, color: "#06b6d4", opacity: 0.25, width: 1 },
-      move: { enable: true, speed: 1, outModes: { default: "out" } },
-      opacity: { value: 0.25 },
-      size: { value: { min: 1, max: 3 } },
-    },
-    detectRetina: true,
-  };
-  return (
-    <div className="pointer-events-none absolute inset-0 -z-10">
-      <Particles id="tsparticles" init={init} options={options} />
-    </div>
-  );
-}
 
 /* ---------------- Data ---------------- */
 const NAME = "Asma Ahmed";
@@ -105,41 +74,73 @@ const INTRO =
   "I’m a software engineer focused on building scalable, user-centric apps across web and mobile. I work across React, .NET, Spring Boot, and cloud platforms (AWS, Azure, GCP). Below are selected skills, projects, and experience.";
 
 const LINKS = {
-  // Note: LinkedIn viewer pages usually don't support direct 'download'. Keeping both buttons: Download (best-effort) + View PDF.
   resumeUrl:
     "https://www.linkedin.com/in/asma-ahmed67/overlay/1761849807562/single-media-viewer/?profileId=ACoAADRSu5IB5sVYbHSyGtnWPhEcVQmgyeDUzAA",
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
+  instagram: "https://www.instagram.com/asma.a15__/",
 };
 
-// Replace your plain text skills with icon tiles
-const SKILL_TILES = [
-  { name: "TypeScript", icon: SiTypescript },
-  { name: "JavaScript", icon: SiJavascript },
-  { name: "Python", icon: SiPython },
-  { name: "Java", icon: SiJava },
-  { name: "C#", icon: SiCsharp },
-  { name: "Go", icon: SiGo },
-  { name: "AWS", icon: SiAmazonaws },
-  { name: "Azure", icon: SiMicrosoftazure },
-  { name: "GCP", icon: SiGooglecloud },
-  { name: "React", icon: SiReact },
-  { name: "Redux", icon: SiRedux },
-  { name: "Node.js", icon: SiNodedotjs },
-  { name: "Express", icon: SiExpress },
-  { name: "Spring Boot", icon: SiSpringboot },
-  { name: ".NET", icon: SiDotnet },
-  { name: "MySQL", icon: SiMysql },
-  { name: "PostgreSQL", icon: SiPostgresql },
-  { name: "Docker", icon: SiDocker },
-  { name: "Kubernetes", icon: SiKubernetes },
-  { name: "HTML5", icon: SiHtml5 },
-  { name: "CSS3", icon: SiCss3 },
-  { name: "Bootstrap", icon: SiBootstrap },
-  { name: "Pygame", icon: SiPygame },
-  { name: "Git", icon: SiGit },
-  { name: "GitHub", icon: SiGithub },
+const SKILLS = [
+  // Programming languages
+  "Python",
+  "Java",
+  "JavaScript",
+  "C",
+  "C++",
+  "C#",
+  "Go",
+  "R",
+  "Swift",
+
+  // Core web
+  "HTML",
+  "CSS",
+  "Web Design",
+  "API Integration",
+  "REST APIs",
+
+  // Frameworks & libraries
+  "React",
+  "Redux",
+  "Node.js",
+  "Express.js",
+  "Spring Boot",
+  ".NET",
+  "Thymeleaf",
+  "Bootstrap",
+  "Pygame",
+
+  // Data / DB
+  "SQL",
+  "MySQL",
+
+  // DevOps / Cloud
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "Azure",
+  "Google Cloud",
+  "Cloud Deployment",
+
+  // CS & Engineering concepts
+  "OOP",
+  "Data Structures",
+  "Algorithms",
+  "SDLC",
+  "Agile",
+  "TDD",
+
+  // Tools & platforms
+  "Git",
+  "GitHub",
+  "Linux",
+
+  // Platforms
+  "Web Development",
+  "Mobile Development",
+  "Android",
 ];
 
 const PROJECTS = [
@@ -152,25 +153,32 @@ const PROJECTS = [
   },
   {
     title: "GDG Frontend Project",
-    blurb: "Responsive web interface for a GDG challenge with reusable components, hooks, and Tailwind UI.",
+    blurb:
+      "Responsive web interface for a GDG challenge with reusable components, hooks, and Tailwind UI.",
     stack: ["React", "Tailwind", "Vercel"],
-    links: { demo: "#", code: "https://github.com/asma675/gdg-frontend-Asma-Ahmed-Final-Copy" },
+    links: {
+      demo: "#",
+      code: "https://github.com/asma675/gdg-frontend-Asma-Ahmed-Final-Copy",
+    },
   },
   {
     title: "PasswordStore",
-    blurb: "Secure password manager with CRUD, encryption, and MVC architecture.",
+    blurb:
+      "Secure password manager with CRUD, encryption, and MVC architecture.",
     stack: ["Java", "Spring Boot", "Thymeleaf", "H2"],
     links: { demo: "#", code: "https://github.com/asma675" },
   },
   {
     title: "DriveWellApp",
-    blurb: "Cross-platform app for tracking automotive data with cloud sync and async data flows.",
+    blurb:
+      "Cross-platform app for tracking automotive data with cloud sync and async data flows.",
     stack: [".NET MAUI", "C#"],
     links: { demo: "#", code: "https://github.com/asma675" },
   },
   {
     title: "Student Records Portal",
-    blurb: "Secure portal to manage academic records with validation and access control.",
+    blurb:
+      "Secure portal to manage academic records with validation and access control.",
     stack: ["SQL", "HTML", "CSS"],
     links: { demo: "#", code: "https://github.com/asma675" },
   },
@@ -183,50 +191,54 @@ const EXPERIENCE = [
     when: "Sept 2018 – Apr 2019",
     bullets: [
       "Resolved 100+ weekly hardware/software and account issues, improving turnaround time by ~30%.",
+      "Assisted with software installations, system updates, and hardware configurations for campus-wide IT systems.",
       "Diagnosed connectivity problems and supported campus-wide installs and system updates.",
       "Collaborated with technical teams to automate recurring troubleshooting tasks.",
     ],
   },
 ];
 
-/* ---------------- Skill Grid (glassy neon) ---------------- */
-function SkillTile({ name, Icon }) {
-  return (
-    <div
-      className="group rounded-2xl border border-white/10 bg-white/5
-                 backdrop-blur-sm p-6 flex flex-col items-center justify-center
-                 shadow-[0_0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_24px_rgba(34,211,238,.35)]
-                 transition transform hover:-translate-y-1"
-    >
-      <div
-        className="grid place-items-center h-16 w-16 rounded-xl
-                   bg-gradient-to-b from-cyan-400/20 to-cyan-400/5
-                   border border-cyan-400/30 text-cyan-400"
-      >
-        <Icon className="h-8 w-8" />
-      </div>
-      <div className="mt-3 text-sm font-medium text-white/90">{name}</div>
-    </div>
-  );
-}
+const EDUCATION = [
+  {
+    school: "Sheridan College, Oakville, ON",
+    degree:
+      "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
+    gpa: "GPA: 3.27 | 2023–Present",
+    clubs: "Google Developer Club, MSA",
+    coursework:
+      "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
+  },
+];
 
-function SkillGrid() {
-  return (
-    <div className="relative">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.10),transparent_60%)]" />
-      <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {SKILL_TILES.map((s) => (
-          <SkillTile key={s.name} name={s.name} Icon={s.icon} />
-        ))}
-      </div>
-    </div>
-  );
-}
+const ACHIEVEMENTS = [
+  "Recognized for outstanding analytical and troubleshooting ability in IT support role.",
+  "Finalist in GDG Frontend Hackathon for innovative design and technical implementation.",
+  "Developed ShareMeal during GNEC Hackathon 2025 (UN-Affiliated/NGO category), promoting food sharing and sustainability.",
+  "Built an AI-powered Rewriter Tool for Google Chrome Built-in AI Challenge 2025, enhancing content generation through generative AI.",
+];
 
-/* ---------------- Main ---------------- */
+/* ---------------- Particles ---------------- */
+const particlesOptions = {
+  fullScreen: { enable: false },
+  background: { color: "transparent" },
+  fpsLimit: 60,
+  particles: {
+    number: { value: 40, density: { enable: true, area: 800 } },
+    color: { value: "#06b6d4" },
+    links: { enable: true, distance: 150, color: "#06b6d4", opacity: 0.3, width: 1 },
+    move: { enable: true, speed: 1, outModes: { default: "bounce" } },
+    opacity: { value: 0.3 },
+    shape: { type: "circle" },
+    size: { value: { min: 1, max: 3 } },
+  },
+  interactivity: {
+    events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+    modes: { repulse: { distance: 100 } },
+  },
+};
+
 export default function Portfolio() {
   useEffect(() => {
-    // Smooth scroll for in-page anchors
     const onClick = (e) => {
       const a = e.target.closest && e.target.closest('a[href^="#"]');
       if (!a) return;
@@ -243,8 +255,16 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground antialiased">
-      <ParticlesBG />
+    <div className="min-h-screen bg-background text-foreground antialiased relative">
+      {/* Floating background particles — unchanged */}
+      <Particles
+        id="tsparticles"
+        className="pointer-events-none absolute inset-0 -z-10"
+        options={particlesOptions}
+        init={async (engine) => {
+          await loadFull(engine);
+        }}
+      />
 
       {/* Header / Nav */}
       <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -259,21 +279,49 @@ export default function Portfolio() {
               { href: "#skills", label: "Skills" },
               { href: "#projects", label: "Projects" },
               { href: "#experience", label: "Experience" },
+              { href: "#education", label: "Education" },
+              { href: "#achievements", label: "Achievements" },
             ].map((item) => (
-              <a key={item.href} href={item.href} className="text-sm text-muted-foreground hover:text-foreground">
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
                 {item.label}
               </a>
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a aria-label="GitHub" href={LINKS.github} target="_blank" rel="noreferrer" className="rounded-md p-2 hover:bg-muted">
+            <a
+              aria-label="GitHub"
+              href={LINKS.github}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-md p-2 hover:bg-muted"
+            >
               <Github className="h-5 w-5" />
             </a>
-            <a aria-label="LinkedIn" href={LINKS.linkedin} target="_blank" rel="noreferrer" className="rounded-md p-2 hover:bg-muted">
+            <a
+              aria-label="LinkedIn"
+              href={LINKS.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-md p-2 hover:bg-muted"
+            >
               <Linkedin className="h-5 w-5" />
             </a>
             <a aria-label="Email" href={LINKS.email} className="rounded-md p-2 hover:bg-muted">
               <Mail className="h-5 w-5" />
+            </a>
+            {/* Instagram button beside Email */}
+            <a
+              aria-label="Instagram"
+              href={LINKS.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-md p-2 hover:bg-muted"
+            >
+              <Instagram className="h-5 w-5" />
             </a>
           </div>
         </div>
@@ -311,7 +359,15 @@ export default function Portfolio() {
 
       {/* Skills */}
       <Section id="skills" title="Skills & Technologies" subtitle="A snapshot of tools I use regularly.">
-        <SkillGrid />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {SKILLS.map((s, i) => (
+            <FadeIn key={s} delay={i * 0.02}>
+              <div className="group rounded-xl border bg-card p-4 text-center shadow-sm transition hover:shadow">
+                <span className="text-sm font-medium">{s}</span>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </Section>
 
       {/* Projects */}
@@ -323,19 +379,31 @@ export default function Portfolio() {
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     <span>{p.title}</span>
-                    <span className="text-xs font-normal text-muted-foreground">{p.stack.join(" · ")}</span>
+                    <span className="text-xs font-normal text-muted-foreground">
+                      {p.stack.join(" · ")}
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{p.blurb}</p>
                   <div className="mt-4 flex gap-2">
                     <Button size="sm" variant="secondary" asChild>
-                      <a href={p.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
+                      <a
+                        href={p.links.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1"
+                      >
                         <ExternalLink className="h-3.5 w-3.5" /> Demo
                       </a>
                     </Button>
                     <Button size="sm" variant="outline" asChild>
-                      <a href={p.links.code} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
+                      <a
+                        href={p.links.code}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1"
+                      >
                         <Github className="h-3.5 w-3.5" /> Code
                       </a>
                     </Button>
@@ -359,7 +427,8 @@ export default function Portfolio() {
                   <div className="rounded-xl border bg-card p-5 shadow-sm">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 className="text-base font-semibold">
-                        {e.role} <span className="text-muted-foreground font-normal">• {e.org}</span>
+                        {e.role} {" "}
+                        <span className="text-muted-foreground font-normal">• {e.org}</span>
                       </h3>
                       <span className="text-sm text-muted-foreground">{e.when}</span>
                     </div>
@@ -376,6 +445,34 @@ export default function Portfolio() {
         </div>
       </Section>
 
+      {/* Education */}
+      <Section id="education" title="Education" subtitle="Academic background and coursework.">
+        {EDUCATION.map((ed) => (
+          <FadeIn key={ed.school}>
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">{ed.school}</h3>
+              <p className="text-sm text-muted-foreground mt-1">{ed.degree}</p>
+              <p className="text-sm text-muted-foreground mt-1">{ed.gpa}</p>
+              <p className="text-sm text-muted-foreground mt-1">Clubs: {ed.clubs}</p>
+              <p className="text-sm text-muted-foreground mt-1">Relevant Coursework: {ed.coursework}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </Section>
+
+      {/* Achievements (boxed like Education) */}
+      <Section id="achievements" title="Achievements" subtitle="Recognition & hackathons.">
+        <div className="grid gap-4 max-w-3xl">
+          {ACHIEVEMENTS.map((item, i) => (
+            <FadeIn key={i} delay={i * 0.05}>
+              <div className="rounded-xl border bg-card p-5 shadow-sm">
+                <p className="text-sm text-muted-foreground">{item}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </Section>
+
       {/* Footer */}
       <footer className="border-t py-10">
         <div className="mx-auto max-w-6xl px-6">
@@ -385,21 +482,33 @@ export default function Portfolio() {
             </p>
             <div className="flex items-center gap-2">
               <Button asChild variant="ghost" size="sm">
-                <a href={LINKS.github} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
-                  <Github className="h-4 w-4" />
-                  GitHub
+                <a
+                  href={LINKS.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="gap-2 inline-flex items-center"
+                >
+                  <Github className="h-4 w-4" />GitHub
                 </a>
               </Button>
               <Button asChild variant="ghost" size="sm">
-                <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
+                <a
+                  href={LINKS.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="gap-2 inline-flex items-center"
+                >
+                  <Linkedin className="h-4 w-4" />LinkedIn
                 </a>
               </Button>
               <Button asChild variant="ghost" size="sm">
                 <a href={LINKS.email} className="gap-2 inline-flex items-center">
-                  <Mail className="h-4 w-4" />
-                  Email
+                  <Mail className="h-4 w-4" />Email
+                </a>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <a href={LINKS.instagram} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
+                  <Instagram className="h-4 w-4" />Instagram
                 </a>
               </Button>
             </div>
@@ -409,3 +518,4 @@ export default function Portfolio() {
     </div>
   );
 }
+
