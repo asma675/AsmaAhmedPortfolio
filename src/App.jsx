@@ -255,11 +255,19 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased relative">
-      {/* Floating background particles — unchanged */}
+    <div
+      className="min-h-screen bg-background text-foreground antialiased relative"
+      style={{
+        background: "url('/images/9a05921b-e911-47c3-8e27-fc24776cbc99.png') center / cover fixed no-repeat"
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/45 -z-10" />
+
+      {/* Floating background particles */}
       <Particles
         id="tsparticles"
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 -z-20"
         options={particlesOptions}
         init={async (engine) => {
           await loadFull(engine);
@@ -518,4 +526,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
