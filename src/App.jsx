@@ -259,7 +259,10 @@ export default function Portfolio() {
             <p className="mt-3 text-lg text-white/85 drop-shadow">{TAGLINE}</p>
             <p className="mt-5 max-w-3xl text-white/80">{INTRO}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild className="gap-2">
+              <Button
+              asChild
+              className="gap-2 bg-purple-600 hover:bg-purple-500 text-white border-transparent shadow-lg"
+                >
                 <a href={LINKS.resumeUrl} download="Asma_Ahmed_Resume.pdf">
                   <Download className="h-4 w-4" /> Resume
                 </a>
