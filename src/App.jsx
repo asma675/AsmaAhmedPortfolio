@@ -32,17 +32,6 @@ const CardTitle = ({ className = "", children }) => <h3 className={`text-base fo
 const CardContent = ({ children }) => <div className="p-5">{children}</div>;
 
 /* ---------------- Helpers ---------------- */
-<div
-  className="min-h-screen text-white antialiased relative"
-  style={{
-    backgroundImage:
-      "linear-gradient(rgba(7,0,20,0.35), rgba(7,0,20,0.55)), url('/images/purple-digital-bg.jpg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundAttachment: "fixed",
-  }}
->
-  
 const Section = ({ id, title, subtitle, children }) => {
   return (
     <section id={id} className="scroll-mt-24 py-20" aria-label={title}>
@@ -128,7 +117,8 @@ const EXPERIENCE = [
 const EDUCATION = [
   {
     school: "Sheridan College, Oakville, ON",
-    degree: "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
+    degree:
+      "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
     gpa: "GPA: 3.27 | 2023–Present",
     clubs: "Google Developer Club, MSA",
     coursework:
@@ -185,7 +175,7 @@ export default function Portfolio() {
       className="min-h-screen text-white antialiased relative"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(7, 0, 20, 0.55), rgba(7, 0, 20, 0.75)), url('/images/purple-digital-code-wall-server-room-blur-tech-background-website-design-free-photo.jpg')",
+          "linear-gradient(rgba(7, 0, 20, 0.55), rgba(7, 0, 20, 0.75)), url('/images/purple-digital-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -305,7 +295,6 @@ export default function Portfolio() {
             </div>
           </FadeIn>
         </div>
-        {/* soft overlay to ensure readability above image at top */}
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-purple-900/30 via-purple-900/10 to-transparent" />
       </section>
 
@@ -337,7 +326,12 @@ export default function Portfolio() {
                 <CardContent>
                   <p className="text-sm text-white/80">{p.blurb}</p>
                   <div className="mt-4 flex gap-2">
-                    <Button size="sm" variant="secondary" asChild className="bg-purple-700 hover:bg-purple-800 text-white border-transparent">
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      asChild
+                      className="bg-purple-700 hover:bg-purple-800 text-white border-transparent"
+                    >
                       <a href={p.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
                         <ExternalLink className="h-3.5 w-3.5" /> Demo
                       </a>
