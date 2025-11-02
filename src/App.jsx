@@ -32,6 +32,17 @@ const CardTitle = ({ className = "", children }) => <h3 className={`text-base fo
 const CardContent = ({ children }) => <div className="p-5">{children}</div>;
 
 /* ---------------- Helpers ---------------- */
+<div
+  className="min-h-screen text-white antialiased relative"
+  style={{
+    backgroundImage:
+      "linear-gradient(rgba(7,0,20,0.35), rgba(7,0,20,0.55)), url('/images/purple-digital-bg.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+  }}
+>
+  
 const Section = ({ id, title, subtitle, children }) => {
   return (
     <section id={id} className="scroll-mt-24 py-20" aria-label={title}>
