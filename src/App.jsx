@@ -146,9 +146,9 @@ const BEYOND = [
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
     images: [
-      "/images/Screenshot 2025-11-02 231432.png", // henna
-      "/images/Screenshot 2025-11-02 231505.png", // henna close-up
-      "/images/Screenshot 2025-11-02 231716.png", // henna hand
+          "/images/Screenshot 2025-11-02 231716.png", // henna hand
+      "/images/Screenshot 2025-11-02 231806.png", // plant macro
+      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
     ],
   },
   {
@@ -157,9 +157,10 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-      "/images/Screenshot 2025-11-02 231648.png", // purple nature
-      "/images/Screenshot 2025-11-02 231806.png", // plant macro
-      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
+       "/images/Screenshot 2025-11-02 231432.png", // henna
+      "/images/Screenshot 2025-11-02 231505.png", // henna close-up
+       "/images/Screenshot 2025-11-02 231648.png", // purple nature
+
     ],
   },
   {
@@ -494,8 +495,8 @@ export default function Portfolio() {
                 basketball team and a flag football team, jump into volleyball games when I can,
                 and enjoy biking and long walks. I enjoy true-crime &amp; horror and DC movies/shows,
                 and I unwind with LEGO builds and puzzles. I also love volunteering, gardening, baking, and
-                cooking. I’m passionate about science—keeping up with new breakthroughs,
-                discoveries, and innovations—and I cherish time with friends and family whenever
+                cooking. I’m passionate about science, keeping up with new breakthroughs,
+                discoveries, and innovations. I cherish time with friends and family whenever
                 possible. My faith in Islam is also very important to me, and I use its guidance and teachings
                 to continuously improve myself.
               </p>
