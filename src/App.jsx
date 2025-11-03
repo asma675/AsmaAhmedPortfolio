@@ -470,16 +470,53 @@ export default function Portfolio() {
         </div>
       </Section>
 
-<h3 className="text-2xl font-bold text-white mt-14 mb-3">Other Interests</h3>
+{/* Other Interests */}
+<Section
+  id="interests"
+  title="Other Interests"
+  subtitle="What I enjoy beyond keyboards and code."
+>
+  <FadeIn>
+    <Card className="border-white/10 bg-black/30 backdrop-blur-md shadow-sm">
+      <CardContent>
+        <p className="text-white/85 leading-relaxed">
+          Outside of my creative work, I love staying active and grounded. I play on a
+          basketball team and a flag football team, jump into volleyball games when I can,
+          and enjoy biking and long walks. I’m a true-crime &amp; horror documentary fan,
+          and I unwind with LEGO builds and puzzles. I also love gardening, baking, and
+          cooking. I’m passionate about science—keeping up with new breakthroughs,
+          discoveries, and innovations—and I cherish time with friends and family whenever
+          possible.
+        </p>
 
-<p className="mt-12 max-w-3xl text-white/85 text-lg leading-relaxed">
-  Outside of my creative work, I also love staying active and grounded in real world experiences. 
-  I play on a basketball team and flag football team, join volleyball games when I can, and enjoy biking 
-  and long walks. I’m a true crime + horror documentary fan, and I unwind by doing LEGO builds, puzzles, 
-  baking, gardening, and trying new recipes. I also have a deep love for science and keeping up with new 
-  research breakthroughs, discoveries, and innovations — and I love spending quality time with my friends 
-  and family whenever possible.
-</p>
+        {/* quick interests chips */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          {[
+            "Basketball",
+            "Flag Football",
+            "Volleyball",
+            "Biking",
+            "Long Walks",
+            "True Crime & Horror",
+            "LEGO & Puzzles",
+            "Gardening",
+            "Baking",
+            "Cooking",
+            "Science & Discovery",
+            "Friends & Family",
+          ].map((t) => (
+            <span
+              key={t}
+              className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  </FadeIn>
+</Section>
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-10 bg-black/30">
