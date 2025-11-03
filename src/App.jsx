@@ -192,10 +192,12 @@ const BEYOND = [
     subtitle: "Computer Science • Nursing • High school students",
     link: "https://www.instagram.com/asma.a15__/?hl=en",
     cta: "DM for tutoring inquiries",
+    image: [ "/images/1551131919234.jpeg",
+  
     // any neutral image to keep the grid layout
+  ],
   },
-];
-
+  {
 /* ---------------- Particles ---------------- */
 const particlesOptions = {
   fullScreen: { enable: false },
