@@ -178,7 +178,6 @@ const BEYOND = [
     subtitle: "Runway • editorial • collabs",
     link: LINKS.instagramModel,
     cta: "See Modeling",
-    // If you add more modeling shots later, just extend this array.
     images: ["/images/Screenshot 2025-11-02 231100.png"],
   },
 ];
