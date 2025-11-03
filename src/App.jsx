@@ -192,7 +192,7 @@ const BEYOND = [
     subtitle: "Computer Science • Nursing • High school students",
     link: "https://www.instagram.com/asma.a15__/?hl=en",
     cta: "DM for tutoring inquiries",
-    images: ["/images/Screenshot 2025-11-02 231559.png"], // any neutral image to keep the grid layout
+    // any neutral image to keep the grid layout
   },
 ];
 
