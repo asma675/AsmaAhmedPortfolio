@@ -158,8 +158,9 @@ const BEYOND = [
     cta: "See Photos",
     images: [
       "/images/Screenshot 2025-11-02 231648.png", // purple sky / nature
-      "/images/Screenshot 2025-11-02 231806.png", // green leaves (this is the former 3rd)
-      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
+      "/images/Screenshot 2025-11-02 231806.png",
+      "/images/Screenshot 2025-11-02 232101.png",
+// green leaves (this is the former 3rd)
     ],
   },
   {
@@ -170,7 +171,8 @@ const BEYOND = [
     images: [
       "/images/Screenshot 2025-11-02 232002.png",
       "/images/Screenshot 2025-11-02 232026.png",
-      "/images/Screenshot 2025-11-02 232101.png",
+      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
+
     ],
   },
   {
