@@ -146,9 +146,11 @@ const BEYOND = [
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
     images: [
-          "/images/Screenshot 2025-11-02 231716.png", // henna hand
-      "/images/Screenshot 2025-11-02 231806.png", // plant macro
-      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
+
+         "/images/Screenshot 2025-11-02 231432.png", // henna
+      "/images/Screenshot 2025-11-02 231505.png", // henna close-up
+       "/images/Screenshot 2025-11-02 231648.png", // purple nature
+        
     ],
   },
   {
@@ -157,9 +159,10 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-       "/images/Screenshot 2025-11-02 231432.png", // henna
-      "/images/Screenshot 2025-11-02 231505.png", // henna close-up
-       "/images/Screenshot 2025-11-02 231648.png", // purple nature
+
+        "/images/Screenshot 2025-11-02 231716.png", // henna hand
+      "/images/Screenshot 2025-11-02 231806.png", // plant macro
+      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
 
     ],
   },
@@ -191,7 +194,6 @@ const BEYOND = [
     link: "https://www.instagram.com/asma.a15__/?hl=en",
     cta: "DM for tutoring inquiries",
     // provide at least one image so the grid renders; reuse a neutral landscape you already have
-    images: ["/images/Screenshot 2025-11-02 231559.png"],
   },
 ];
 
