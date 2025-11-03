@@ -146,9 +146,10 @@ const BEYOND = [
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
     images: [
-      "/images/Screenshot 2025-11-02 231432.png",     // henna hand correct
-      "/images/Screenshot 2025-11-02 231505.png",   // henna closeup
-      "/images/Screenshot 2025-11-02 231559.png",   // henna other hand
+      "/images/Screenshot 2025-11-02 231432.png",
+      "/images/Screenshot 2025-11-02 231648.png",   // purple nature cosmic
+      "/images/Screenshot 2025-11-02 231716.png", // henna hand correct
+        // henna other hand
     ],
   },
   {
@@ -157,9 +158,10 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-      "/images/Screenshot 2025-11-02 231648.png",   // purple nature cosmic
-      "/images/Screenshot 2025-11-02 231716.png",   // macro plant / nature
-      "/images/Screenshot 2025-11-02 231806.png",   // sunset horizon or landscape
+     // macro plant / nature
+      "/images/Screenshot 2025-11-02 231806.png",
+      "/images/Screenshot 2025-11-02 231505.png",   // henna closeup
+      "/images/Screenshot 2025-11-02 231559.png",// sunset horizon or landscape
     ],
   },
   {
@@ -482,11 +484,13 @@ export default function Portfolio() {
         <p className="text-white/85 leading-relaxed">
           Outside of my creative work, I love staying active and grounded. I play on a
           basketball team and a flag football team, jump into volleyball games when I can,
-          and enjoy biking and long walks. I’m a true-crime &amp; horror documentary fan,
-          and I unwind with LEGO builds and puzzles. I also love gardening, baking, and
+          and enjoy biking and long walks. I enjoy true-crime &amp; horror and DC movies/shows,
+          and I unwind with LEGO builds and puzzles. I also love volunteering, gardening, baking, and
           cooking. I’m passionate about science—keeping up with new breakthroughs,
-          discoveries, and innovations—and I cherish time with friends and family whenever
-          possible.
+          discoveries, and innovations and I cherish time with friends and family whenever
+          possible. My faith in Islam is also very important to me, and I use its guidance and teachings 
+          to continuously improve myself. 
+</p>
         </p>
 
         {/* quick interests chips */}
