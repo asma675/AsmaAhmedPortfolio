@@ -154,7 +154,7 @@ const BEYOND = [
   },
   {
     title: "Photography",
-    subtitle: "Portraits • events • lifestyle",
+    subtitle: "portraits • urban • nature",
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
@@ -166,7 +166,7 @@ const BEYOND = [
   },
   {
     title: "Art & Illustration",
-    subtitle: "Ink • acrylics • digital sketches",
+    subtitle: "Sketchs • acrylics • portraits • realisic art",
     link: LINKS.instagramArt,
     cta: "See Art",
     images: [
@@ -177,7 +177,7 @@ const BEYOND = [
   },
   {
     title: "Modeling",
-    subtitle: "Runway • editorial • collabs",
+    subtitle: "photoshoots • editorial • collabs",
     link: LINKS.instagramModel,
     cta: "See Modeling",
     images: [
