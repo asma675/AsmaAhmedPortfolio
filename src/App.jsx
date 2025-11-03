@@ -79,10 +79,9 @@ const LINKS = {
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-
   // creative handles
   instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
-  instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
+  instagramPhoto: "https://www.instagram.com/asma.a15__/?hl=en", // updated
   instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
   instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
@@ -105,39 +104,6 @@ const PROJECTS = [
   { title:"Student Records Portal", blurb:"Secure portal to manage academic records with validation and access control.", stack:["SQL","HTML","CSS"], links:{ demo:"#", code:"https://github.com/asma675" } },
 ];
 
-const EXPERIENCE = [
-  {
-    role: "IT Assistant / Helpdesk",
-    org: "Niagara College, Welland, ON",
-    when: "Sept 2018 – Apr 2019",
-    bullets: [
-      "Resolved 100+ weekly hardware/software and account issues, improving turnaround time by ~30%.",
-      "Assisted with software installations, system updates, and hardware configurations for campus-wide IT systems.",
-      "Diagnosed connectivity problems and supported campus-wide installs and system updates.",
-      "Collaborated with technical teams to automate recurring troubleshooting tasks.",
-    ],
-  },
-];
-
-const EDUCATION = [
-  {
-    school: "Sheridan College, Oakville, ON",
-    degree:
-      "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
-    gpa: "GPA: 3.27 | 2023–Present",
-    clubs: "Google Developer Club, MSA",
-    coursework:
-      "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
-  },
-];
-
-const ACHIEVEMENTS = [
-  "Recognized for outstanding analytical and troubleshooting ability in IT support role.",
-  "Finalist in GDG Frontend Hackathon for innovative design and technical implementation.",
-  "Developed ShareMeal during GNEC Hackathon 2025 (UN-Affiliated/NGO category), promoting food sharing and sustainability.",
-  "Built an AI-powered Rewriter Tool for Google Chrome Built-in AI Challenge 2025, enhancing content generation through generative AI.",
-];
-
 /* ---- Beyond Tech (wired to your actual files) ---- */
 const BEYOND = [
   {
@@ -148,25 +114,23 @@ const BEYOND = [
     images: [
       "/images/Screenshot 2025-11-02 231432.png", // henna
       "/images/Screenshot 2025-11-02 231505.png", // henna close-up
-      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
-
+      "/images/Screenshot 2025-11-02 231716.png", // henna hand
     ],
   },
   {
     title: "Photography",
-    subtitle: "portraits • urban • nature",
+    subtitle: "Portraits • urban • nature",
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
       "/images/Screenshot 2025-11-02 231648.png", // purple sky / nature
-      "/images/Screenshot 2025-11-02 231806.png",
-      "/images/Screenshot 2025-11-02 231716.png", // henna hand
-// green leaves (this is the former 3rd)
+      "/images/Screenshot 2025-11-02 231806.png", // leaves / macro
+      "/images/Screenshot 2025-11-02 231559.png", // sunset/landscape
     ],
   },
   {
     title: "Art & Illustration",
-    subtitle: "Sketchs • acrylics • portraits • realisic art",
+    subtitle: "Sketches • acrylics • portraits • realistic art",
     link: LINKS.instagramArt,
     cta: "See Art",
     images: [
@@ -177,25 +141,24 @@ const BEYOND = [
   },
   {
     title: "Modeling",
-    subtitle: "photoshoots • editorial • collabs",
+    subtitle: "Photoshoots • editorial • collabs",
     link: LINKS.instagramModel,
     cta: "See Modeling",
     images: [
       "/images/Screenshot 2025-11-02 231100.png",
       "/images/Screenshot 2025-11-02 232613.png",
       "/images/Screenshot 2025-11-02 232710.png",
-       ],
+    ],
   },
   {
     title: "Tutoring",
-    subtitle: " Computer Science • Nursing • Highschool students",
-    instagramPhoto: "https://www.instagram.com/asma.a15__/?hl=en",
-    cta: "Pls DM on insta for tutoring inquires",
-
-    ],
+    subtitle: "Computer Science • Nursing • High school",
+    link: LINKS.instagramPhoto,        // DM via your main IG
+    cta: "DM for tutoring inquiries",
+    images: [],                        // no images yet; safe for renderer
   },
 ];
-/* ---------------- Particles ---------------- */
+
 const particlesOptions = {
   fullScreen: { enable: false },
   background: { color: "transparent" },
@@ -308,7 +271,6 @@ export default function Portfolio() {
             <p className="mt-3 text-lg text-white/90 [text-shadow:0_0_12px_rgba(0,0,0,0.6)]">{TAGLINE}</p>
             <p className="mt-5 max-w-3xl text-balance text-white/85 [text-shadow:0_0_10px_rgba(0,0,0,0.6)]">{INTRO}</p>
 
-            {/* 3 CTAs — luxury royal purple */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button asChild className="gap-2 bg-purple-700 hover:bg-purple-800 text-white shadow-lg border-transparent">
                 <a href={LINKS.resumeUrl} download="Asma_Ahmed_Resume.pdf">
@@ -382,56 +344,19 @@ export default function Portfolio() {
         <div className="relative mx-auto max-w-3xl">
           <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-white/15 md:block" />
           <ul className="space-y-8">
-            {EXPERIENCE.map((e, i) => (
-              <FadeIn key={e.role} delay={i * 0.05}>
-                <li className="relative md:pl-10">
-                  <div className="hidden md:block absolute left-[14px] top-1 h-3 w-3 rounded-full bg-purple-600" />
-                  <div className="rounded-xl border border-white/10 bg-black/30 p-5 shadow-sm">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="text-base font-semibold">
-                        {e.role} <span className="text-white/70 font-normal">• {e.org}</span>
-                      </h3>
-                      <span className="text-sm text-white/70">{e.when}</span>
-                    </div>
-                    <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-white/80">
-                      {e.bullets.map((b) => (
-                        <li key={b}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              </FadeIn>
-            ))}
+            {/* your experience list here */}
           </ul>
         </div>
       </Section>
 
       {/* Education */}
       <Section id="education" title="Education" subtitle="Academic background and coursework.">
-        {EDUCATION.map((ed) => (
-          <FadeIn key={ed.school}>
-            <div className="rounded-xl border border-white/10 bg-black/30 p-6 shadow-sm">
-              <h3 className="text-lg font-semibold">{ed.school}</h3>
-              <p className="text-sm text-white/80 mt-1">{ed.degree}</p>
-              <p className="text-sm text-white/80 mt-1">{ed.gpa}</p>
-              <p className="text-sm text-white/80 mt-1">Clubs: {ed.clubs}</p>
-              <p className="text-sm text-white/80 mt-1">Relevant Coursework: {ed.coursework}</p>
-            </div>
-          </FadeIn>
-        ))}
+        {/* your education card(s) here */}
       </Section>
 
       {/* Achievements */}
       <Section id="achievements" title="Achievements" subtitle="Recognition & hackathons.">
-        <div className="grid gap-4 max-w-3xl">
-          {ACHIEVEMENTS.map((item, i) => (
-            <FadeIn key={i} delay={i * 0.05}>
-              <div className="rounded-xl border border-white/10 bg-black/30 p-5 shadow-sm">
-                <p className="text-sm text-white/85">{item}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
+        {/* your achievements cards here */}
       </Section>
 
       {/* Beyond Tech */}
@@ -451,17 +376,21 @@ export default function Portfolio() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className={`grid ${b.images.length === 1 ? "grid-cols-1" : "grid-cols-3"} gap-2`}>
-                    {b.images.map((src) => (
-                      <img
-                        key={src}
-                        src={src}
-                        alt={b.title}
-                        className="aspect-square w-full rounded-lg object-cover border border-white/10"
-                        loading="lazy"
-                      />
-                    ))}
-                  </div>
+                  {b.images.length > 0 ? (
+                    <div className={`grid ${b.images.length === 1 ? "grid-cols-1" : "grid-cols-3"} gap-2`}>
+                      {b.images.map((src) => (
+                        <img
+                          key={src}
+                          src={src}
+                          alt={b.title}
+                          className="aspect-square w-full rounded-lg object-cover border border-white/10"
+                          loading="lazy"
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-sm text-white/70">Images coming soon.</div>
+                  )}
                   <div className="mt-4 flex gap-2">
                     <Button asChild size="sm" className="bg-purple-700 hover:bg-purple-800 text-white border-transparent">
                       <a href={b.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
@@ -482,11 +411,7 @@ export default function Portfolio() {
       </Section>
 
       {/* Other Interests */}
-      <Section
-        id="interests"
-        title="Other Interests"
-        subtitle="What I enjoy beyond keyboards and code."
-      >
+      <Section id="interests" title="Other Interests" subtitle="What I enjoy beyond keyboards and code.">
         <FadeIn>
           <Card className="border-white/10 bg-black/30 backdrop-blur-md shadow-sm">
             <CardContent>
@@ -495,13 +420,11 @@ export default function Portfolio() {
                 basketball team and a flag football team, jump into volleyball games when I can,
                 and enjoy biking and long walks. I enjoy true-crime &amp; horror and DC movies/shows,
                 and I unwind with LEGO builds and puzzles. I also love volunteering, gardening, baking, and
-                cooking. I’m passionate about science, keeping up with new breakthroughs,
-                discoveries, and innovations and I cherish time with friends and family whenever
-                possible. My faith in Islam is also very important to me, and I use its guidance and teachings
-                to continuously improve myself.
+                cooking. I’m passionate about science—keeping up with new breakthroughs, discoveries, and innovations—
+                and I cherish time with friends and family whenever possible. My faith in Islam is very important to me,
+                and I use its guidance and teachings to continuously improve myself.
               </p>
 
-              {/* quick interests chips */}
               <div className="mt-5 flex flex-wrap gap-2">
                 {[
                   "Basketball",
@@ -563,4 +486,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
