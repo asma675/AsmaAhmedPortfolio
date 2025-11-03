@@ -146,10 +146,9 @@ const BEYOND = [
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
     images: [
-      "/images/Screenshot 2025-11-02 231432.png",
-      "/images/Screenshot 2025-11-02 231648.png",   // purple nature cosmic
-      "/images/Screenshot 2025-11-02 231716.png", // henna hand correct
-        // henna other hand
+      "/images/Screenshot 2025-11-02 231432.png", // henna
+      "/images/Screenshot 2025-11-02 231505.png", // henna close-up
+      "/images/Screenshot 2025-11-02 231716.png", // henna hand
     ],
   },
   {
@@ -158,10 +157,9 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-     // macro plant / nature
-      "/images/Screenshot 2025-11-02 231806.png",
-      "/images/Screenshot 2025-11-02 231505.png",   // henna closeup
-      "/images/Screenshot 2025-11-02 231559.png",// sunset horizon or landscape
+      "/images/Screenshot 2025-11-02 231648.png", // purple nature
+      "/images/Screenshot 2025-11-02 231806.png", // plant macro
+      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
     ],
   },
   {
@@ -187,6 +185,7 @@ const BEYOND = [
     ],
   },
 ];
+
 /* ---------------- Particles ---------------- */
 const particlesOptions = {
   fullScreen: { enable: false },
@@ -261,6 +260,7 @@ export default function Portfolio() {
               { href: "#education", label: "Education" },
               { href: "#achievements", label: "Achievements" },
               { href: "#beyond", label: "Beyond Tech" },
+              { href: "#interests", label: "Other Interests" },
             ].map((item) => (
               <a
                 key={item.href}
@@ -472,55 +472,54 @@ export default function Portfolio() {
         </div>
       </Section>
 
-{/* Other Interests */}
-<Section
-  id="interests"
-  title="Other Interests"
-  subtitle="What I enjoy beyond keyboards and code."
->
-  <FadeIn>
-    <Card className="border-white/10 bg-black/30 backdrop-blur-md shadow-sm">
-      <CardContent>
-        <p className="text-white/85 leading-relaxed">
-          Outside of my creative work, I love staying active and grounded. I play on a
-          basketball team and a flag football team, jump into volleyball games when I can,
-          and enjoy biking and long walks. I enjoy true-crime &amp; horror and DC movies/shows,
-          and I unwind with LEGO builds and puzzles. I also love volunteering, gardening, baking, and
-          cooking. I’m passionate about science—keeping up with new breakthroughs,
-          discoveries, and innovations and I cherish time with friends and family whenever
-          possible. My faith in Islam is also very important to me, and I use its guidance and teachings 
-          to continuously improve myself. 
-</p>
-        </p>
+      {/* Other Interests */}
+      <Section
+        id="interests"
+        title="Other Interests"
+        subtitle="What I enjoy beyond keyboards and code."
+      >
+        <FadeIn>
+          <Card className="border-white/10 bg-black/30 backdrop-blur-md shadow-sm">
+            <CardContent>
+              <p className="text-white/85 leading-relaxed">
+                Outside of my creative work, I love staying active and grounded. I play on a
+                basketball team and a flag football team, jump into volleyball games when I can,
+                and enjoy biking and long walks. I enjoy true-crime &amp; horror and DC movies/shows,
+                and I unwind with LEGO builds and puzzles. I also love volunteering, gardening, baking, and
+                cooking. I’m passionate about science—keeping up with new breakthroughs,
+                discoveries, and innovations—and I cherish time with friends and family whenever
+                possible. My faith in Islam is also very important to me, and I use its guidance and teachings
+                to continuously improve myself.
+              </p>
 
-        {/* quick interests chips */}
-        <div className="mt-5 flex flex-wrap gap-2">
-          {[
-            "Basketball",
-            "Flag Football",
-            "Volleyball",
-            "Biking",
-            "Long Walks",
-            "True Crime & Horror",
-            "LEGO & Puzzles",
-            "Gardening",
-            "Baking",
-            "Cooking",
-            "Science & Discovery",
-            "Friends & Family",
-          ].map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  </FadeIn>
-</Section>
+              {/* quick interests chips */}
+              <div className="mt-5 flex flex-wrap gap-2">
+                {[
+                  "Basketball",
+                  "Flag Football",
+                  "Volleyball",
+                  "Biking",
+                  "Long Walks",
+                  "True Crime & Horror",
+                  "LEGO & Puzzles",
+                  "Gardening",
+                  "Baking",
+                  "Cooking",
+                  "Science & Discovery",
+                  "Friends & Family",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </FadeIn>
+      </Section>
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-10 bg-black/30">
@@ -555,3 +554,4 @@ export default function Portfolio() {
     </div>
   );
 }
+
