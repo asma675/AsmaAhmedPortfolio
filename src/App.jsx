@@ -73,13 +73,19 @@ const TAGLINE = "Software Engineer • Cloud & Full-Stack";
 const INTRO =
   "I’m a software engineer focused on building scalable, user-centric apps across web and mobile. I work across React, .NET, Spring Boot, and cloud platforms (AWS, Azure, GCP). Below are selected skills, projects, and experience.";
 
+// Links (includes creative IG handles)
 const LINKS = {
   resumeUrl:
     "https://www.linkedin.com/in/asma-ahmed67/overlay/1761849807562/single-media-viewer/?profileId=ACoAADRSu5IB5sVYbHSyGtnWPhEcVQmgyeDUzAA",
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-  instagram: "https://www.instagram.com/asma.a15__/",
+
+  // creative handles
+  instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
+  instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
+  instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
+  instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
 
 const SKILLS = [
@@ -131,6 +137,54 @@ const ACHIEVEMENTS = [
   "Finalist in GDG Frontend Hackathon for innovative design and technical implementation.",
   "Developed ShareMeal during GNEC Hackathon 2025 (UN-Affiliated/NGO category), promoting food sharing and sustainability.",
   "Built an AI-powered Rewriter Tool for Google Chrome Built-in AI Challenge 2025, enhancing content generation through generative AI.",
+];
+
+/* ---- Beyond Tech (Creative) ---- */
+const BEYOND = [
+  {
+    title: "Henna / Mehndi",
+    subtitle: "Bridal • party • cones • aftercare",
+    link: LINKS.instagramHenna,
+    cta: "See Henna Work",
+    images: [
+      "/images/beyond/henna-1.jpg",
+      "/images/beyond/henna-2.jpg",
+      "/images/beyond/henna-3.jpg",
+    ],
+  },
+  {
+    title: "Photography",
+    subtitle: "Portraits • events • lifestyle",
+    link: LINKS.instagramPhoto,
+    cta: "See Photos",
+    images: [
+      "/images/beyond/photo-1.jpg",
+      "/images/beyond/photo-2.jpg",
+      "/images/beyond/photo-3.jpg",
+    ],
+  },
+  {
+    title: "Art & Illustration",
+    subtitle: "Ink • acrylics • digital sketches",
+    link: LINKS.instagramArt,
+    cta: "See Art",
+    images: [
+      "/images/beyond/art-1.jpg",
+      "/images/beyond/art-2.jpg",
+      "/images/beyond/art-3.jpg",
+    ],
+  },
+  {
+    title: "Modeling",
+    subtitle: "Runway • editorial • collabs",
+    link: LINKS.instagramModel,
+    cta: "See Modeling",
+    images: [
+      "/images/beyond/model-1.jpg",
+      "/images/beyond/model-2.jpg",
+      "/images/beyond/model-3.jpg",
+    ],
+  },
 ];
 
 /* ---------------- Particles ---------------- */
@@ -195,10 +249,7 @@ export default function Portfolio() {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur supports-[backdrop-filter]:bg-black/30">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           <a href="#home" className="flex items-center gap-2 font-semibold">
-            {/* AA logo badge — purple */}
-            <div className="grid h-8 w-8 place-items-center rounded-md bg-purple-700 text-white shadow-md">
-              AA
-            </div>
+            <div className="grid h-8 w-8 place-items-center rounded-md bg-purple-700 text-white shadow-md">AA</div>
             <span className="hidden sm:inline text-white">Asma Ahmed</span>
           </a>
           <nav className="hidden gap-6 md:flex">
@@ -209,6 +260,7 @@ export default function Portfolio() {
               { href: "#experience", label: "Experience" },
               { href: "#education", label: "Education" },
               { href: "#achievements", label: "Achievements" },
+              { href: "#beyond", label: "Beyond Tech" },
             ].map((item) => (
               <a
                 key={item.href}
@@ -220,38 +272,16 @@ export default function Portfolio() {
             ))}
           </nav>
           <div className="flex items-center gap-1">
-            <a
-              aria-label="GitHub"
-              href={LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]"
-            >
+            <a aria-label="GitHub" href={LINKS.github} target="_blank" rel="noreferrer" className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
               <Github className="h-5 w-5" />
             </a>
-            <a
-              aria-label="LinkedIn"
-              href={LINKS.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]"
-            >
+            <a aria-label="LinkedIn" href={LINKS.linkedin} target="_blank" rel="noreferrer" className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
               <Linkedin className="h-5 w-5" />
             </a>
-            <a
-              aria-label="Email"
-              href={LINKS.email}
-              className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]"
-            >
+            <a aria-label="Email" href={LINKS.email} className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
               <Mail className="h-5 w-5" />
             </a>
-            <a
-              aria-label="Instagram"
-              href={LINKS.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]"
-            >
+            <a aria-label="Instagram" href={LINKS.instagramHenna} target="_blank" rel="noreferrer" className="rounded-md p-2 text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
               <Instagram className="h-5 w-5" />
             </a>
           </div>
@@ -262,16 +292,12 @@ export default function Portfolio() {
       <section id="home" className="relative overflow-hidden pb-20 pt-24">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
-            <p className="text-sm uppercase tracking-widest text-white/85 [text-shadow:0_0_10px_rgba(0,0,0,0.7)]">
-              Portfolio
-            </p>
+            <p className="text-sm uppercase tracking-widest text-white/85 [text-shadow:0_0_10px_rgba(0,0,0,0.7)]">Portfolio</p>
             <h1 className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.65)]">
               {NAME}
             </h1>
             <p className="mt-3 text-lg text-white/90 [text-shadow:0_0_12px_rgba(0,0,0,0.6)]">{TAGLINE}</p>
-            <p className="mt-5 max-w-3xl text-balance text-white/85 [text-shadow:0_0_10px_rgba(0,0,0,0.6)]">
-              {INTRO}
-            </p>
+            <p className="mt-5 max-w-3xl text-balance text-white/85 [text-shadow:0_0_10px_rgba(0,0,0,0.6)]">{INTRO}</p>
 
             {/* 3 CTAs — luxury royal purple */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -280,13 +306,11 @@ export default function Portfolio() {
                   <Download className="h-4 w-4" /> Resume
                 </a>
               </Button>
-
               <Button asChild className="gap-2 bg-purple-700 hover:bg-purple-800 text-white shadow-lg border-transparent">
                 <a href={LINKS.resumeUrl} target="_blank" rel="noreferrer">
                   <ExternalLink className="h-4 w-4" /> View PDF
                 </a>
               </Button>
-
               <Button asChild className="gap-2 bg-purple-700 hover:bg-purple-800 text-white shadow-lg border-transparent">
                 <a href="#projects">
                   View Projects <ArrowRight className="h-4 w-4" />
@@ -326,12 +350,7 @@ export default function Portfolio() {
                 <CardContent>
                   <p className="text-sm text-white/80">{p.blurb}</p>
                   <div className="mt-4 flex gap-2">
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      asChild
-                      className="bg-purple-700 hover:bg-purple-800 text-white border-transparent"
-                    >
+                    <Button size="sm" variant="secondary" asChild className="bg-purple-700 hover:bg-purple-800 text-white border-transparent">
                       <a href={p.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
                         <ExternalLink className="h-3.5 w-3.5" /> Demo
                       </a>
@@ -406,36 +425,77 @@ export default function Portfolio() {
         </div>
       </Section>
 
+      {/* Beyond Tech */}
+      <Section
+        id="beyond"
+        title="Beyond Tech"
+        subtitle="Outside software, I’m a creative—henna artist, photographer, illustrator, and model. Here’s a peek."
+      >
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {BEYOND.map((b, i) => (
+            <FadeIn key={b.title} delay={i * 0.05}>
+              <Card className="border-white/10 bg-black/30 h-full">
+                <CardHeader>
+                  <CardTitle className="flex items-baseline justify-between">
+                    <span>{b.title}</span>
+                    <span className="text-xs font-normal text-white/70">{b.subtitle}</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-3 gap-2">
+                    {b.images.map((src) => (
+                      <img
+                        key={src}
+                        src={src}
+                        alt={b.title}
+                        className="aspect-square w-full rounded-lg object-cover border border-white/10"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                  <div className="mt-4 flex gap-2">
+                    <Button asChild size="sm" className="bg-purple-700 hover:bg-purple-800 text-white border-transparent">
+                      <a href={b.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
+                        <Instagram className="h-3.5 w-3.5" /> {b.cta}
+                      </a>
+                    </Button>
+                    <Button asChild size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                      <a href={b.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
+                        <ExternalLink className="h-3.5 w-3.5" /> Open
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          ))}
+        </div>
+      </Section>
+
       {/* Footer */}
       <footer className="border-t border-white/10 py-10 bg-black/30">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-white/80">
-              © {new Date().getFullYear()} {NAME}. All rights reserved.
-            </p>
+            <p className="text-sm text-white/80">© {new Date().getFullYear()} {NAME}. All rights reserved.</p>
             <div className="flex items-center gap-1">
               <Button asChild variant="ghost" size="sm" className="text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
                 <a href={LINKS.github} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
-                  <Github className="h-4 w-4" />
-                  GitHub
+                  <Github className="h-4 w-4" /> GitHub
                 </a>
               </Button>
               <Button asChild variant="ghost" size="sm" className="text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
                 <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
+                  <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
               </Button>
               <Button asChild variant="ghost" size="sm" className="text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
                 <a href={LINKS.email} className="gap-2 inline-flex items-center">
-                  <Mail className="h-4 w-4" />
-                  Email
+                  <Mail className="h-4 w-4" /> Email
                 </a>
               </Button>
               <Button asChild variant="ghost" size="sm" className="text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]">
-                <a href={LINKS.instagram} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
-                  <Instagram className="h-4 w-4" />
-                  Instagram
+                <a href={LINKS.instagramHenna} target="_blank" rel="noreferrer" className="gap-2 inline-flex items-center">
+                  <Instagram className="h-4 w-4" /> Instagram
                 </a>
               </Button>
             </div>
