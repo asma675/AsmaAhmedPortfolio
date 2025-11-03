@@ -73,7 +73,6 @@ const TAGLINE = "Software Engineer • Cloud & Full-Stack";
 const INTRO =
   "I’m a software engineer focused on building scalable, user-centric apps across web and mobile. I work across React, .NET, Spring Boot, and cloud platforms (AWS, Azure, GCP). Below are selected skills, projects, and experience.";
 
-// Links (includes creative IG handles)
 const LINKS = {
   resumeUrl:
     "https://www.linkedin.com/in/asma-ahmed67/overlay/1761849807562/single-media-viewer/?profileId=ACoAADRSu5IB5sVYbHSyGtnWPhEcVQmgyeDUzAA",
@@ -139,7 +138,7 @@ const ACHIEVEMENTS = [
   "Built an AI-powered Rewriter Tool for Google Chrome Built-in AI Challenge 2025, enhancing content generation through generative AI.",
 ];
 
-/* ---- Beyond Tech (Creative) ---- */
+/* ---- Beyond Tech (wired to your actual files) ---- */
 const BEYOND = [
   {
     title: "Henna / Mehndi",
@@ -147,9 +146,9 @@ const BEYOND = [
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
     images: [
-      "/images/beyond/henna-1.jpg",
-      "/images/beyond/henna-2.jpg",
-      "/images/beyond/henna-3.jpg",
+      "/images/Screenshot 2025-11-02 231559.png",
+      "/images/Screenshot 2025-11-02 231648.png",
+      "/images/Screenshot 2025-11-02 231716.png",
     ],
   },
   {
@@ -158,9 +157,9 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-      "/images/beyond/photo-1.jpg",
-      "/images/beyond/photo-2.jpg",
-      "/images/beyond/photo-3.jpg",
+      "/images/Screenshot 2025-11-02 231432.png",
+      "/images/Screenshot 2025-11-02 231505.png",
+      "/images/Screenshot 2025-11-02 231806.png",
     ],
   },
   {
@@ -169,9 +168,9 @@ const BEYOND = [
     link: LINKS.instagramArt,
     cta: "See Art",
     images: [
-      "/images/beyond/art-1.jpg",
-      "/images/beyond/art-2.jpg",
-      "/images/beyond/art-3.jpg",
+      "/images/Screenshot 2025-11-02 232002.png",
+      "/images/Screenshot 2025-11-02 232026.png",
+      "/images/Screenshot 2025-11-02 232101.png",
     ],
   },
   {
@@ -179,11 +178,8 @@ const BEYOND = [
     subtitle: "Runway • editorial • collabs",
     link: LINKS.instagramModel,
     cta: "See Modeling",
-    images: [
-      "/images/beyond/model-1.jpg",
-      "/images/beyond/model-2.jpg",
-      "/images/beyond/model-3.jpg",
-    ],
+    // If you add more modeling shots later, just extend this array.
+    images: ["/images/Screenshot 2025-11-02 231100.png"],
   },
 ];
 
@@ -442,7 +438,7 @@ export default function Portfolio() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className={`grid ${b.images.length === 1 ? "grid-cols-1" : "grid-cols-3"} gap-2`}>
                     {b.images.map((src) => (
                       <img
                         key={src}
