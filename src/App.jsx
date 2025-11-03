@@ -148,7 +148,8 @@ const BEYOND = [
     images: [
       "/images/Screenshot 2025-11-02 231432.png", // henna
       "/images/Screenshot 2025-11-02 231505.png", // henna close-up
-      "/images/Screenshot 2025-11-02 231716.png", // henna hand
+      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
+
     ],
   },
   {
@@ -159,7 +160,7 @@ const BEYOND = [
     images: [
       "/images/Screenshot 2025-11-02 231648.png", // purple sky / nature
       "/images/Screenshot 2025-11-02 231806.png",
-      "/images/Screenshot 2025-11-02 232101.png",
+      "/images/Screenshot 2025-11-02 231716.png", // henna hand
 // green leaves (this is the former 3rd)
     ],
   },
@@ -171,8 +172,7 @@ const BEYOND = [
     images: [
       "/images/Screenshot 2025-11-02 232002.png",
       "/images/Screenshot 2025-11-02 232026.png",
-      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
-
+      "/images/Screenshot 2025-11-02 232101.png",
     ],
   },
   {
