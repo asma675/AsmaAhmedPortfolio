@@ -145,11 +145,10 @@ const BEYOND = [
     subtitle: "Bridal • party • cones • aftercare",
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
-    // these were previously in Photography — they look like mehndi hands
     images: [
-      "/images/Screenshot 2025-11-02 231432.png",
-      "/images/Screenshot 2025-11-02 231505.png",
-      "/images/Screenshot 2025-11-02 231806.png",
+      "/images/Screenshot 2025-11-02 231559.png",   // henna hand correct
+      "/images/Screenshot 2025-11-02 231648.png",   // henna closeup
+      "/images/Screenshot 2025-11-02 231716.png",   // henna other hand
     ],
   },
   {
@@ -157,11 +156,10 @@ const BEYOND = [
     subtitle: "Portraits • events • lifestyle",
     link: LINKS.instagramPhoto,
     cta: "See Photos",
-    // these were previously in Henna — they look like general photos
     images: [
-      "/images/Screenshot 2025-11-02 231559.png",
-      "/images/Screenshot 2025-11-02 231648.png",
-      "/images/Screenshot 2025-11-02 231716.png",
+      "/images/Screenshot 2025-11-02 231432.png",   // purple nature cosmic
+      "/images/Screenshot 2025-11-02 231505.png",   // macro plant / nature
+      "/images/Screenshot 2025-11-02 231806.png",   // sunset horizon or landscape
     ],
   },
   {
@@ -471,6 +469,17 @@ export default function Portfolio() {
           ))}
         </div>
       </Section>
+
+<h3 className="text-2xl font-bold text-white mt-14 mb-3">Other Interests</h3>
+
+<p className="mt-12 max-w-3xl text-white/85 text-lg leading-relaxed">
+  Outside of my creative work, I also love staying active and grounded in real world experiences. 
+  I play on a basketball team and flag football team, join volleyball games when I can, and enjoy biking 
+  and long walks. I’m a true crime + horror documentary fan, and I unwind by doing LEGO builds, puzzles, 
+  baking, gardening, and trying new recipes. I also have a deep love for science and keeping up with new 
+  research breakthroughs, discoveries, and innovations — and I love spending quality time with my friends 
+  and family whenever possible.
+</p>
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-10 bg-black/30">
