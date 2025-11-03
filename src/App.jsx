@@ -184,6 +184,14 @@ const BEYOND = [
       "/images/Screenshot 2025-11-02 231100.png",
       "/images/Screenshot 2025-11-02 232613.png",
       "/images/Screenshot 2025-11-02 232710.png",
+       ],
+  },
+  {
+    title: "Tutoring",
+    subtitle: " Computer Science • Nursing • Highschool students",
+    link: https://www.instagram.com/asma.a15__/?hl=en,
+    cta: "Pls DM on insta for tutoring inquires",
+
     ],
   },
 ];
@@ -430,7 +438,7 @@ export default function Portfolio() {
       <Section
         id="beyond"
         title="Beyond Tech"
-        subtitle="Outside software, I’m a creative—henna artist, photographer, illustrator, and model. Here’s a peek."
+        subtitle="Outside software, I’m a henna artist, photographer, illustrator, tutor for CS and nursing students, and model. Here’s a peek."
       >
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {BEYOND.map((b, i) => (
