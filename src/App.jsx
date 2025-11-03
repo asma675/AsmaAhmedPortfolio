@@ -150,8 +150,7 @@ const BEYOND = [
     images: [
       "/images/Screenshot 2025-11-02 231432.png", // henna
       "/images/Screenshot 2025-11-02 231505.png", // henna close-up
-      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset
-
+      "/images/Screenshot 2025-11-02 231716.png", // henna hand (moved here)
     ],
   },
   {
@@ -160,9 +159,9 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-      "/images/Screenshot 2025-11-02 231648.png", // purple nature (moved here)
+      "/images/Screenshot 2025-11-02 231648.png", // purple nature
       "/images/Screenshot 2025-11-02 231806.png", // plant macro
-      "/images/Screenshot 2025-11-02 231716.png", // henna hand (moved here)
+      "/images/Screenshot 2025-11-02 231559.png", // landscape/sunset (moved here)
     ],
   },
   {
@@ -192,10 +191,10 @@ const BEYOND = [
     subtitle: "Computer Science • Nursing • High school students",
     link: "https://www.instagram.com/asma.a15__/?hl=en",
     cta: "DM for tutoring inquiries",
-    image: [ "/images/1551131919234.jpeg",
-  
-      },
+    images: ["/images/1551131919234.jpeg"], // keep grid happy with at least one image
+  },
 ];
+
 /* ---------------- Particles ---------------- */
 const particlesOptions = {
   fullScreen: { enable: false },
