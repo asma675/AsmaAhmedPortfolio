@@ -182,16 +182,17 @@ const BEYOND = [
       "/images/Screenshot 2025-11-02 231100.png",
       "/images/Screenshot 2025-11-02 232613.png",
       "/images/Screenshot 2025-11-02 232710.png",
- ], 
-  }, 
-  { 
-      title: "Tutoring", 
-       subtitle: " Computer Science • Nursing • Highschool students", 
-       instagramPhoto: "https://www.instagram.com/asma.a15__/?hl=en", 
-       cta: "Pls DM on insta for tutoring inquires", 
- ],        
-  }, 
-  ];
+    ],
+  },
+  {
+    title: "Tutoring",
+    subtitle: "Computer Science • Nursing • High school students",
+    link: "https://www.instagram.com/asma.a15__/?hl=en",
+    cta: "DM for tutoring inquiries",
+    // provide at least one image so the grid renders; reuse a neutral landscape you already have
+    images: ["/images/Screenshot 2025-11-02 231559.png"],
+  },
+];
 
 /* ---------------- Particles ---------------- */
 const particlesOptions = {
@@ -560,7 +561,5 @@ export default function Portfolio() {
       </footer>
     </div>
   );
-}
-
 }
 
