@@ -189,7 +189,7 @@ const BEYOND = [
   {
     title: "Tutoring",
     subtitle: " Computer Science • Nursing • Highschool students",
-    link: https://www.instagram.com/asma.a15__/?hl=en,
+    instagramPhoto: "https://www.instagram.com/asma.a15__/?hl=en",
     cta: "Pls DM on insta for tutoring inquires",
 
     ],
