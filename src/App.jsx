@@ -173,18 +173,16 @@ const BEYOND = [
       "/images/Screenshot 2025-11-02 232101.png",
     ],
   },
-{
-  title: "Modeling",
-  subtitle: "Runway • editorial • collabs",
-  link: LINKS.instagramModel,
-  cta: "See Modeling",
-  images: [
-    "/images/Screenshot 2025-11-02 231100.png",
-    "/images/Screenshot 2025-11-02 232613.png",
-    "/images/Screenshot 2025-11-02 232710.png",
-  ],
-},
-
+  {
+    title: "Modeling",
+    subtitle: "Runway • editorial • collabs",
+    link: LINKS.instagramModel,
+    cta: "See Modeling",
+    images: [
+      "/images/Screenshot 2025-11-02 231100.png",
+      "/images/Screenshot 2025-11-02 232613.png",
+      "/images/Screenshot 2025-11-02 232710.png",
+    ],
   },
 ];
 
