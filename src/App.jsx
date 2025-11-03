@@ -146,9 +146,9 @@ const BEYOND = [
     link: LINKS.instagramHenna,
     cta: "See Henna Work",
     images: [
-      "/images/Screenshot 2025-11-02 231559.png",   // henna hand correct
-      "/images/Screenshot 2025-11-02 231648.png",   // henna closeup
-      "/images/Screenshot 2025-11-02 231716.png",   // henna other hand
+      "/images/Screenshot 2025-11-02 231432.png",     // henna hand correct
+      "/images/Screenshot 2025-11-02 231505.png",   // henna closeup
+      "/images/Screenshot 2025-11-02 231559.png",   // henna other hand
     ],
   },
   {
@@ -157,8 +157,8 @@ const BEYOND = [
     link: LINKS.instagramPhoto,
     cta: "See Photos",
     images: [
-      "/images/Screenshot 2025-11-02 231432.png",   // purple nature cosmic
-      "/images/Screenshot 2025-11-02 231505.png",   // macro plant / nature
+      "/images/Screenshot 2025-11-02 231648.png",   // purple nature cosmic
+      "/images/Screenshot 2025-11-02 231716.png",   // macro plant / nature
       "/images/Screenshot 2025-11-02 231806.png",   // sunset horizon or landscape
     ],
   },
