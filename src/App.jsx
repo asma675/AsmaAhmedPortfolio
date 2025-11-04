@@ -71,7 +71,8 @@ const FadeIn = ({ children, delay = 0 }) => (
 const NAME = "Asma Ahmed";
 const TAGLINE = "Software Engineer • Cloud & Full-Stack";
 const INTRO =
-  "I’m a software engineer focused on building scalable, user-centric apps across web and mobile. I work across React, .NET, Spring Boot, and cloud platforms (AWS, Azure, GCP). Below are selected skills, projects, and experience.";
+const INTRO =
+  "I’m a software engineer focused on building scalable, user-centric applications across web, cloud, and mobile. I work with React, .NET, Spring Boot, and cloud platforms including AWS, Azure, and GCP.\n\n🎯 Open and actively applying to Internship Opportunities — Software Engineering, Full-Stack Development, Cloud Engineering, and AI/ML engineering roles.\n\nLet’s build something impactful together. Feel free to reach out if you’re hiring.";
 
 const LINKS = {
   resumeUrl:
