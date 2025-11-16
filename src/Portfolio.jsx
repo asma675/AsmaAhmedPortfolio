@@ -351,7 +351,8 @@ export default function Portfolio() {
             </a>
             <a
               aria-label="Instagram"
-              href={LINKS.instagram}
+              href= "https://www.instagram.com/asma.a15__/"
+
               target="_blank"
               rel="noreferrer"
               className="rounded-md p-2 hover:bg-muted"
