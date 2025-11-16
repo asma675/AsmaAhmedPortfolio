@@ -12,7 +12,6 @@ import {
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-// Lightweight UI primitives so you don't need shadcn/ui
 const Button = ({
   children,
   asChild,
@@ -64,7 +63,6 @@ const CardContent = ({ children }) => (
   <div className="p-5">{children}</div>
 );
 
-/* ---------------- Helpers ---------------- */
 const Section = ({ id, title, subtitle, children }) => (
   <section id={id} className="scroll-mt-24 py-20" aria-label={title}>
     <div className="mx-auto max-w-6xl px-6">
@@ -109,7 +107,7 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
   instagram:
-    "https://www.instagram.com/asma.a15__/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fdisabled%2F%3Fnext%3Dhttps%253A%252F%252Fwww.instagram.com%252Fklaudiiinnna%252F%253Fhl%253Den%2526__coig_permdisabled%253D1%26__coig_login%3D1",
+    "https://www.instagram.com/asma.a15__/",
 };
 
 const SKILLS = [
