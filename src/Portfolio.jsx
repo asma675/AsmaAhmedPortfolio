@@ -585,7 +585,7 @@ export default function Portfolio() {
               </Button>
               <Button asChild variant="ghost" size="sm">
                 <a
-                  href={LINKS.instagram}
+                  href= "https://www.instagram.com/asma.a15__/"
                   target="_blank"
                   rel="noreferrer"
                   className="gap-2 inline-flex items-center"
