@@ -361,9 +361,10 @@ const EDUCATION = [
   },
 ];
 
-const ACHIEVEMENTS = [
+const ACHIEVEMENTS🏆 = [
   "Recognized for outstanding analytical and troubleshooting ability in IT support role.",
-  "Finalist in GDG Frontend Hackathon for innovative design and technical implementation.",
+  "Sheridan Datathon 2025 — CareerLift AI (Top 5 Overall | Top 2 Finalist for Best Use of Gemini). Built an AI-powered résumé insights platform that scores job fit, identifies skill gaps, and generates personalized upskilling paths using Gemini.Earned Top 5 placement and Top 2 finalist recognition for Best Use of Gemini among all competing teams. Demonstrated responsible, structured AI prompting and delivered a polished React + Firebase application within 24 hours."
+  "Finalist in GDG Frontend Challenge for innovative design and technical implementation.",
   "Developed ShareMeal during GNEC Hackathon 2025 (UN-Affiliated/NGO category), promoting food sharing and sustainability.",
   "Built an AI-powered Rewriter Tool for Google Chrome Built-in AI Challenge 2025, enhancing content generation through generative AI.",
 ];
