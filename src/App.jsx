@@ -119,56 +119,39 @@ const LINKS = {
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
+  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // tutoring / main
   instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
   instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
   instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
   instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
 
-const SKILLS = [
-  "Python",
-  "Java",
-  "JavaScript",
-  "C",
-  "C++",
-  "C#",
-  "Go",
-  "R",
-  "Swift",
-  "HTML",
-  "CSS",
-  "Web Design",
-  "API Integration",
-  "REST APIs",
-  "React",
-  "Redux",
-  "Node.js",
-  "Express.js",
-  "Spring Boot",
-  ".NET",
-  "Thymeleaf",
-  "Bootstrap",
-  "Pygame",
-  "SQL",
-  "MySQL",
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "Azure",
-  "Google Cloud",
-  "Cloud Deployment",
-  "OOP",
-  "Data Structures",
-  "Algorithms",
-  "SDLC",
-  "Agile",
-  "TDD",
-  "Git",
-  "GitHub",
-  "Linux",
-  "Web Development",
-  "Mobile Development",
-  "Android",
+/* --------- Skills (lego-style tiles) --------- */
+const SKILL_TILES = [
+  { short: "TS", name: "TypeScript", featured: true },
+  { short: "JS", name: "JavaScript", featured: true },
+  { short: "Py", name: "Python", featured: true },
+  { short: "Java", name: "Java", featured: true },
+  { short: "C#", name: "C#", featured: false },
+  { short: "AWS", name: "AWS", featured: true },
+  { short: "λ", name: "Lambda", featured: false },
+  { short: "DDB", name: "DynamoDB", featured: false },
+  { short: "S3", name: "S3", featured: false },
+  { short: "Git", name: "Git", featured: false },
+  { short: "🐧", name: "Linux", featured: false },
+  { short: "React", name: "React", featured: true },
+  { short: "Ng", name: "Angular", featured: false },
+  { short: "HTML5", name: "HTML5", featured: false },
+  { short: "CSS3", name: "CSS3", featured: false },
+  { short: "Node", name: "Node.js", featured: false },
+  { short: "Ex", name: "Express", featured: false },
+  { short: "SQL", name: "SQL / MySQL", featured: false },
+  { short: "NoSQL", name: "MongoDB", featured: false },
+  { short: ".NET", name: ".NET / C#", featured: true },
+  { short: "K8s", name: "Kubernetes", featured: false },
+  { short: "Dock", name: "Docker", featured: false },
+  { short: "GCP", name: "Google Cloud", featured: false },
+  { short: "Az", name: "Azure", featured: false },
 ];
 
 /* --------- Updated Projects --------- */
@@ -712,7 +695,7 @@ const BEYOND = [
   {
     title: "Tutoring",
     subtitle: "Computer Science • Nursing • High school students",
-    link: "https://www.instagram.com/asma.a15__/?hl=en",
+    link: LINKS.instagramMain,
     cta: "DM for tutoring inquiries",
     images: ["/images/1551131919234.jpeg"],
   },
@@ -841,7 +824,7 @@ export default function Portfolio() {
             </a>
             <a
               aria-label="Instagram"
-              href={LINKS.instagramHenna}
+              href={LINKS.instagramMain}
               target="_blank"
               rel="noreferrer"
               className="rounded-md p-2 text-purple-100/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]"
@@ -919,13 +902,27 @@ export default function Portfolio() {
       <Section
         id="skills"
         title="Skills & Technologies"
-        subtitle="A snapshot of tools I use regularly."
+        subtitle="A focused view of the tools I use to build, ship, and scale products."
       >
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {SKILLS.map((s, i) => (
-            <FadeIn key={s} delay={i * 0.02}>
-              <div className="group rounded-xl border border-purple-300/35 bg-gradient-to-br from-purple-900/80 via-slate-900/90 to-purple-950/70 p-3 text-center shadow-sm transition hover:shadow-[0_0_18px_rgba(168,85,247,0.7)] hover:border-purple-200/90">
-                <span className="text-xs font-medium text-purple-50/95">{s}</span>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {SKILL_TILES.map((skill, i) => (
+            <FadeIn key={skill.name} delay={i * 0.03}>
+              <div className="relative">
+                <div
+                  className={`group relative flex h-28 flex-col items-center justify-center rounded-2xl border bg-gradient-to-b from-slate-950/95 via-slate-900/90 to-black/95 shadow-[0_0_18px_rgba(0,0,0,0.9)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(45,212,191,0.55)] ${
+                    skill.featured
+                      ? "border-cyan-400/80 ring-1 ring-cyan-400/70"
+                      : "border-slate-700/80 hover:border-cyan-300/80"
+                  }`}
+                >
+                  <div className="text-xl md:text-2xl font-semibold tracking-tight text-cyan-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.8)]">
+                    {skill.short}
+                  </div>
+                  <div className="mt-1 text-[11px] md:text-xs text-cyan-100/90 text-center">
+                    {skill.name}
+                  </div>
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.25),transparent_55%)]" />
+                </div>
               </div>
             </FadeIn>
           ))}
@@ -1370,7 +1367,7 @@ export default function Portfolio() {
                 className="text-purple-100/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(168,85,247,0.8)]"
               >
                 <a
-                  href={LINKS.instagramHenna}
+                  href={LINKS.instagramMain}
                   target="_blank"
                   rel="noreferrer"
                   className="gap-2 inline-flex items-center"
