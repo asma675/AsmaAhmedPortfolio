@@ -52,7 +52,7 @@ const Button = ({
 
 const Card = ({ className = "", children }) => (
   <div
-    className={`group relative rounded-2xl border border-purple-200/20 bg-black/45 shadow-[0_0_22px_rgba(0,0,0,0.8)] backdrop-blur-md transition hover:border-purple-400/90 hover:shadow-[0_0_32px_rgba(168,85,247,0.9)] ${className}`}
+    className={`relative rounded-2xl border border-purple-200/20 bg-black/45 shadow-[0_0_22px_rgba(0,0,0,0.8)] backdrop-blur-md transition hover:border-purple-400/90 hover:shadow-[0_0_32px_rgba(168,85,247,0.9)] ${className}`}
   >
     {/* glow border */}
     <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.3),_transparent_60%)] opacity-0 blur-xl transition group-hover:opacity-100" />
@@ -119,55 +119,60 @@ const LINKS = {
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // main / tutoring
+  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // main + tutoring
   instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
   instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
   instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
   instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
 
-/* --------- Skills with REAL devicon logos --------- */
-/*  Make sure devicon CSS is loaded in index.html as described above */
+/* --------- Skills with REAL LOGOS (Devicon) --------- */
+/*  This replaces the old SKILL_TILES but keeps all the skills (and more).  */
+/*  Each tile is like a little LEGO block with real icons + purple glow.    */
+
 const SKILL_LOGOS = [
-  // core languages
-  { name: "TypeScript", short: "TS", icon: "devicon-typescript-plain colored" },
-  { name: "JavaScript", short: "JS", icon: "devicon-javascript-plain colored" },
-  { name: "Python", short: "Py", icon: "devicon-python-plain colored" },
-  { name: "Java", short: "Java", icon: "devicon-java-plain colored" },
-  { name: "C#", short: "C#", icon: "devicon-csharp-plain colored" },
-
-  // web
-  { name: "React", short: "React", icon: "devicon-react-original colored" },
-  { name: "HTML5", short: "HTML", icon: "devicon-html5-plain colored" },
-  { name: "CSS3", short: "CSS", icon: "devicon-css3-plain colored" },
-  { name: "Node.js", short: "Node", icon: "devicon-nodejs-plain colored" },
-  { name: "Express", short: "Express", icon: "devicon-express-original" },
-
-  // cloud & backend
+  { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+  { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+  { name: "Python", icon: "devicon-python-plain colored" },
+  { name: "Java", icon: "devicon-java-plain colored" },
+  { name: "C#", icon: "devicon-csharp-plain colored" },
+  { name: "React", icon: "devicon-react-original colored" },
+  { name: "Angular", icon: "devicon-angularjs-plain colored" },
+  { name: "HTML5", icon: "devicon-html5-plain colored" },
+  { name: "CSS3", icon: "devicon-css3-plain colored" },
+  { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+  { name: "Express", icon: "devicon-express-original", subtitle: "Backend" },
   {
-    name: "AWS (Lambda, DynamoDB, S3)",
-    short: "AWS",
-    icon: "devicon-amazonwebservices-plain-wordmark colored",
+    name: "AWS",
+    icon: "devicon-amazonwebservices-original colored",
+    subtitle: "Lambda • DynamoDB • S3",
   },
-  { name: "Azure", short: "Azure", icon: "devicon-azure-plain colored" },
-  { name: "Google Cloud", short: "GCP", icon: "devicon-googlecloud-plain colored" },
-  { name: ".NET / ASP.NET Core", short: ".NET", icon: "devicon-dotnetcore-plain colored" },
-  { name: "Spring Boot", short: "Spring", icon: "devicon-spring-plain colored" },
-
-  // data & db
-  { name: "SQL Server", short: "SQL", icon: "devicon-microsoftsqlserver-plain colored" },
-  { name: "MySQL", short: "MySQL", icon: "devicon-mysql-plain-wordmark colored" },
-  { name: "PostgreSQL", short: "Postgres", icon: "devicon-postgresql-plain colored" },
-  { name: "MongoDB", short: "MongoDB", icon: "devicon-mongodb-plain colored" },
-
-  // devops / tools
-  { name: "Git", short: "Git", icon: "devicon-git-plain colored" },
-  { name: "GitHub", short: "GitHub", icon: "devicon-github-original" },
-  { name: "Docker", short: "Docker", icon: "devicon-docker-plain colored" },
-  { name: "Kubernetes", short: "K8s", icon: "devicon-kubernetes-plain colored" },
-
-  // OS & extras
-  { name: "Linux", short: "Linux", icon: "devicon-linux-plain colored" },
+  { name: "Azure", icon: "devicon-azure-plain colored" },
+  {
+    name: "Google Cloud",
+    icon: "devicon-googlecloud-plain colored",
+    subtitle: "GCP",
+  },
+  {
+    name: ".NET / ASP.NET Core",
+    icon: "devicon-dotnetcore-plain colored",
+  },
+  { name: "Spring Boot", icon: "devicon-spring-plain colored" },
+  {
+    name: "SQL Server",
+    icon: "devicon-microsoftsqlserver-plain colored",
+  },
+  { name: "MySQL", icon: "devicon-mysql-plain colored" },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+  { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+  { name: "Firebase", icon: "devicon-firebase-plain colored" },
+  { name: "Git", icon: "devicon-git-plain colored" },
+  { name: "GitHub", icon: "devicon-github-original", subtitle: "Projects" },
+  { name: "Linux", icon: "devicon-linux-plain colored" },
+  { name: "Docker", icon: "devicon-docker-plain colored" },
+  { name: "Kubernetes", icon: "devicon-kubernetes-plain colored" },
+  { name: "Android", icon: "devicon-android-plain colored" },
+  { name: "Photoshop", icon: "devicon-photoshop-plain colored" },
 ];
 
 /* --------- Updated Projects --------- */
@@ -711,7 +716,7 @@ const BEYOND = [
   {
     title: "Tutoring",
     subtitle: "Computer Science • Nursing • High school students",
-    link: LINKS.instagramMain,
+    link: LINKS.instagramMain, // main account used for tutoring
     cta: "DM for tutoring inquiries",
     images: ["/images/1551131919234.jpeg"],
   },
@@ -914,7 +919,7 @@ export default function Portfolio() {
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-purple-900/50 via-purple-900/10 to-transparent" />
       </section>
 
-      {/* Skills – lego tiles with REAL logos & purple glow */}
+      {/* Skills – LEGO style with real icons */}
       <Section
         id="skills"
         title="Skills & Technologies"
@@ -923,25 +928,23 @@ export default function Portfolio() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {SKILL_LOGOS.map((skill, i) => (
             <FadeIn key={skill.name} delay={i * 0.03}>
-              <div className="relative">
-                <div className="group relative flex h-28 flex-col items-center justify-center rounded-2xl border border-purple-500/50 bg-gradient-to-b from-slate-950/95 via-slate-900/90 to-black/95 shadow-[0_0_18px_rgba(0,0,0,0.9)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(168,85,247,0.8)]">
-                  {/* glow */}
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(192,132,252,0.3),transparent_55%),radial-gradient(circle_at_bottom,_rgba(126,34,206,0.45),transparent_60%)]" />
-                  {/* icon */}
-                  {skill.icon ? (
-                    <i
-                      className={`${skill.icon} text-4xl md:text-5xl drop-shadow-[0_0_14px_rgba(168,85,247,0.9)] z-10`}
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <span className="text-3xl font-semibold text-purple-100 z-10">
-                      {skill.short}
+              <div className="group relative h-32 rounded-3xl border border-purple-500/45 bg-gradient-to-b from-slate-950/95 via-slate-900/95 to-black/95 shadow-[0_0_22px_rgba(0,0,0,0.95)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_32px_rgba(168,85,247,0.85)] overflow-hidden">
+                {/* Purple glow */}
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.45),transparent_55%),radial-gradient(circle_at_bottom,_rgba(126,34,206,0.55),transparent_60%)]" />
+
+                {/* Content */}
+                <div className="relative flex h-full flex-col items-center justify-center px-3 text-center">
+                  <i
+                    className={`${skill.icon} text-4xl md:text-5xl drop-shadow-[0_0_14px_rgba(168,85,247,0.85)]`}
+                  />
+                  <span className="mt-2 text-xs md:text-sm font-medium text-purple-50">
+                    {skill.name}
+                  </span>
+                  {skill.subtitle && (
+                    <span className="mt-0.5 text-[10px] text-purple-200/80">
+                      {skill.subtitle}
                     </span>
                   )}
-                  {/* label */}
-                  <div className="mt-2 text-[11px] md:text-xs text-purple-100/95 text-center z-10">
-                    {skill.name}
-                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -1059,7 +1062,8 @@ export default function Portfolio() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-1"
                         >
-                          <ExternalLink className="h-3.5 w-3.5" /> View on Devpost / GitHub
+                          <ExternalLink className="h-3.5 w-3.5" /> View on Devpost /
+                          GitHub
                         </a>
                       </Button>
                     </div>
