@@ -176,8 +176,26 @@ const PROJECTS = [
   {
     title: "LYTHOS — AI-Powered Carbon Offset Feasibility",
     blurb:
-      "Transforms Canadian industrial emissions + satellite data into decision-ready carbon offset intelligence, helping protect communities, ecosystems, and Indigenous lands while supporting net-zero goals.",
-    stack: ["Space Data", "Python", "Leaflet", "ESG", "AI"],
+      "Transforms Canadian industrial emissions and policy data into decision-ready carbon offset intelligence, helping industrial facilities cut emissions while protecting communities, ecosystems, and Indigenous lands.",
+    stack: ["GHGRP Data", "Python", "Space Data", "Leaflet", "ESG", "AI"],
+    links: {
+      demo: "#",
+      code: "#",
+    },
+  },
+  {
+    title: "LYTHOS — Space Data + AI for Ethical Critical Mineral Exploration",
+    blurb:
+      "Uses Sentinel-2 spectral indices, GEDI forest structure, and GRACE-FO groundwater stress to identify low-impact exploration zones, flag high-risk no-go areas, and support protection-first critical mineral siting across Canada.",
+    stack: [
+      "Sentinel-2",
+      "GEDI",
+      "GRACE-FO",
+      "Leaflet",
+      "NASA GIBS",
+      "ESA Copernicus",
+      "Python",
+    ],
     links: {
       demo: "#",
       code: "#",
@@ -216,7 +234,7 @@ const PROJECTS = [
   {
     title: "Word Rewriter – Chrome Extension",
     blurb:
-      "Google Chrome Built-in AI Challenge 2025 submission. Lets users highlight text on any page and instantly get simplified or rephrased versions using on-device Gemini Nano.",
+      "Google Chrome Built-in AI Challenge 2025 submission. Lets users highlight text on any page and instantly get simplified or rephrased versions using on-device Gemini Nano, keeping everything private and fast.",
     stack: ["JavaScript", "Chrome APIs", "Tailwind CSS", "Gemini Nano"],
     links: {
       demo: "https://github.com/asma675/WordRewriter_ChromeExtension_Google-Chrome-Built-in-AI-Challenge-2025",
@@ -302,8 +320,26 @@ const HACKATHONS = [
     event: "BramHacks 2025 • Sustainability",
     role: "Product Lead · Data/AI Engineer · Full Stack",
     outcome:
-      "95% judging score, built in under 48 hours with live A+B region demo for Northern Ontario Nickel and NWT Lithium.",
-    stack: ["Sentinel-2", "GEDI", "GRACE-FO", "Leaflet", "NASA GIBS", "ESA Copernicus"],
+      "Fused Sentinel-2, GEDI, and GRACE-FO datasets into an ethical siting engine that flags no-go zones and highlights low-impact exploration regions. Received a 95% judging score and delivered a working demo in under 48 hours.",
+    stack: [
+      "Sentinel-2",
+      "GEDI",
+      "GRACE-FO",
+      "Leaflet",
+      "NASA GIBS",
+      "ESA Copernicus",
+      "Python",
+    ],
+    link: "#",
+  },
+  {
+    title:
+      "LYTHOS — AI-Powered Carbon Offset Feasibility for Canadian Industrial Facilities",
+    event: "BramHacks 2025 • Climate & ESG",
+    role: "Frontend / Full-Stack Engineer · Maps & Data",
+    outcome:
+      "Built emissions-aware intelligence for 800+ Canadian facilities with 5 years of history, generating AI compliance briefs and credit feasibility scores in under 5 minutes per facility.",
+    stack: ["GHGRP", "Space Data", "Leaflet", "Risk Models", "ESG", "AI"],
     link: "#",
   },
   {
@@ -325,13 +361,13 @@ const HACKATHONS = [
     link: "https://devpost.com/software/sharemeal",
   },
   {
-    title: "MoneyMaker – Financial Wellness & Coaching",
-    event: "Hackathon Project",
-    role: "Full-Stack · Product",
+    title: "Word Rewriter – Chrome Extension",
+    event: "Google Chrome Built-in AI Challenge 2025",
+    role: "Frontend & UI Engineer (Hackathon Submission)",
     outcome:
-      "Prototype focused on helping users build better money habits and financial confidence through guided flows.",
-    stack: ["React", "Node.js", "APIs"],
-    link: "https://devpost.com/software/moneymaker-hcy5gi",
+      "Designed and implemented a Chrome extension that lets users highlight any text and instantly get simplified or rephrased explanations using on-device Gemini Nano, keeping latency low and data private.",
+    stack: ["JavaScript", "Chrome APIs", "Tailwind CSS", "Gemini Nano"],
+    link: "https://github.com/asma675/WordRewriter_ChromeExtension_Google-Chrome-Built-in-AI-Challenge-2025",
   },
 ];
 
@@ -750,7 +786,9 @@ export default function Portfolio() {
             <div className="grid h-8 w-8 place-items-center rounded-md bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white shadow-[0_0_18px_rgba(168,85,247,0.9)]">
               AA
             </div>
-            <span className="hidden sm:inline text-white tracking-tight">Asma Ahmed</span>
+            <span className="hidden sm:inline text-white tracking-tight">
+              Asma Ahmed
+            </span>
           </a>
           <nav className="hidden gap-6 md:flex">
             {[
@@ -909,7 +947,9 @@ export default function Portfolio() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-purple-50/90 leading-relaxed">{p.blurb}</p>
+                  <p className="text-sm text-purple-50/90 leading-relaxed">
+                    {p.blurb}
+                  </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {p.links.demo && p.links.demo !== "#" && (
                       <Button
@@ -1002,7 +1042,7 @@ export default function Portfolio() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-1"
                         >
-                          <ExternalLink className="h-3.5 w-3.5" /> View on Devpost
+                          <ExternalLink className="h-3.5 w-3.5" /> View on Devpost / GitHub
                         </a>
                       </Button>
                     </div>
@@ -1049,7 +1089,11 @@ export default function Portfolio() {
       </Section>
 
       {/* Education */}
-      <Section id="education" title="Education" subtitle="Academic background and coursework.">
+      <Section
+        id="education"
+        title="Education"
+        subtitle="Academic background and coursework."
+      >
         {EDUCATION.map((ed) => (
           <FadeIn key={ed.school}>
             <Card className="border-purple-300/25 bg-black/50 shadow-sm">
@@ -1231,15 +1275,16 @@ export default function Portfolio() {
           <Card className="border-purple-300/25 bg-black/55 backdrop-blur-md shadow-sm">
             <CardContent>
               <p className="text-purple-50/95 leading-relaxed">
-                Outside of my creative work, I love staying active and grounded. I play on a
-                basketball team and a flag football team, jump into volleyball games when I
-                can, and enjoy biking and long walks. I enjoy true-crime &amp; horror and DC
-                movies/shows, and I unwind with LEGO builds and puzzles. I also love
-                volunteering, gardening, baking, and cooking. I’m passionate about science,
-                keeping up with new breakthroughs, discoveries, and innovations. I cherish
-                time with friends and family whenever possible. My faith in Islam is also
-                very important to me, and I use its guidance and teachings to continuously
-                improve myself.
+                Outside of my creative work, I love staying active and grounded. I
+                play on a basketball team and a flag football team, jump into
+                volleyball games when I can, and enjoy biking and long walks. I
+                enjoy true-crime &amp; horror and DC movies/shows, and I unwind with
+                LEGO builds and puzzles. I also love volunteering, gardening, baking,
+                and cooking. I’m passionate about science, keeping up with new
+                breakthroughs, discoveries, and innovations. I cherish time with
+                friends and family whenever possible. My faith in Islam is also very
+                important to me, and I use its guidance and teachings to
+                continuously improve myself.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
