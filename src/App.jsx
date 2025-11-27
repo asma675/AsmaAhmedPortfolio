@@ -52,7 +52,7 @@ const Button = ({
 
 const Card = ({ className = "", children }) => (
   <div
-    className={`relative rounded-2xl border border-purple-200/20 bg-black/45 shadow-[0_0_22px_rgba(0,0,0,0.8)] backdrop-blur-md transition hover:border-purple-400/90 hover:shadow-[0_0_32px_rgba(168,85,247,0.9)] ${className}`}
+    className={`group relative rounded-2xl border border-purple-200/20 bg-black/45 shadow-[0_0_22px_rgba(0,0,0,0.8)] backdrop-blur-md transition hover:border-purple-400/90 hover:shadow-[0_0_32px_rgba(168,85,247,0.9)] ${className}`}
   >
     {/* glow border */}
     <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.3),_transparent_60%)] opacity-0 blur-xl transition group-hover:opacity-100" />
@@ -119,46 +119,57 @@ const LINKS = {
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // tutoring / main
+  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // main / tutoring
   instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
   instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
   instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
   instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
 
-/* --------- Skills (lego-style tiles) --------- */
-<Section
-  id="skills"
-  title="Skills & Technologies"
-  subtitle="A focused view of the tools I use to build, ship, and scale products."
->
-  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-    {SKILL_LOGOS.map((skill, i) => (
-      <FadeIn key={skill.name} delay={i * 0.02}>
-        <div className="group relative flex h-28 flex-col items-center justify-center 
-          rounded-2xl border border-purple-400/30 
-          bg-gradient-to-b from-black/70 via-purple-900/20 to-black/60
-          shadow-[0_0_18px_rgba(0,0,0,0.7)]
-          hover:shadow-[0_0_28px_rgba(168,85,247,0.8)]
-          transition overflow-hidden">
+/* --------- Skills with REAL devicon logos --------- */
+/*  Make sure devicon CSS is loaded in index.html as described above */
+const SKILL_LOGOS = [
+  // core languages
+  { name: "TypeScript", short: "TS", icon: "devicon-typescript-plain colored" },
+  { name: "JavaScript", short: "JS", icon: "devicon-javascript-plain colored" },
+  { name: "Python", short: "Py", icon: "devicon-python-plain colored" },
+  { name: "Java", short: "Java", icon: "devicon-java-plain colored" },
+  { name: "C#", short: "C#", icon: "devicon-csharp-plain colored" },
 
-          {/* Purple Glow Overlay */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition 
-            bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),transparent_60%),
-                radial-gradient(circle_at_bottom,_rgba(126,34,206,0.4),transparent_60%)]" />
+  // web
+  { name: "React", short: "React", icon: "devicon-react-original colored" },
+  { name: "HTML5", short: "HTML", icon: "devicon-html5-plain colored" },
+  { name: "CSS3", short: "CSS", icon: "devicon-css3-plain colored" },
+  { name: "Node.js", short: "Node", icon: "devicon-nodejs-plain colored" },
+  { name: "Express", short: "Express", icon: "devicon-express-original" },
 
-          {/* REAL LOGO */}
-          <i className={`${skill.icon} text-4xl drop-shadow-[0_0_10px_rgba(168,85,247,0.7)]`} />
+  // cloud & backend
+  {
+    name: "AWS (Lambda, DynamoDB, S3)",
+    short: "AWS",
+    icon: "devicon-amazonwebservices-plain-wordmark colored",
+  },
+  { name: "Azure", short: "Azure", icon: "devicon-azure-plain colored" },
+  { name: "Google Cloud", short: "GCP", icon: "devicon-googlecloud-plain colored" },
+  { name: ".NET / ASP.NET Core", short: ".NET", icon: "devicon-dotnetcore-plain colored" },
+  { name: "Spring Boot", short: "Spring", icon: "devicon-spring-plain colored" },
 
-          {/* Name */}
-          <span className="mt-2 text-sm text-purple-100 tracking-tight z-10">
-            {skill.name}
-          </span>
-        </div>
-      </FadeIn>
-    ))}
-  </div>
-</Section>
+  // data & db
+  { name: "SQL Server", short: "SQL", icon: "devicon-microsoftsqlserver-plain colored" },
+  { name: "MySQL", short: "MySQL", icon: "devicon-mysql-plain-wordmark colored" },
+  { name: "PostgreSQL", short: "Postgres", icon: "devicon-postgresql-plain colored" },
+  { name: "MongoDB", short: "MongoDB", icon: "devicon-mongodb-plain colored" },
+
+  // devops / tools
+  { name: "Git", short: "Git", icon: "devicon-git-plain colored" },
+  { name: "GitHub", short: "GitHub", icon: "devicon-github-original" },
+  { name: "Docker", short: "Docker", icon: "devicon-docker-plain colored" },
+  { name: "Kubernetes", short: "K8s", icon: "devicon-kubernetes-plain colored" },
+
+  // OS & extras
+  { name: "Linux", short: "Linux", icon: "devicon-linux-plain colored" },
+];
+
 /* --------- Updated Projects --------- */
 const PROJECTS = [
   {
@@ -903,30 +914,34 @@ export default function Portfolio() {
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-purple-900/50 via-purple-900/10 to-transparent" />
       </section>
 
-      {/* Skills */}
+      {/* Skills – lego tiles with REAL logos & purple glow */}
       <Section
         id="skills"
         title="Skills & Technologies"
         subtitle="A focused view of the tools I use to build, ship, and scale products."
       >
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {SKILL_TILES.map((skill, i) => (
+          {SKILL_LOGOS.map((skill, i) => (
             <FadeIn key={skill.name} delay={i * 0.03}>
               <div className="relative">
-                <div
-                  className={`group relative flex h-28 flex-col items-center justify-center rounded-2xl border bg-gradient-to-b from-slate-950/95 via-slate-900/90 to-black/95 shadow-[0_0_18px_rgba(0,0,0,0.9)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(45,212,191,0.55)] ${
-                    skill.featured
-                      ? "border-cyan-400/80 ring-1 ring-cyan-400/70"
-                      : "border-slate-700/80 hover:border-cyan-300/80"
-                  }`}
-                >
-                  <div className="text-xl md:text-2xl font-semibold tracking-tight text-cyan-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.8)]">
-                    {skill.short}
-                  </div>
-                  <div className="mt-1 text-[11px] md:text-xs text-cyan-100/90 text-center">
+                <div className="group relative flex h-28 flex-col items-center justify-center rounded-2xl border border-purple-500/50 bg-gradient-to-b from-slate-950/95 via-slate-900/90 to-black/95 shadow-[0_0_18px_rgba(0,0,0,0.9)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(168,85,247,0.8)]">
+                  {/* glow */}
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(192,132,252,0.3),transparent_55%),radial-gradient(circle_at_bottom,_rgba(126,34,206,0.45),transparent_60%)]" />
+                  {/* icon */}
+                  {skill.icon ? (
+                    <i
+                      className={`${skill.icon} text-4xl md:text-5xl drop-shadow-[0_0_14px_rgba(168,85,247,0.9)] z-10`}
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <span className="text-3xl font-semibold text-purple-100 z-10">
+                      {skill.short}
+                    </span>
+                  )}
+                  {/* label */}
+                  <div className="mt-2 text-[11px] md:text-xs text-purple-100/95 text-center z-10">
                     {skill.name}
                   </div>
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.25),transparent_55%)]" />
                 </div>
               </div>
             </FadeIn>
