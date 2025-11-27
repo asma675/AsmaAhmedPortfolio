@@ -127,33 +127,38 @@ const LINKS = {
 };
 
 /* --------- Skills (lego-style tiles) --------- */
-const SKILL_TILES = [
-  { short: "TS", name: "TypeScript", featured: true },
-  { short: "JS", name: "JavaScript", featured: true },
-  { short: "Py", name: "Python", featured: true },
-  { short: "Java", name: "Java", featured: true },
-  { short: "C#", name: "C#", featured: false },
-  { short: "AWS", name: "AWS", featured: true },
-  { short: "λ", name: "Lambda", featured: false },
-  { short: "DDB", name: "DynamoDB", featured: false },
-  { short: "S3", name: "S3", featured: false },
-  { short: "Git", name: "Git", featured: false },
-  { short: "🐧", name: "Linux", featured: false },
-  { short: "React", name: "React", featured: true },
-  { short: "Ng", name: "Angular", featured: false },
-  { short: "HTML5", name: "HTML5", featured: false },
-  { short: "CSS3", name: "CSS3", featured: false },
-  { short: "Node", name: "Node.js", featured: false },
-  { short: "Ex", name: "Express", featured: false },
-  { short: "SQL", name: "SQL / MySQL", featured: false },
-  { short: "NoSQL", name: "MongoDB", featured: false },
-  { short: ".NET", name: ".NET / C#", featured: true },
-  { short: "K8s", name: "Kubernetes", featured: false },
-  { short: "Dock", name: "Docker", featured: false },
-  { short: "GCP", name: "Google Cloud", featured: false },
-  { short: "Az", name: "Azure", featured: false },
-];
+<Section
+  id="skills"
+  title="Skills & Technologies"
+  subtitle="A focused view of the tools I use to build, ship, and scale products."
+>
+  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+    {SKILL_LOGOS.map((skill, i) => (
+      <FadeIn key={skill.name} delay={i * 0.02}>
+        <div className="group relative flex h-28 flex-col items-center justify-center 
+          rounded-2xl border border-purple-400/30 
+          bg-gradient-to-b from-black/70 via-purple-900/20 to-black/60
+          shadow-[0_0_18px_rgba(0,0,0,0.7)]
+          hover:shadow-[0_0_28px_rgba(168,85,247,0.8)]
+          transition overflow-hidden">
 
+          {/* Purple Glow Overlay */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition 
+            bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),transparent_60%),
+                radial-gradient(circle_at_bottom,_rgba(126,34,206,0.4),transparent_60%)]" />
+
+          {/* REAL LOGO */}
+          <i className={`${skill.icon} text-4xl drop-shadow-[0_0_10px_rgba(168,85,247,0.7)]`} />
+
+          {/* Name */}
+          <span className="mt-2 text-sm text-purple-100 tracking-tight z-10">
+            {skill.name}
+          </span>
+        </div>
+      </FadeIn>
+    ))}
+  </div>
+</Section>
 /* --------- Updated Projects --------- */
 const PROJECTS = [
   {
