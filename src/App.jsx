@@ -379,10 +379,10 @@ const EDUCATION = [
   {
     school: "Sheridan College, Oakville, ON",
     degree:
-      "Honours Bachelor of Computer Science (HBSc), Cloud Computing Specialization · 2023–2027",
+      "Honours Bachelor of Computer Science (HBSc), Cloud Computing Specialization · 2023–2027 (Co-op Program)",
     gpa: "Honor Roll: 2023, 2025",
     clubs:
-      "Social Media Manager & Club Member – IBM Z Sheridan · President & Founder – Sheridan UNSA · Google Developer Club · Sheridan Computer Science Club · Sparta.codes · Women in Business & Technology · MSA · Pakistani Student Association (HMC) · Palestine Cultural Club (PCC)",
+      "Social Media Manager & Club Member – IBM Z Sheridan · President & Founder – Sheridan UNSA · Google Developer Club · Sheridan Computer Science Club · Sparta.codes · Women in Business & Technology · Muslim Student Association (MSA) · Pakistani Student Association (HMC) · Palestine Cultural Club (PCC)",
     coursework:
       "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security, Data Structures & Algorithms",
   },
@@ -605,21 +605,56 @@ const VOLUNTEERING = [
     org: "Human Appeal – ISNA Gala",
     when: "Sep 2025",
     details:
-      "Supported fundraising for Gaza using POS systems to collect donations; helped raise $40,000 in one evening.",
+      "Supported fundraising for Gaza using POS systems to collect donations. Helped raise $40,000 in one evening, sponsoring 30 orphans and reinforcing the power of community, compassion, and teamwork.",
   },
   {
     role: "Ramadan Volunteer",
     org: "Bramalea Islamic Cultural Centre (BICC)",
     when: "Apr 2022",
     details:
-      "Helped set up and close daily iftar events and prayers, supporting a welcoming and organized community space.",
+      "Helped set up and close daily iftar events and prayers, supporting a welcoming and organized community worship space.",
   },
   {
     role: "Screener",
     org: "William Osler Health System",
     when: "Sep 2021 – Mar 2022",
     details:
-      "Completed 100+ volunteer hours greeting visitors, performing COVID-19 screening, and enforcing PPE protocols.",
+      "Completed 100+ volunteer hours greeting visitors, performing COVID-19 screening, enforcing PPE protocols, and supporting clinical teams with safe patient item drop-offs.",
+  },
+  {
+    role: "Government Relations & Phone Banking Captain",
+    org: "Future Majority",
+    when: "Jan 2021 – May 2021",
+    details:
+      "Mobilized volunteers for phone banks, engaged youth on mental health, climate, and affordability, and coordinated outreach to local politicians and organizations.",
+  },
+  {
+    role: "PLASP Active ELC / General Volunteer",
+    org: "PLASP Child Care Services",
+    when: "Sep 2014 – Jul 2017",
+    details:
+      "Led group activities, supported after-school programs, welcomed parents/guardians, and maintained a safe and inclusive environment for children.",
+  },
+  {
+    role: "Step Up Youth Volunteer Ambassador",
+    org: "Volunteer MBC (Mississauga Brampton Caledon)",
+    when: "Sep 2014 – Aug 2015",
+    details:
+      "Helped plan and support multiple charity events across the region, backing environmental, health, and community causes.",
+  },
+  {
+    role: "Student Volunteer & Football Manager",
+    org: "St Thomas Aquinas Secondary School",
+    when: "2014 – 2018",
+    details:
+      "Managed supplies and logistics for the football team, tutored math students (grades 9–10), and contributed hundreds of hours to school service initiatives.",
+  },
+  {
+    role: "Student Volunteer",
+    org: "Mississauga Marathon & Volunteering Peel",
+    when: "2014 – 2018",
+    details:
+      "Assisted with event setup and takedown, supplied food and water to runners, and supported various marathons and charity events.",
   },
 ];
 
