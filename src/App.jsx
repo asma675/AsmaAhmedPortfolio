@@ -52,9 +52,8 @@ const Button = ({
 
 const Card = ({ className = "", children }) => (
   <div
-    className={`relative rounded-2xl border border-purple-200/20 bg-black/45 shadow-[0_0_22px_rgba(0,0,0,0.8)] backdrop-blur-md transition hover:border-purple-400/90 hover:shadow-[0_0_32px_rgba(168,85,247,0.9)] ${className}`}
+    className={`group relative rounded-2xl border border-purple-200/20 bg-black/45 shadow-[0_0_22px_rgba(0,0,0,0.8)] backdrop-blur-md transition hover:border-purple-400/90 hover:shadow-[0_0_32px_rgba(168,85,247,0.9)] ${className}`}
   >
-    {/* glow border */}
     <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.3),_transparent_60%)] opacity-0 blur-xl transition group-hover:opacity-100" />
     <div className="relative">{children}</div>
   </div>
@@ -119,63 +118,73 @@ const LINKS = {
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // main + tutoring
+  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en",
   instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
   instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
   instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
   instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
 
-/* --------- Skills with REAL LOGOS (Devicon) --------- */
-/*  This replaces the old SKILL_TILES but keeps all the skills (and more).  */
-/*  Each tile is like a little LEGO block with real icons + purple glow.    */
-
+/* --------- Skills with REAL Devicon logos (LEGO tiles) --------- */
+// Make sure index.html includes devicon stylesheet link.
 const SKILL_LOGOS = [
+  // Core languages
   { name: "TypeScript", icon: "devicon-typescript-plain colored" },
   { name: "JavaScript", icon: "devicon-javascript-plain colored" },
   { name: "Python", icon: "devicon-python-plain colored" },
   { name: "Java", icon: "devicon-java-plain colored" },
   { name: "C#", icon: "devicon-csharp-plain colored" },
+  { name: "C", icon: "devicon-c-plain colored" },
+  { name: "C++", icon: "devicon-cplusplus-plain colored" },
+
+  // Frontend
   { name: "React", icon: "devicon-react-original colored" },
-  { name: "Angular", icon: "devicon-angularjs-plain colored" },
+  { name: "Next.js", icon: "devicon-nextjs-original" },
   { name: "HTML5", icon: "devicon-html5-plain colored" },
   { name: "CSS3", icon: "devicon-css3-plain colored" },
+  { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored" },
+  { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+
+  // Backend & Frameworks
   { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-  { name: "Express", icon: "devicon-express-original", subtitle: "Backend" },
-  {
-    name: "AWS",
-    icon: "devicon-amazonwebservices-original colored",
-    subtitle: "Lambda • DynamoDB • S3",
-  },
-  { name: "Azure", icon: "devicon-azure-plain colored" },
-  {
-    name: "Google Cloud",
-    icon: "devicon-googlecloud-plain colored",
-    subtitle: "GCP",
-  },
-  {
-    name: ".NET / ASP.NET Core",
-    icon: "devicon-dotnetcore-plain colored",
-  },
+  { name: "Express", icon: "devicon-express-original" },
+  { name: ".NET / ASP.NET Core", icon: "devicon-dotnetcore-plain colored" },
   { name: "Spring Boot", icon: "devicon-spring-plain colored" },
-  {
-    name: "SQL Server",
-    icon: "devicon-microsoftsqlserver-plain colored",
-  },
+  { name: "REST APIs", icon: "devicon-fastapi-plain colored" },
+
+  // Databases
+  { name: "SQL Server", icon: "devicon-microsoftsqlserver-plain colored" },
   { name: "MySQL", icon: "devicon-mysql-plain colored" },
   { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
   { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
-  { name: "Firebase", icon: "devicon-firebase-plain colored" },
-  { name: "Git", icon: "devicon-git-plain colored" },
-  { name: "GitHub", icon: "devicon-github-original", subtitle: "Projects" },
-  { name: "Linux", icon: "devicon-linux-plain colored" },
+
+  // Cloud
+  { name: "AWS (Lambda, DynamoDB, S3)", icon: "devicon-amazonwebservices-plain colored" },
+  { name: "Azure", icon: "devicon-azure-plain colored" },
+  { name: "Google Cloud", icon: "devicon-googlecloud-plain colored" },
+
+  // DevOps & Tools
   { name: "Docker", icon: "devicon-docker-plain colored" },
   { name: "Kubernetes", icon: "devicon-kubernetes-plain colored" },
+  { name: "Git", icon: "devicon-git-plain colored" },
+  { name: "GitHub", icon: "devicon-github-original" },
+  { name: "Linux", icon: "devicon-linux-plain colored" },
+
+  // Concepts
+  { name: "OOP", icon: "devicon-java-plain colored" },
+  { name: "Data Structures", icon: "devicon-python-plain colored" },
+  { name: "Algorithms", icon: "devicon-python-plain colored" },
+  { name: "SDLC", icon: "devicon-google-plain colored" },
+  { name: "Agile", icon: "devicon-jira-plain colored" },
+  { name: "TDD", icon: "devicon-python-plain colored" },
+
+  // Platforms
   { name: "Android", icon: "devicon-android-plain colored" },
-  { name: "Photoshop", icon: "devicon-photoshop-plain colored" },
+  { name: "Web Development", icon: "devicon-react-original colored" },
+  { name: "Mobile Development", icon: "devicon-dotnetcore-plain colored" },
 ];
 
-/* --------- Updated Projects --------- */
+/* --------- Projects --------- */
 const PROJECTS = [
   {
     title: "LYTHOS — AI-Powered Carbon Offset Feasibility",
@@ -375,7 +384,70 @@ const HACKATHONS = [
   },
 ];
 
+/* --------- Experience (UPDATED) --------- */
 const EXPERIENCE = [
+  {
+    role: "Social Media Manager",
+    org: "IBM Z Sheridan",
+    when: "Nov 2025 – Present · Oakville, ON · Hybrid",
+    bullets: [
+      "Lead social media strategy, content creation, and branding for the IBM Z Sheridan community.",
+      "Plan, schedule, and publish posts across multiple platforms to grow awareness and student involvement.",
+      "Collaborate with student leaders, technical clubs, and campus partners to promote events, workshops, hackathons, and accomplishments.",
+      "Highlight IBM Z, AI, mainframe, and emerging tech topics in an accessible, student-friendly way.",
+      "Track analytics and continuously optimize campaigns to increase reach, engagement, and impact.",
+    ],
+  },
+  {
+    role: "Hackathon Team Lead (Multiple Events)",
+    org: "Self-Employed · Sheridan College & External Events",
+    when: "Sept 2025 – Present · Greater Toronto Area · Hybrid",
+    bullets: [
+      "Lead cross-functional teams across 5+ major hackathons, including Sheridan Datathon, BramHacks, UN SDG Hackathons 1 & 2, and the Google Chrome AI Challenge.",
+      "Coordinate roles, sprint planning, deliverables, and final pitch strategy under tight 24–48 hour deadlines.",
+      "Achieve top-performing results, including Top 5 overall and Top 2 finalist for Best Use of Gemini at Sheridan Datathon 2025.",
+      "Guide technical development using React, Next.js, Firebase, AWS, Gemini AI, and cloud-native tooling.",
+      "Focus on building user-centric solutions with clear value, stable demos, and compelling storytelling for judges.",
+    ],
+  },
+  {
+    role: "Private Tutor – Nursing (BScN) & Computer Science (B.Sc.)",
+    org: "Self-Employed",
+    when: "Aug 2025 – Present · Greater Toronto Area · Hybrid",
+    bullets: [
+      "Provide 1:1 tutoring for university-level Nursing and Computer Science students, simplifying complex medical and technical concepts.",
+      "Design personalized learning plans, detailed notes, and Quizlets to support exams, labs, and assignments.",
+      "Help students build confidence, critical thinking, and problem-solving skills through step-by-step explanations and practice.",
+      "Use Zoom, Google Workspace, Discord, Slack, and Microsoft Teams to run interactive online sessions.",
+      "Many students have raised their course averages through consistent, structured sessions and targeted study strategies.",
+    ],
+  },
+  {
+    role: "Intern",
+    org: "Hon. Shafqat Ali, M.P. – Brampton Centre & President of the Treasury Board of Canada",
+    when: "Jun 2025 – Present · Brampton, ON · Hybrid",
+    bullets: [
+      "Assist with legislative research, constituency outreach, and day-to-day office operations in a federal political office.",
+      "Support planning and execution of public events and community engagement initiatives.",
+      "Contribute to policy briefings and communications related to Treasury Board priorities.",
+      "Welcome constituents as first point of contact, managing in-person visits, calls, and email correspondence.",
+      "Capture and edit photos at community events for social media and media releases, maintaining an organized digital media library.",
+      "Provide administrative and coordination support on time-sensitive projects while collaborating closely with staff.",
+      "Gain hands-on experience in Canadian federal governance, public service, and community advocacy.",
+    ],
+  },
+  {
+    role: "Model",
+    org: "M Models & Talent Agency",
+    when: "May 2025 – Present · Toronto, ON · On-site",
+    bullets: [
+      "Work on fashion, lifestyle, and commercial modeling projects for studio and on-location shoots.",
+      "Collaborate with photographers, stylists, and creative teams to bring brand and editorial concepts to life.",
+      "Participate in digital and print campaigns while maintaining professionalism and adaptability on set.",
+      "Represent client brands with confidence, strong stage presence, and attention to detail.",
+      "Bring creativity, positive energy, and reliability to every collaboration; open to brand features and content creation projects.",
+    ],
+  },
   {
     role: "IT Assistant / Helpdesk",
     org: "Niagara College, Welland, ON",
@@ -389,18 +461,31 @@ const EXPERIENCE = [
   },
 ];
 
+/* --------- Education (UPDATED) --------- */
 const EDUCATION = [
   {
     school: "Sheridan College, Oakville, ON",
     degree:
-      "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
-    gpa: "GPA: 3.27 | 2023–Present",
-    clubs: "Google Developer Club, MSA",
+      "Honours Bachelor of Computer Science (HBSc), Cloud Computing Specialization",
+    gpa: "Expected Graduation: 2027 · Honour Roll 2023 & Honour Roll 2025",
+    activities: [
+      "President & Founder – Sheridan UNSA (United Nations Student Association)",
+      "Social Media Manager – IBM Z Sheridan",
+      "Member – IBM Z Sheridan Club",
+      "Member – Google Developer Club (GDG Sheridan)",
+      "Member – Sheridan Computer Science Club",
+      "Member – Sparta.codes Club",
+      "Member – Women in Business and Technology",
+      "Member – Muslim Student Association (MSA)",
+      "Member – Pakistani Student Association (HMC)",
+      "Member – Palestine Cultural Club (PCC)",
+    ],
     coursework:
       "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
   },
 ];
 
+/* --------- Achievements --------- */
 const ACHIEVEMENTS = [
   "Recognized for outstanding analytical and troubleshooting ability in IT support role.",
   "Sheridan Datathon 2025 — CareerLift AI (Top 5 Overall | Top 2 Finalist for Best Use of Gemini). Built an AI-powered résumé insights platform that scores job fit, identifies skill gaps, and generates personalized upskilling paths using Gemini. Earned Top 5 placement and Top 2 finalist recognition for Best Use of Gemini among all competing teams. Demonstrated responsible, structured AI prompting and delivered a polished React + Firebase application within 24 hours.",
@@ -716,7 +801,7 @@ const BEYOND = [
   {
     title: "Tutoring",
     subtitle: "Computer Science • Nursing • High school students",
-    link: LINKS.instagramMain, // main account used for tutoring
+    link: LINKS.instagramMain,
     cta: "DM for tutoring inquiries",
     images: ["/images/1551131919234.jpeg"],
   },
@@ -729,7 +814,7 @@ const particlesOptions = {
   fpsLimit: 60,
   particles: {
     number: { value: 40, density: { enable: true, area: 800 } },
-    color: { value: "#a855f7" }, // purple
+    color: { value: "#a855f7" },
     links: { enable: true, distance: 150, color: "#a855f7", opacity: 0.35, width: 1 },
     move: { enable: true, speed: 1, outModes: { default: "bounce" } },
     opacity: { value: 0.3 },
@@ -860,7 +945,6 @@ export default function Portfolio() {
       <section id="home" className="relative overflow-hidden pb-20 pt-24">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
-            {/* NOW OPEN banner */}
             <div className="inline-flex items-center gap-3 rounded-full border border-purple-300/40 bg-black/60 px-4 py-1 text-[11px] text-purple-50 shadow-[0_0_18px_rgba(0,0,0,0.8)]">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75" />
@@ -919,7 +1003,7 @@ export default function Portfolio() {
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-purple-900/50 via-purple-900/10 to-transparent" />
       </section>
 
-      {/* Skills – LEGO style with real icons */}
+      {/* Skills (LEGO with real logos) */}
       <Section
         id="skills"
         title="Skills & Technologies"
@@ -928,23 +1012,18 @@ export default function Portfolio() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {SKILL_LOGOS.map((skill, i) => (
             <FadeIn key={skill.name} delay={i * 0.03}>
-              <div className="group relative h-32 rounded-3xl border border-purple-500/45 bg-gradient-to-b from-slate-950/95 via-slate-900/95 to-black/95 shadow-[0_0_22px_rgba(0,0,0,0.95)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_32px_rgba(168,85,247,0.85)] overflow-hidden">
-                {/* Purple glow */}
-                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.45),transparent_55%),radial-gradient(circle_at_bottom,_rgba(126,34,206,0.55),transparent_60%)]" />
-
-                {/* Content */}
-                <div className="relative flex h-full flex-col items-center justify-center px-3 text-center">
+              <div className="relative">
+                <div className="group relative flex h-28 flex-col items-center justify-center rounded-2xl border border-purple-500/40 bg-gradient-to-b from-black/90 via-slate-900/90 to-black/95 shadow-[0_0_20px_rgba(0,0,0,0.9)] transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-[0_0_30px_rgba(168,85,247,0.9)] overflow-hidden">
+                  {/* glow */}
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(192,132,252,0.55),transparent_60%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.6),transparent_60%)]" />
+                  {/* icon */}
                   <i
-                    className={`${skill.icon} text-4xl md:text-5xl drop-shadow-[0_0_14px_rgba(168,85,247,0.85)]`}
+                    className={`${skill.icon} text-3xl md:text-4xl z-10 drop-shadow-[0_0_14px_rgba(168,85,247,0.9)]`}
                   />
-                  <span className="mt-2 text-xs md:text-sm font-medium text-purple-50">
+                  {/* label */}
+                  <span className="mt-2 z-10 text-xs md:text-[13px] text-purple-50 tracking-tight text-center">
                     {skill.name}
                   </span>
-                  {skill.subtitle && (
-                    <span className="mt-0.5 text-[10px] text-purple-200/80">
-                      {skill.subtitle}
-                    </span>
-                  )}
                 </div>
               </div>
             </FadeIn>
@@ -1062,8 +1141,7 @@ export default function Portfolio() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-1"
                         >
-                          <ExternalLink className="h-3.5 w-3.5" /> View on Devpost /
-                          GitHub
+                          <ExternalLink className="h-3.5 w-3.5" /> View on Devpost / GitHub
                         </a>
                       </Button>
                     </div>
@@ -1079,13 +1157,13 @@ export default function Portfolio() {
       <Section
         id="experience"
         title="Relevant Experience"
-        subtitle="Highlights from roles and internships."
+        subtitle="Highlights from roles, internships, and leadership."
       >
         <div className="relative mx-auto max-w-3xl">
           <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-gradient-to-b from-purple-300/80 via-purple-500/40 to-transparent md:block" />
           <ul className="space-y-8">
             {EXPERIENCE.map((e, i) => (
-              <FadeIn key={e.role} delay={i * 0.05}>
+              <FadeIn key={e.role + e.org} delay={i * 0.05}>
                 <li className="relative md:pl-10">
                   <div className="hidden md:block absolute left-[12px] top-1 h-3 w-3 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 shadow-[0_0_12px_rgba(168,85,247,0.9)]" />
                   <div className="rounded-2xl border border-purple-300/25 bg-black/55 p-5 shadow-sm backdrop-blur-md">
@@ -1113,7 +1191,7 @@ export default function Portfolio() {
       <Section
         id="education"
         title="Education"
-        subtitle="Academic background and coursework."
+        subtitle="Academic background, leadership, and activities."
       >
         {EDUCATION.map((ed) => (
           <FadeIn key={ed.school}>
@@ -1122,10 +1200,25 @@ export default function Portfolio() {
                 <h3 className="text-lg font-semibold text-white">{ed.school}</h3>
                 <p className="text-sm text-purple-50/90 mt-1">{ed.degree}</p>
                 <p className="text-sm text-purple-50/90 mt-1">{ed.gpa}</p>
-                <p className="text-sm text-purple-50/90 mt-1">Clubs: {ed.clubs}</p>
-                <p className="text-sm text-purple-50/90 mt-1">
-                  Relevant Coursework: {ed.coursework}
-                </p>
+
+                {ed.activities && ed.activities.length > 0 && (
+                  <div className="mt-3">
+                    <p className="text-sm font-semibold text-purple-100/90">
+                      Activities & Societies
+                    </p>
+                    <ul className="mt-1 list-disc pl-5 space-y-1 text-sm text-purple-50/90">
+                      {ed.activities.map((a) => (
+                        <li key={a}>{a}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {ed.coursework && (
+                  <p className="text-sm text-purple-50/90 mt-3">
+                    Relevant Coursework: {ed.coursework}
+                  </p>
+                )}
               </CardContent>
             </Card>
           </FadeIn>
@@ -1218,7 +1311,7 @@ export default function Portfolio() {
       <Section
         id="beyond"
         title="Beyond Tech"
-        subtitle="Outside software, I’m a creative—henna artist, photographer, illustrator, and model."
+        subtitle="Outside software, I’m a creative—henna artist, photographer, illustrator, model, and tutor."
       >
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {BEYOND.map((b, i) => (
