@@ -65,34 +65,34 @@ const CardHeader = ({ children }) => (
 const CardTitle = ({ className = "", children }) => (
   <h3 className={`text-base font-semibold text-white ${className}`}>{children}</h3>
 );
-const CardContent = ({ children }) => <div className="p-5">{children}</div>;
+const CardContent = ({ children, className = "" }) => (
+  <div className={`p-5 ${className}`}>{children}</div>
+);
 
 /* ---------------- Helpers ---------------- */
-const Section = ({ id, title, subtitle, children }) => {
-  return (
-    <section id={id} className="scroll-mt-24 py-20" aria-label={title}>
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10"
-        >
-          <h2 className="inline-block bg-gradient-to-r from-purple-200 via-fuchsia-300 to-purple-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="mt-2 max-w-3xl text-purple-50/85 [text-shadow:0_0_10px_rgba(0,0,0,0.6)]">
-              {subtitle}
-            </p>
-          )}
-        </motion.div>
-        {children}
-      </div>
-    </section>
-  );
-};
+const Section = ({ id, title, subtitle, children }) => (
+  <section id={id} className="scroll-mt-24 py-20" aria-label={title}>
+    <div className="mx-auto max-w-6xl px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.5 }}
+        className="mb-10"
+      >
+        <h2 className="inline-block bg-gradient-to-r from-purple-200 via-fuchsia-300 to-purple-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="mt-2 max-w-3xl text-purple-50/85 [text-shadow:0_0_10px_rgba(0,0,0,0.6)]">
+            {subtitle}
+          </p>
+        )}
+      </motion.div>
+      {children}
+    </div>
+  </section>
+);
 
 const FadeIn = ({ children, delay = 0 }) => (
   <motion.div
@@ -118,81 +118,100 @@ const LINKS = {
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en", // main
+  instagramMain: "https://www.instagram.com/asma.a15__/?hl=en",
   instagramHenna: "https://www.instagram.com/henna.hearted/?hl=en",
   instagramPhoto: "https://www.instagram.com/_purelyphotography/?hl=en",
   instagramArt: "https://www.instagram.com/asmaahmedart/?hl=en",
   instagramModel: "https://www.instagram.com/asma.ahmed.model/?hl=en",
 };
 
-/* --------- Skills (LEGO-style tiles) --------- */
-/* Devicon is loaded from public/index.html */
-const SKILL_LOGOS = [
-  // Languages
-  { name: "Python", icon: "devicon-python-plain colored" },
-  { name: "Java", icon: "devicon-java-plain colored" },
-  { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-  { name: "C", icon: "devicon-c-plain colored" },
-  { name: "C++", icon: "devicon-cplusplus-plain colored" },
-  { name: "C#", icon: "devicon-csharp-plain colored" },
+/* --------- Skills (lego-style tiles with Devicon) --------- */
 
-  { name: "Go", icon: "devicon-go-plain colored" },
-  { name: "R", icon: "devicon-r-original colored" },
-  { name: "Swift", icon: "devicon-swift-plain colored" },
+const SKILLS = [
+  // row 1
+  { name: "Python", short: "Py", icon: "devicon-python-plain" },
+  { name: "Java", short: "Java", icon: "devicon-java-plain" },
+  { name: "JavaScript", short: "JS", icon: "devicon-javascript-plain" },
+  { name: "TypeScript", short: "TS", icon: "devicon-typescript-plain" },
+  { name: "C", short: "C", icon: "devicon-c-plain" },
+  { name: "C++", short: "C++", icon: "devicon-cplusplus-plain" },
+  { name: "C#", short: "C#", icon: "devicon-csharp-plain" },
 
-  // Frontend basics
-  { name: "HTML", icon: "devicon-html5-plain colored" },
-  { name: "CSS", icon: "devicon-css3-plain colored" },
-  { name: "Web Design", short: "UI" },
+  // row 2
+  { name: "Go", short: "Go", icon: "devicon-go-plain" },
+  { name: "R", short: "R", icon: "devicon-r-plain" },
+  { name: "Swift", short: "Swift", icon: "devicon-swift-plain" },
+  { name: "HTML5", short: "HTML", icon: "devicon-html5-plain" },
+  { name: "CSS3", short: "CSS", icon: "devicon-css3-plain" },
+  { name: "Web Design / UI", short: "UI" },
 
-  // APIs
+  // row 3
   { name: "API Integration", short: "API" },
   { name: "REST APIs", short: "REST" },
+  { name: "React", short: "React", icon: "devicon-react-original" },
+  { name: "Redux", short: "Redux" },
+  { name: "Node.js", short: "Node", icon: "devicon-nodejs-plain" },
+  { name: "Express.js", short: "Express", icon: "devicon-express-original" },
 
-  // Frontend frameworks
-  { name: "React", icon: "devicon-react-original colored" },
-  { name: "Redux", icon: "devicon-redux-original colored" },
-  { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-  { name: "Express.js", icon: "devicon-express-original colored" },
-
-  // Backend frameworks
-  { name: "Spring Boot", icon: "devicon-spring-plain colored" },
-  { name: ".NET / ASP.NET Core", icon: "devicon-dotnetcore-plain colored" },
+  // row 4 – backend frameworks
+  {
+    name: "Spring Boot",
+    short: "Spring",
+    icon: "devicon-spring-plain",
+  },
+  {
+    name: ".NET / ASP.NET Core",
+    short: ".NET",
+    icon: "devicon-dotnetcore-plain",
+  },
   { name: "Thymeleaf", short: "TL" },
-  { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+  { name: "Bootstrap", short: "BS" },
   { name: "Pygame", short: "PyG" },
+  { name: "SQL (General)", short: "SQL" },
 
-  // Databases
-  { name: "SQL", short: "SQL" },
-  { name: "MySQL", icon: "devicon-mysql-plain colored" },
-  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-  { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+  // row 5 – data & infra
+  { name: "MySQL", short: "MySQL", icon: "devicon-mysql-plain" },
+  { name: "MongoDB", short: "MongoDB", icon: "devicon-mongodb-plain" },
+  {
+    name: "DynamoDB",
+    short: "DDB",
+    icon: "devicon-amazonwebservices-plain",
+  },
+  { name: "Docker", short: "Docker", icon: "devicon-docker-plain" },
+  { name: "Kubernetes", short: "K8s", icon: "devicon-kubernetes-plain" },
 
-  // Cloud / DevOps
-  { name: "Docker", icon: "devicon-docker-plain colored" },
-  { name: "Kubernetes", icon: "devicon-kubernetes-plain colored" },
-  { name: "AWS (Lambda, DynamoDB, S3)", icon: "devicon-amazonwebservices-plain colored" },
-  { name: "Azure", icon: "devicon-azure-plain colored" },
-  { name: "Google Cloud", icon: "devicon-googlecloud-plain colored" },
+  // row 6 – cloud
+  {
+    name: "AWS (Lambda, DynamoDB, S3)",
+    short: "AWS",
+    icon: "devicon-amazonwebservices-plain-wordmark",
+  },
+  { name: "Azure", short: "Azure", icon: "devicon-azure-plain" },
+  {
+    name: "Google Cloud",
+    short: "GCP",
+    icon: "devicon-googlecloud-plain",
+  },
   { name: "Cloud Deployment", short: "Cloud" },
 
-  // CS fundamentals
-  { name: "OOP", short: "OOP" },
+  // row 7 – CS fundamentals
+  { name: "Object-Oriented Programming", short: "OOP" },
   { name: "Data Structures", short: "DS" },
   { name: "Algorithms", short: "Algo" },
   { name: "SDLC", short: "SDLC" },
-  { name: "Agile", short: "Agile" },
-  { name: "TDD", short: "TDD" },
+  { name: "Agile & Scrum", short: "Agile" },
+  { name: "Test-Driven Development", short: "TDD" },
 
-  // Tools & OS
-  { name: "Git", icon: "devicon-git-plain colored" },
-  { name: "GitHub", icon: "devicon-github-original colored" },
-  { name: "Linux", icon: "devicon-linux-plain colored" },
+  // row 8 – tools
+  { name: "Git", short: "Git", icon: "devicon-git-plain" },
+  { name: "GitHub", short: "GH", icon: "devicon-github-original" },
+  { name: "Linux", short: "Linux", icon: "devicon-linux-plain" },
 
-  // Domains
+  // row 9 – web / mobile / design
   { name: "Web Development", short: "Web" },
   { name: "Mobile Development", short: "Mobile" },
-  { name: "Android", icon: "devicon-android-plain colored" },
+  { name: "Android", short: "Android", icon: "devicon-android-plain" },
+  { name: "Photoshop", short: "Ps", icon: "devicon-photoshop-plain" },
 ];
 
 /* --------- Projects --------- */
@@ -202,12 +221,15 @@ const PROJECTS = [
     blurb:
       "Transforms Canadian industrial emissions and policy data into decision-ready carbon offset intelligence, helping industrial facilities cut emissions while protecting communities, ecosystems, and Indigenous lands.",
     stack: ["GHGRP Data", "Python", "Space Data", "Leaflet", "ESG", "AI"],
-    links: { demo: "#", code: "#" },
+    links: {
+      demo: "#",
+      code: "https://github.com/asma675/BramHacks25.git",
+    },
   },
   {
     title: "LYTHOS — Space Data + AI for Ethical Critical Mineral Exploration",
     blurb:
-      "Uses Sentinel-2 spectral indices, GEDI forest structure, and GRACE-FO groundwater stress to identify low-impact exploration zones and flag high-risk no-go areas across Canada.",
+      "Uses Sentinel-2 spectral indices, GEDI forest structure, and GRACE-FO groundwater stress to identify low-impact exploration zones, flag high-risk no-go areas, and support protection-first critical mineral siting across Canada.",
     stack: [
       "Sentinel-2",
       "GEDI",
@@ -217,19 +239,25 @@ const PROJECTS = [
       "ESA Copernicus",
       "Python",
     ],
-    links: { demo: "#", code: "#" },
+    links: {
+      demo: "#",
+      code: "https://github.com/asma675/LYTHOS_Space-Data-AI-for-Ethical-Critical-Mineral-Exploration_BramHacks_Hackathon-Project-.git",
+    },
   },
   {
     title: "WeatherWise – Cloud Application",
     blurb:
       "Cloud-ready weather dashboard using OpenWeatherMap API, designed with Government of Canada cloud standards in mind. Uses AWS Amplify, serverless APIs, and DynamoDB/localStorage fallback for resilience.",
     stack: ["AWS Amplify", "Lambda", "API Gateway", "DynamoDB", "JavaScript"],
-    links: { demo: "#", code: "#" },
+    links: {
+      demo: "#",
+      code: "#",
+    },
   },
   {
     title: "CareerLift AI – Résumé Insights Platform",
     blurb:
-      "AI platform that scores résumé–job fit, detects missing skills, and recommends courses and opportunities. Built for Sheridan Datathon 2025 (Top 5 overall, Top 2 Best Use of Gemini).",
+      "Full-stack AI platform that scores résumé–job fit, detects missing skills, and recommends courses and opportunities. Built for Sheridan Datathon 2025 (Top 5 overall, Top 2 Best Use of Gemini).",
     stack: ["React", "Tailwind", "Firebase", "Firestore", "Google Gemini", "Node.js"],
     links: {
       demo: "https://devpost.com/software/careerlift-ai",
@@ -241,69 +269,20 @@ const PROJECTS = [
     blurb:
       "End-to-end membership signup experience using ASP.NET Core (.NET 8) with validation, admin search, and Swagger-documented APIs that feel like a real gym production system.",
     stack: [".NET 8", "ASP.NET Core", "Bootstrap", "Swagger"],
-    links: { demo: "#", code: "#" },
+    links: {
+      demo: "#",
+      code: "#",
+    },
   },
   {
     title: "Word Rewriter – Chrome Extension",
     blurb:
-      "Google Chrome Built-in AI Challenge 2025 submission. Lets users highlight text on any page and instantly get simplified or rephrased versions using on-device Gemini Nano.",
+      "Google Chrome Built-in AI Challenge 2025 submission. Lets users highlight text on any page and instantly get simplified or rephrased versions using on-device Gemini Nano, keeping everything private and fast.",
     stack: ["JavaScript", "Chrome APIs", "Tailwind CSS", "Gemini Nano"],
     links: {
       demo: "https://github.com/asma675/WordRewriter_ChromeExtension_Google-Chrome-Built-in-AI-Challenge-2025",
       code: "https://github.com/asma675/WordRewriter_ChromeExtension_Google-Chrome-Built-in-AI-Challenge-2025",
     },
-  },
-  {
-    title: "ShareMeal App | UN SDG Hackathon Project",
-    blurb:
-      "Cross-platform app connecting restaurants with surplus food to nearby food banks and shelters. Led a 4-member team focused on food security and waste reduction.",
-    stack: [".NET MAUI", "C#", "Firebase"],
-    links: {
-      demo: "https://devpost.com/software/sharemeal",
-      code: "#",
-    },
-  },
-  {
-    title: "Azure Cloud Infrastructure Lab",
-    blurb:
-      "Deployed and configured VMs, networking, and security groups in Microsoft Azure, practicing secure, scalable cloud infrastructure patterns.",
-    stack: ["Azure", "VMs", "Networking", "Security"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "DriveWellApp (C# + .NET MAUI + Cloud)",
-    blurb:
-      "Cross-platform app for auto dealerships and enthusiasts with clean architecture, OO design, and cloud persistence.",
-    stack: [".NET MAUI", "C#", "Cloud", "OOP"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Full-Stack Web App (React + Node.js + MongoDB)",
-    blurb:
-      "Responsive platform with auth, CRUD, and REST APIs backed by MongoDB for real-world data flows.",
-    stack: ["React", "Node.js", "Express", "MongoDB"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "PasswordStore (Spring Boot + H2)",
-    blurb:
-      "Secure password manager with CRUD operations, REST APIs, and MVC structure using Spring Boot, Spring Data JPA, and Thymeleaf.",
-    stack: ["Java", "Spring Boot", "Spring Data JPA", "H2", "Thymeleaf"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Rock-Paper-Scissors Game (.NET MAUI)",
-    blurb:
-      "Interactive mobile game with GUI, randomization logic, and persistent score tracking.",
-    stack: [".NET MAUI", "C#", "Mobile"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Student Records Portal (SQL Server + HTML/CSS)",
-    blurb:
-      "Student database system with SQL queries, normalization, and simple web UI for managing records.",
-    stack: ["SQL Server", "HTML", "CSS"],
-    links: { demo: "#", code: "#" },
   },
 ];
 
@@ -314,7 +293,7 @@ const HACKATHONS = [
     event: "BramHacks 2025 • Sustainability",
     role: "Product Lead · Data/AI Engineer · Full Stack",
     outcome:
-      "Fused Sentinel-2, GEDI, and GRACE-FO datasets into an ethical siting engine that flags no-go zones and highlights low-impact exploration regions.",
+      "Fused Sentinel-2, GEDI, and GRACE-FO datasets into an ethical siting engine that flags no-go zones and highlights low-impact exploration regions. Received a 95% judging score and delivered a working demo in under 48 hours.",
     stack: [
       "Sentinel-2",
       "GEDI",
@@ -332,7 +311,7 @@ const HACKATHONS = [
     event: "BramHacks 2025 • Climate & ESG",
     role: "Frontend / Full-Stack Engineer · Maps & Data",
     outcome:
-      "Built emissions-aware intelligence for 800+ Canadian facilities with 5 years of history, generating AI compliance briefs and feasibility scores.",
+      "Built emissions-aware intelligence for 800+ Canadian facilities with 5 years of history, generating AI compliance briefs and credit feasibility scores in under 5 minutes per facility.",
     stack: ["GHGRP", "Space Data", "Leaflet", "Risk Models", "ESG", "AI"],
     link: "#",
   },
@@ -341,7 +320,7 @@ const HACKATHONS = [
     event: "Sheridan Datathon 2025",
     role: "Full-Stack Developer · AI Engineer",
     outcome:
-      "Top 5 overall and Top 2 finalist for Best Use of Gemini; delivered a full AI product in 24 hours.",
+      "Top 5 overall and Top 2 finalist for Best Use of Gemini; delivered a complete AI product within 24 hours.",
     stack: ["React", "Tailwind", "Firebase", "Firestore", "Google Gemini", "Node.js"],
     link: "https://devpost.com/software/careerlift-ai",
   },
@@ -350,77 +329,76 @@ const HACKATHONS = [
     event: "UN SDG Hackathon (SDG 1 & 2)",
     role: "Team Lead · Full-Stack Mobile",
     outcome:
-      "Led a 4-member team to build an app connecting surplus food from restaurants to nearby food banks.",
+      "Led a 4-member team to build a cross-platform app connecting surplus food from restaurants to nearby food banks.",
     stack: [".NET MAUI", "C#", "Firebase"],
     link: "https://devpost.com/software/sharemeal",
   },
   {
     title: "Word Rewriter – Chrome Extension",
     event: "Google Chrome Built-in AI Challenge 2025",
-    role: "Frontend & UI Engineer",
+    role: "Frontend & UI Engineer (Hackathon Submission)",
     outcome:
-      "Built a Chrome extension using on-device Gemini Nano that rewrites highlighted text while keeping data private.",
+      "Designed and implemented a Chrome extension that lets users highlight any text and instantly get simplified or rephrased explanations using on-device Gemini Nano, keeping latency low and data private.",
     stack: ["JavaScript", "Chrome APIs", "Tailwind CSS", "Gemini Nano"],
     link: "https://github.com/asma675/WordRewriter_ChromeExtension_Google-Chrome-Built-in-AI-Challenge-2025",
   },
 ];
 
-/* --------- Experience (updated with UNSA + new roles) --------- */
+/* --------- Experience --------- */
 const EXPERIENCE = [
+  {
+    role: "Founding President & President",
+    org: "Sheridan UNSA (United Nations Student Association)",
+    when: "Nov 2025 – Present · Oakville, ON (Hybrid)",
+    bullets: [
+      "Founded Sheridan’s first UN-focused student association to create space for global affairs, SDGs, and humanitarian dialogue on campus.",
+      "Recruited and led an executive team, defined club mission, and launched the first recruitment + info campaign across Sheridan campuses.",
+      "Planned events around UN Sustainable Development Goals, including panel ideas, fundraisers, and collaborations with other clubs.",
+      "Represent Sheridan UNSA to Sheridan Student Union, managing approvals, communications, and long-term club strategy.",
+    ],
+  },
   {
     role: "Social Media Manager",
     org: "IBM Z Sheridan",
     when: "Nov 2025 – Present · Oakville, ON (Hybrid)",
     bullets: [
-      "Lead social media strategy, branding, and content creation for the IBM Z Sheridan community.",
-      "Plan, schedule, and publish posts across platforms to showcase IBM Z events, workshops, and wins.",
-      "Collaborate with student leaders and tech clubs to highlight hackathons, challenges, and learning opportunities.",
-      "Track analytics and optimize campaigns to grow awareness of AI, mainframe, and emerging tech on campus.",
-    ],
-  },
-  {
-    role: "Founding President & President",
-    org: "Sheridan UNSA (United Nations Student Association)",
-    when: "Nov 2025 – Present · Sheridan College",
-    bullets: [
-      "Founded Sheridan’s first United Nations Student Association and led the end-to-end launch of the club.",
-      "Design club vision around global affairs, UN SDGs, climate and humanitarian action, and student leadership.",
-      "Recruit and mentor an executive team, coordinate events, and build partnerships with campus groups.",
-      "Organize info sessions, discussion circles, and fundraising ideas focused on global issues such as Gaza, Pakistan, and Sudan.",
+      "Lead social media strategy, branding, and content for the IBM Z Sheridan community across multiple platforms.",
+      "Plan, schedule, and publish posts that highlight events, workshops, hackathons, and student accomplishments.",
+      "Collaborate with technical clubs and campus partners to grow IBM Z awareness and student engagement.",
+      "Track analytics and refine campaigns to increase reach, engagement, and interest in mainframe + AI topics.",
     ],
   },
   {
     role: "Hackathon Team Lead (Multiple Events)",
-    org: "Self-Employed / Sheridan College",
-    when: "Sept 2025 – Present · Greater Toronto Area (Hybrid)",
+    org: "Self-Employed · Sheridan College & External Hackathons",
+    when: "Sep 2025 – Present · Greater Toronto Area (Hybrid)",
     bullets: [
-      "Lead cross-functional teams across 5+ major hackathons including Sheridan Datathon, BramHacks, UN SDG Hackathons, and Google Chrome AI Challenge.",
-      "Coordinate team roles, technical direction, sprints, and final pitch strategy under tight deadlines.",
-      "Achieved Top 5 overall and Top 2 finalist for Best Use of Gemini at Sheridan Datathon 2025.",
-      "Guide development using React, Next.js, Firebase, AWS, Gemini AI, and cloud-native tooling.",
+      "Led cross-functional teams across 5+ hackathons including Sheridan Datathon, BramHacks, UN SDG Hackathon 1 & 2, and the Google Chrome AI Challenge.",
+      "Coordinated team roles, product direction, sprint planning, and final pitch strategy under tight 24–48 hour timelines.",
+      "Achieved Top 5 overall and Top 2 finalist for Best Use of Gemini at Sheridan Datathon 2025 with CareerLift AI.",
+      "Guided development using React, Next.js, Firebase, AWS, Gemini AI, and cloud-native tooling for impactful demos.",
     ],
   },
   {
-    role:
-      "Private Tutor – Nursing (BScN) & Computer Science (B.Sc.), University-Level Support",
+    role: "Private Tutor – Nursing (BScN) & Computer Science (B.Sc.)",
     org: "Self-Employed",
     when: "Aug 2025 – Present · Greater Toronto Area (Hybrid)",
     bullets: [
-      "Tutor university students in Nursing and Computer Science with personalized lesson plans and study guides.",
-      "Create detailed notes, diagrams, and Quizlets to simplify complex technical and medical concepts.",
-      "Help students improve grades and confidence through structured practice, feedback, and exam preparation.",
-      "Use Zoom, Google Workspace, Discord, and Microsoft Teams to deliver interactive hybrid tutoring sessions.",
+      "Support university students in Nursing, Computer Science, and related fields through 1:1 Zoom and in-person sessions.",
+      "Create customized notes, Quizlets, and study plans that simplify complex medical and technical concepts.",
+      "Help students build confidence, problem-solving ability, and critical thinking, leading to noticeable grade improvement.",
+      "Use tools like Google Workspace, Zoom, Discord, Slack, and Teams to keep learning organized and interactive.",
     ],
   },
   {
     role: "Intern",
-    org: "Hon. Shafqat Ali, M.P. – Brampton Centre",
+    org: "Hon. Shafqat Ali, M.P. – Brampton Centre & President of the Treasury Board of Canada",
     when: "Jun 2025 – Present · Brampton, ON (Hybrid)",
     bullets: [
-      "Assist with legislative research, constituency outreach, and daily office operations for a federal MP and President of the Treasury Board of Canada.",
-      "Support planning and delivery of community events, town halls, and engagement initiatives.",
-      "Welcome constituents, manage calls and email, and help maintain a responsive, service-oriented office.",
-      "Capture and edit photos at local events for social media, newsletters, and media releases.",
+      "Assist with legislative research, constituency outreach, and daily office operations in a fast-paced political environment.",
+      "Welcome constituents, manage calls and email correspondence, and support timely responses to community needs.",
+      "Attend local events with the MP, capture and edit photos for social media and media releases, and maintain a digital media library.",
+      "Contribute to event planning, policy briefings, and communications related to Treasury Board priorities.",
     ],
   },
   {
@@ -428,9 +406,9 @@ const EXPERIENCE = [
     org: "M Models & Talent Agency",
     when: "May 2025 – Present · Toronto, ON (On-site)",
     bullets: [
-      "Model for fashion, lifestyle, and commercial campaigns in studio and on-location shoots.",
-      "Collaborate with photographers, stylists, and creative teams to bring brand and editorial concepts to life.",
-      "Maintain professionalism, adaptability, and attention to detail in fast-paced creative environments.",
+      "Collaborate with photographers, stylists, and creative teams on fashion, lifestyle, and commercial shoots.",
+      "Participate in editorial, brand, and digital campaigns while maintaining professionalism in dynamic environments.",
+      "Represent client brands with confidence, creativity, and attention to detail across print and digital platforms.",
     ],
   },
   {
@@ -438,37 +416,152 @@ const EXPERIENCE = [
     org: "Niagara College, Welland, ON",
     when: "Sept 2018 – Apr 2019",
     bullets: [
-      "Resolved 100+ weekly hardware/software and account issues, improving turnaround time by ~30%.",
-      "Supported software installations, system updates, and hardware configurations for campus systems.",
-      "Diagnosed connectivity problems and partnered with technical teams on recurring issues.",
+      "Resolved 100+ weekly hardware, software, and account issues for students and staff.",
+      "Supported software installs, system updates, and troubleshooting across campus labs and offices.",
+      "Collaborated with IT teams to streamline recurring troubleshooting tasks and improve response times.",
     ],
   },
 ];
 
-/* --------- Education (updated) --------- */
+/* --------- Education --------- */
 const EDUCATION = [
   {
     school: "Sheridan College, Oakville, ON",
     degree:
-      "Honours Bachelor of Computer Science (HBSc) – Cloud Computing Specialization",
-    gpa: "Honor Roll 2023 • Honor Roll 2025 | 2023–2027 (Co-op)",
+      "Honours Bachelor of Computer Science (HBSc), Cloud Computing Specialization",
+    gpa: "Expected Graduation: 2027 · Honour Roll 2023 & 2025",
     clubs:
-      "Social Media Manager, IBM Z Sheridan • President & Founder, Sheridan UNSA • IBM Z Sheridan Club • Google Developer Club • Sheridan Computer Science Club • Sparta.codes • Women in Business & Technology • MSA • Pakistani Student Association (HMC) • Palestine Cultural Club (PCC)",
+      "Founding President, Sheridan UNSA (United Nations Student Association); Social Media Manager & Member – IBM Z Sheridan; Google Developer Club; Sheridan Computer Science Club; Sparta.codes; Women in Business & Technology; MSA; Pakistani Student Association (HMC); Palestine Cultural Club (PCC)",
     coursework:
-      "Software Design, Data Structures & Algorithms, Operating Systems, Embedded Systems, Cloud Infrastructure, Databases, Information Systems Security, Web & Mobile Development",
+      "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
   },
 ];
 
-/* --------- Achievements, Certs, Volunteering, Beyond, Interests (same as before) --------- */
-
+/* --------- Achievements (unchanged) --------- */
 const ACHIEVEMENTS = [
-  "Recognized for outstanding analytical and troubleshooting ability in IT support roles.",
+  "Recognized for outstanding analytical and troubleshooting ability in IT support and academic projects.",
   "Sheridan Datathon 2025 — CareerLift AI (Top 5 Overall | Top 2 Finalist for Best Use of Gemini).",
-  "Finalist in GDG Frontend Challenge for innovative design and technical implementation.",
-  "Developed ShareMeal during a UN-aligned SDG hackathon, promoting food sharing and sustainability.",
-  "Built an AI-powered Rewriter Tool for the Google Chrome Built-in AI Challenge 2025.",
+  "Developed LYTHOS for BramHacks 2025, integrating space data and AI for ethical critical mineral exploration.",
+  "Built an AI-powered Word Rewriter Chrome Extension for the Google Chrome Built-in AI Challenge 2025.",
 ];
 
+/* --------- Beyond Tech / Certifications / Volunteering (shortened) --------- */
+
+const CERTIFICATIONS = [
+  {
+    name: "Foundations of Cybersecurity (98.8%)",
+    org: "Google (Coursera)",
+    issued: "Nov 2025",
+    details:
+      "Security foundations, threat modeling, incident response, and hands-on labs with Python and Bash.",
+  },
+  {
+    name: "IBM Developer for z/OS Basics",
+    org: "IBM",
+    issued: "Nov 2025",
+    details: "Mainframe concepts, tooling, and workflows on IBM Z.",
+  },
+  {
+    name: "IBM Ethical Hacking with Open Source Tools (100%)",
+    org: "IBM / Skillup.co",
+    issued: "Nov 2025",
+    details:
+      "Ethical hacking methodology, reconnaissance, exploitation labs, and defensive security thinking.",
+  },
+  {
+    name: "Machine Learning with Python (95.7%)",
+    org: "IBM (Coursera)",
+    issued: "Nov 2025",
+    details:
+      "Supervised/unsupervised learning, model evaluation, and Python-based ML workflows.",
+  },
+  {
+    name: "Understanding and Visualizing Data with Python (95.5%)",
+    org: "University of Michigan (Coursera)",
+    issued: "Nov 2025",
+    details: "Pandas, NumPy, and visualization for data storytelling.",
+  },
+];
+
+const VOLUNTEERING = [
+  {
+    role: "Fundraising Volunteer",
+    org: "Human Appeal – ISNA Gala",
+    when: "Sep 2025",
+    details:
+      "Supported fundraising for Gaza using POS systems to collect donations; helped raise $40,000 in one evening.",
+  },
+  {
+    role: "Ramadan Volunteer",
+    org: "Bramalea Islamic Cultural Centre (BICC)",
+    when: "Apr 2022",
+    details:
+      "Helped set up and close daily iftar events and prayers, supporting a welcoming community worship space.",
+  },
+  {
+    role: "Screener",
+    org: "William Osler Health System",
+    when: "Sep 2021 – Mar 2022",
+    details:
+      "Completed 100+ volunteer hours greeting visitors, performing COVID-19 screening, and enforcing PPE protocols.",
+  },
+];
+
+const BEYOND = [
+  {
+    title: "Henna / Mehndi",
+    subtitle: "Bridal • party • cones • aftercare",
+    link: LINKS.instagramHenna,
+    cta: "See Henna Work",
+    images: [
+      "/images/Screenshot 2025-11-02 231432.png",
+      "/images/Screenshot 2025-11-02 231505.png",
+      "/images/Screenshot 2025-11-02 231559.png",
+    ],
+  },
+  {
+    title: "Photography",
+    subtitle: "urban • nature • lifestyle",
+    link: LINKS.instagramPhoto,
+    cta: "See Photos",
+    images: [
+      "/images/Screenshot 2025-11-02 231648.png",
+      "/images/Screenshot 2025-11-02 231806.png",
+      "/images/Screenshot 2025-11-02 231716.png",
+    ],
+  },
+  {
+    title: "Art & Illustration",
+    subtitle: "acrylic • realistic art • sketches",
+    link: LINKS.instagramArt,
+    cta: "See Art",
+    images: [
+      "/images/Screenshot 2025-11-02 232002.png",
+      "/images/Screenshot 2025-11-02 232026.png",
+      "/images/Screenshot 2025-11-02 232101.png",
+    ],
+  },
+  {
+    title: "Modeling",
+    subtitle: "photoshoots • portraits • collabs",
+    link: LINKS.instagramModel,
+    cta: "See Modeling",
+    images: [
+      "/images/Screenshot 2025-11-02 231100.png",
+      "/images/Screenshot 2025-11-02 232613.png",
+      "/images/Screenshot 2025-11-02 232710.png",
+    ],
+  },
+  {
+    title: "Tutoring",
+    subtitle: "Computer Science • Nursing • High school students",
+    link: LINKS.instagramMain,
+    cta: "DM for tutoring inquiries",
+    images: ["/images/1551131919234.jpeg"],
+  },
+];
+
+/* --------- Logo Badge for Certifications --------- */
 const getLogoConfig = (org) => {
   const name = org.toLowerCase();
   if (name.includes("google")) {
@@ -485,40 +578,16 @@ const getLogoConfig = (org) => {
         "bg-gradient-to-br from-blue-400 to-blue-700 text-white tracking-tighter",
     };
   }
-  if (name.includes("mongo")) {
-    return {
-      label: "M",
-      className: "bg-gradient-to-br from-emerald-400 to-emerald-700 text-slate-900",
-    };
-  }
   if (name.includes("university of michigan")) {
     return {
       label: "U",
       className: "bg-gradient-to-br from-yellow-300 to-amber-500 text-slate-900",
     };
   }
-  if (name.includes("canadian red cross")) {
-    return {
-      label: "✚",
-      className: "bg-gradient-to-br from-red-400 to-red-700 text-white",
-    };
-  }
   if (name.includes("government of canada")) {
     return {
       label: "CA",
       className: "bg-gradient-to-br from-red-500 to-rose-700 text-white",
-    };
-  }
-  if (name.includes("mlpao") || name.includes("medical laboratory")) {
-    return {
-      label: "ML",
-      className: "bg-gradient-to-br from-emerald-300 to-teal-600 text-slate-900",
-    };
-  }
-  if (name.includes("hubspot")) {
-    return {
-      label: "H",
-      className: "bg-gradient-to-br from-orange-400 to-orange-600 text-slate-900",
     };
   }
   return {
@@ -541,245 +610,6 @@ const LogoBadge = ({ org }) => {
   );
 };
 
-const CERTIFICATIONS = [
-  {
-    name: "Foundations of Cybersecurity (Grade 98.81%)",
-    org: "Google (Coursera)",
-    issued: "Nov 2025",
-    details:
-      "Python, Bash, vulnerability management, threat modeling, incident response, and security fundamentals.",
-  },
-  {
-    name: "Getting Started with Git and GitHub",
-    org: "IBM",
-    issued: "Nov 2025",
-    details: "Core Git/GitHub workflows, version control, and collaboration.",
-  },
-  {
-    name: "IBM Developer for z/OS Basics",
-    org: "IBM",
-    issued: "Nov 2025",
-    details:
-      "Mainframe fundamentals, IBM Z tooling, and foundational enterprise computing concepts.",
-  },
-  {
-    name: "IBM Ethical Hacking with Open Source Tools (Grade 100%)",
-    org: "IBM / Skillup.co",
-    issued: "Nov 2025",
-    details:
-      "Ethical hacking methods, reconnaissance, exploitation labs, and defensive security thinking.",
-  },
-  {
-    name: "IBM Z Resiliency",
-    org: "IBM",
-    issued: "Nov 2025",
-    details: "Resilient mainframe design, availability, and fault-tolerance.",
-  },
-  {
-    name: "IBM Z Xplore – Concepts",
-    org: "IBM",
-    issued: "Nov 2025",
-    details: "Hands-on labs in IBM Z, Bash, and Python.",
-  },
-  {
-    name: "IBM z/OS Security Essentials",
-    org: "IBM",
-    issued: "Nov 2025",
-    details: "Security concepts for z/OS, access control, and secure operations.",
-  },
-  {
-    name: "Introduction to Artificial Intelligence (AI)",
-    org: "IBM (Coursera)",
-    issued: "Nov 2025",
-    details:
-      "AI foundations, high-level ML concepts, and real-world deployment considerations.",
-  },
-  {
-    name: "Introduction to DevOps (Grade 91.5%)",
-    org: "IBM (Coursera)",
-    issued: "Nov 2025",
-    details:
-      "Agile, CI/CD, microservices, TDD/BDD, and DevOps culture for modern teams.",
-  },
-  {
-    name: "Introduction to Software Engineering (Grade 92.8%)",
-    org: "IBM (Coursera)",
-    issued: "Nov 2025",
-    details:
-      "SDLC, architecture, Python development, and web/cloud deployment models.",
-  },
-  {
-    name: "Introduction to Systems Architecture (Grade 94.85%)",
-    org: "IBM (Coursera)",
-    issued: "Nov 2025",
-    details: "Systems architecture, components, and large-scale design thinking.",
-  },
-  {
-    name: "Machine Learning with Python (Grade 95.71%)",
-    org: "IBM (Coursera)",
-    issued: "Nov 2025",
-    details:
-      "Supervised/unsupervised ML with Python, model training, and evaluation.",
-  },
-  {
-    name: "Understanding and Visualizing Data with Python (Grade 95.5%)",
-    org: "University of Michigan (Coursera)",
-    issued: "Nov 2025",
-    details:
-      "Pandas, NumPy, Seaborn, and Matplotlib for EDA and visualization.",
-  },
-  {
-    name: "MongoDB Certificates – Using MongoDB with Python",
-    org: "MongoDB",
-    issued: "Mar 2025",
-    details: "Document modeling, queries, and Python integration.",
-  },
-  {
-    name: "MLPAO Medical Laboratory Assistant/Technician (MLA/T)",
-    org: "Medical Laboratory Professionals’ Association of Ontario",
-    issued: "Sep 2025",
-    details: "Phlebotomy, ECG, urinalysis, and clinical lab workflows.",
-  },
-  {
-    name: "Security Guard License",
-    org: "Canada Guard Security",
-    issued: "Jul 2025",
-    details: "Licensed security guard; safety monitoring and incident response.",
-  },
-  {
-    name: "Standard First Aid, CPR and AED",
-    org: "Canadian Red Cross",
-    issued: "Jul 2025",
-    details: "Adult/pediatric CPR and AED usage.",
-  },
-  {
-    name: "TCPS-2 CORE 2022: Ethical Conduct for Research Involving Humans",
-    org: "Government of Canada",
-    issued: "Oct 2020",
-    details:
-      "Ethical research principles, consent, and safeguarding human participants.",
-  },
-  {
-    name: "Certified Leadership Level Gold",
-    org: "The Canadian Conference on Student Leadership (CCSL)",
-    issued: "Nov 2017",
-    details: "Leadership, collaboration, and student impact.",
-  },
-];
-
-const VOLUNTEERING = [
-  {
-    role: "Fundraising Volunteer",
-    org: "Human Appeal – ISNA Gala",
-    when: "Sep 2025",
-    details:
-      "Supported Gaza fundraising using POS systems to collect donations, helping raise $40,000 in one evening.",
-  },
-  {
-    role: "Ramadan Volunteer",
-    org: "Bramalea Islamic Cultural Centre (BICC)",
-    when: "Apr 2022",
-    details:
-      "Helped set up and close daily iftar events and prayers, supporting a welcoming community space.",
-  },
-  {
-    role: "Screener",
-    org: "William Osler Health System",
-    when: "Sep 2021 – Mar 2022",
-    details:
-      "Completed 100+ hours greeting visitors, doing COVID-19 screening, and enforcing PPE protocols.",
-  },
-  {
-    role: "Government Relations & Phone Banking Captain",
-    org: "Future Majority",
-    when: "Jan 2021 – May 2021",
-    details:
-      "Mobilized volunteers for phone banks and engaged youth on mental health, climate, and affordability.",
-  },
-  {
-    role: "PLASP Active ELC / General Volunteer",
-    org: "PLASP Child Care Services",
-    when: "Sep 2014 – Jul 2017",
-    details:
-      "Led group activities, supported after-school programs, and maintained a safe environment for children.",
-  },
-  {
-    role: "Step Up Youth Volunteer Ambassador",
-    org: "Volunteer MBC",
-    when: "Sep 2014 – Aug 2015",
-    details:
-      "Helped plan charity events across the region supporting environmental and community causes.",
-  },
-  {
-    role: "Student Volunteer & Football Manager",
-    org: "St Thomas Aquinas Secondary School",
-    when: "2014 – 2018",
-    details:
-      "Managed football team logistics, tutored math students, and contributed to multiple service initiatives.",
-  },
-  {
-    role: "Student Volunteer",
-    org: "Mississauga Marathon & Volunteering Peel",
-    when: "2014 – 2018",
-    details:
-      "Assisted with event setup, food distribution, and support at marathons and charity events.",
-  },
-];
-
-const BEYOND = [
-  {
-    title: "Henna / Mehndi",
-    subtitle: "bridal • parties • cones • aftercare",
-    link: LINKS.instagramHenna,
-    cta: "See Henna Work",
-    images: [
-      "/images/Screenshot 2025-11-02 231432.png",
-      "/images/Screenshot 2025-11-02 231505.png",
-      "/images/Screenshot 2025-11-02 231559.png",
-    ],
-  },
-  {
-    title: "Photography",
-    subtitle: "urban • nature • lifestyle",
-    link: LINKS.instagramPhoto,
-    cta: "See Photos",
-    images: [
-      "/images/Screenshot 2025-11-02 231648.png",
-      "/images/Screenshot 2025-11-02 231806.png",
-      "/images/Screenshot 2025-11-02 231716.png",
-    ],
-  },
-  {
-    title: "Art & Illustration",
-    subtitle: "acrylic • realism • sketches",
-    link: LINKS.instagramArt,
-    cta: "See Art",
-    images: [
-      "/images/Screenshot 2025-11-02 232002.png",
-      "/images/Screenshot 2025-11-02 232026.png",
-      "/images/Screenshot 2025-11-02 232101.png",
-    ],
-  },
-  {
-    title: "Modeling",
-    subtitle: "photoshoots • portraits • collabs",
-    link: LINKS.instagramModel,
-    cta: "See Modeling",
-    images: [
-      "/images/Screenshot 2025-11-02 231100.png",
-      "/images/Screenshot 2025-11-02 232613.png",
-      "/images/Screenshot 2025-11-02 232710.png",
-    ],
-  },
-  {
-    title: "Tutoring",
-    subtitle: "Computer Science • Nursing • high school",
-    link: LINKS.instagramMain,
-    cta: "DM for tutoring",
-    images: ["/images/1551131919234.jpeg"],
-  },
-];
-
 /* ---------------- Particles ---------------- */
 const particlesOptions = {
   fullScreen: { enable: false },
@@ -800,8 +630,8 @@ const particlesOptions = {
   },
 };
 
-export default function Portfolio() {
-  // Smooth scroll for in-page links
+/* ---------------- Main Portfolio Component ---------------- */
+export default function App() {
   useEffect(() => {
     const onClick = (e) => {
       const a = e.target.closest && e.target.closest('a[href^="#"]');
@@ -982,24 +812,24 @@ export default function Portfolio() {
         title="Skills & Technologies"
         subtitle="A focused view of the tools I use to build, ship, and scale products."
       >
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {SKILL_LOGOS.map((skill, i) => (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {SKILLS.map((skill, i) => (
             <FadeIn key={skill.name} delay={i * 0.02}>
-              <div className="relative">
-                <div className="group relative flex h-20 flex-col items-center justify-center rounded-2xl border border-purple-500/40 bg-gradient-to-b from-black/80 via-purple-900/25 to-black/90 shadow-[0_0_16px_rgba(0,0,0,0.85)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(168,85,247,0.8)] overflow-hidden">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),transparent_60%),radial-gradient(circle_at_bottom,_rgba(126,34,206,0.45),transparent_60%)]" />
-                  <div className="relative flex flex-col items-center justify-center">
-                    {skill.icon ? (
-                      <i className={`${skill.icon} text-3xl drop-shadow-[0_0_12px_rgba(168,85,247,0.9)]`} />
-                    ) : (
-                      <span className="text-lg font-semibold text-purple-100 drop-shadow-[0_0_10px_rgba(168,85,247,0.9)]">
-                        {skill.short || skill.name}
-                      </span>
-                    )}
-                    <span className="mt-1 text-[11px] text-purple-100/90 text-center px-1">
-                      {skill.name}
+              <div className="group relative flex h-24 flex-col items-center justify-center rounded-2xl border border-purple-500/30 bg-gradient-to-b from-slate-950/95 via-purple-900/40 to-black/95 shadow-[0_0_16px_rgba(0,0,0,0.9)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(168,85,247,0.7)] overflow-hidden">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),transparent_60%),radial-gradient(circle_at_bottom,_rgba(126,34,206,0.4),transparent_60%)]" />
+                <div className="relative flex flex-col items-center">
+                  {skill.icon ? (
+                    <i
+                      className={`${skill.icon} text-3xl md:text-4xl drop-shadow-[0_0_10px_rgba(168,85,247,0.7)]`}
+                    />
+                  ) : (
+                    <span className="text-xl md:text-2xl font-semibold text-purple-200 drop-shadow-[0_0_10px_rgba(168,85,247,0.7)]">
+                      {skill.short}
                     </span>
-                  </div>
+                  )}
+                  <span className="mt-1 text-[11px] md:text-xs text-purple-100 tracking-tight text-center">
+                    {skill.name}
+                  </span>
                 </div>
               </div>
             </FadeIn>
@@ -1068,7 +898,7 @@ export default function Portfolio() {
         </div>
       </Section>
 
-      {/* Hackathons */}
+      {/* Hackathon Experience */}
       <Section
         id="hackathons"
         title="Hackathon Experience"
@@ -1133,8 +963,8 @@ export default function Portfolio() {
       {/* Experience */}
       <Section
         id="experience"
-        title="Experience"
-        subtitle="Technical, leadership, and creative roles that shape how I work."
+        title="Relevant Experience"
+        subtitle="Highlights from roles, leadership, and internships."
       >
         <div className="relative mx-auto max-w-3xl">
           <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-gradient-to-b from-purple-300/80 via-purple-500/40 to-transparent md:block" />
@@ -1168,7 +998,7 @@ export default function Portfolio() {
       <Section
         id="education"
         title="Education"
-        subtitle="Academic background and campus involvement."
+        subtitle="Academic background and coursework."
       >
         {EDUCATION.map((ed) => (
           <FadeIn key={ed.school}>
@@ -1177,7 +1007,7 @@ export default function Portfolio() {
                 <h3 className="text-lg font-semibold text-white">{ed.school}</h3>
                 <p className="text-sm text-purple-50/90 mt-1">{ed.degree}</p>
                 <p className="text-sm text-purple-50/90 mt-1">{ed.gpa}</p>
-                <p className="text-sm text-purple-50/90 mt-1">Clubs & roles: {ed.clubs}</p>
+                <p className="text-sm text-purple-50/90 mt-1">Clubs: {ed.clubs}</p>
                 <p className="text-sm text-purple-50/90 mt-1">
                   Relevant Coursework: {ed.coursework}
                 </p>
@@ -1211,7 +1041,7 @@ export default function Portfolio() {
       <Section
         id="certifications"
         title="Licenses & Certifications"
-        subtitle="Upskilling across software engineering, security, data, cloud, and healthcare."
+        subtitle="Upskilling across software engineering, security, data, cloud, and more."
       >
         <div className="grid gap-4 md:grid-cols-2">
           {CERTIFICATIONS.map((c, i) => (
@@ -1273,7 +1103,7 @@ export default function Portfolio() {
       <Section
         id="beyond"
         title="Beyond Tech"
-        subtitle="Outside software, I’m a creative—henna artist, photographer, illustrator, tutor, and model."
+        subtitle="Outside software, I’m a creative—henna artist, photographer, illustrator, model, and tutor."
       >
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {BEYOND.map((b, i) => (
@@ -1353,12 +1183,13 @@ export default function Portfolio() {
               <p className="text-purple-50/95 leading-relaxed">
                 Outside of my creative work, I love staying active and grounded. I
                 play on a basketball team and a flag football team, jump into
-                volleyball games when I can, and enjoy biking and long walks. I enjoy
-                true crime & horror and DC movies/shows, and I unwind with LEGO builds
-                and puzzles. I also love volunteering, gardening, baking, and cooking.
-                I’m passionate about science and keeping up with new breakthroughs and
-                innovations. My faith in Islam is very important to me, and I use its
-                guidance to continuously improve myself.
+                volleyball games when I can, and enjoy biking and long walks. I
+                enjoy true-crime &amp; horror and DC movies/shows, and I unwind with
+                LEGO builds and puzzles. I also love volunteering, gardening, baking,
+                and cooking. I’m passionate about science, keeping up with new
+                breakthroughs, discoveries, and innovations. Time with friends and
+                family is really important to me, and my faith in Islam helps ground
+                my decisions and goals.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
