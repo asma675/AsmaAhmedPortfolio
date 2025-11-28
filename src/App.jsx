@@ -392,6 +392,18 @@ const EXPERIENCE = [
     ],
   },
   {
+
+  {
+  role: "President & Founder",
+  company: "Sheridan UNSA (United Nations Student Association)",
+  timeline: "Nov 2025 – Present · GTA (Hybrid)",
+  bullets: [
+    "Founded Sheridan’s first United Nations Student Association, growing the club to over 25 members within the first month through strong outreach, social media strategy, and collaboration with campus organizations.",
+    "Led development and implementation of global-issues programming centered on sustainability, youth leadership, and humanitarian action.",
+    "Organized three major events with high attendance, increasing active member engagement by over 40% across the club.",
+    "Built partnerships with student leaders, faculty, and external groups to support discussions on UN SDGs, climate action, global affairs, and community impact.",
+  ],
+},
     role: "Private Tutor – Nursing (BScN) & Computer Science (B.Sc.)",
     org: "Self-Employed",
     when: "Aug 2025 – Present · GTA (Hybrid)",
