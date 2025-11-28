@@ -392,8 +392,6 @@ const EXPERIENCE = [
     ],
   },
   {
-
-  {
   role: "President & Founder",
   company: "Sheridan UNSA (United Nations Student Association)",
   timeline: "Nov 2025 – Present · GTA (Hybrid)",
@@ -404,6 +402,7 @@ const EXPERIENCE = [
     "Built partnerships with student leaders, faculty, and external groups to support discussions on UN SDGs, climate action, global affairs, and community impact.",
   ],
 },
+{
     role: "Private Tutor – Nursing (BScN) & Computer Science (B.Sc.)",
     org: "Self-Employed",
     when: "Aug 2025 – Present · GTA (Hybrid)",
