@@ -1,602 +1,909 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
-  Download,
+  ArrowUpRight,
+  Award,
+  BadgeCheck,
+  BrainCircuit,
+  BriefcaseBusiness,
+  CheckCircle2,
+  ChevronRight,
+  Cloud,
+  Code2,
+  Database,
+  ExternalLink,
   Github,
+  Globe2,
+  GraduationCap,
+  HeartHandshake,
+  Instagram,
   Linkedin,
   Mail,
-  ExternalLink,
-  Instagram,
+  MapPin,
+  Menu,
+  Rocket,
+  Search,
+  Server,
+  ShieldCheck,
+  Sparkles,
+  Terminal,
+  Trophy,
+  Users,
+  X,
+  Zap,
 } from "lucide-react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import { PROJECT_VAULT } from "./projectData";
 
-const Button = ({
-  children,
-  asChild,
-  variant = "default",
-  size = "md",
-  className = "",
-  ...props
-}) => {
-  const base =
-    "inline-flex items-center justify-center rounded-md border text-sm font-medium transition disabled:opacity-50 disabled:pointer-events-none";
-  const variants = {
-    default:
-      "bg-primary text-primary-foreground hover:opacity-90 border-transparent px-4 py-2",
-    secondary:
-      "bg-muted text-foreground hover:bg-muted/80 border-transparent px-4 py-2",
-    outline: "bg-transparent border-border px-4 py-2",
-    ghost: "bg-transparent border-transparent px-2 py-1",
-  };
-  const sizes = { sm: "text-sm px-3 py-1.5", md: "text-sm px-4 py-2" };
-  const cls = `${base} ${
-    variants[variant] || variants.default
-  } ${sizes[size] || sizes.md} ${className}`;
-
-  if (asChild && React.isValidElement(children)) {
-    return React.cloneElement(children, {
-      className: `${children.props.className || ""} ${cls}`.trim(),
-      ...props,
-    });
-  }
-  return (
-    <button className={cls} {...props}>
-      {children}
-    </button>
-  );
-};
-
-const Card = ({ className = "", children }) => (
-  <div className={`rounded-xl border bg-card shadow-sm ${className}`}>
-    {children}
-  </div>
-);
-const CardHeader = ({ children }) => (
-  <div className="p-5 border-b">{children}</div>
-);
-const CardTitle = ({ className = "", children }) => (
-  <h3 className={`text-base font-semibold ${className}`}>{children}</h3>
-);
-const CardContent = ({ children }) => (
-  <div className="p-5">{children}</div>
-);
-
-const Section = ({ id, title, subtitle, children }) => (
-  <section id={id} className="scroll-mt-24 py-20" aria-label={title}>
-    <div className="mx-auto max-w-6xl px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5 }}
-        className="mb-10"
-      >
-        <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
-        {subtitle && (
-          <p className="mt-2 text-muted-foreground max-w-3xl">{subtitle}</p>
-        )}
-      </motion.div>
-      {children}
-    </div>
-  </section>
-);
-
-const FadeIn = ({ children, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-  >
-    {children}
-  </motion.div>
-);
-
-/* ---------------- Data ---------------- */
 const NAME = "Asma Ahmed";
-const TAGLINE = "Software Engineer • Cloud & Full-Stack";
-const INTRO =
-  "I’m a software engineer focused on building scalable, user-centric apps across web and mobile. I work across React, .NET, Spring Boot, and cloud platforms (AWS, Azure, GCP). Below are selected skills, projects, and experience.";
 
 const LINKS = {
-  resumeUrl:
-    "https://www.linkedin.com/in/asma-ahmed67/overlay/1761849807562/single-media-viewer/?profileId=ACoAADRSu5IB5sVYbHSyGtnWPhEcVQmgyeDUzAA",
   github: "https://github.com/asma675",
   linkedin: "https://www.linkedin.com/in/asma-ahmed67",
   email: "mailto:asma.ahmed.work@gmail.com",
-  instagram:
-    "https://www.instagram.com/asma.a15__/",
+  instagram: "https://www.instagram.com/asma.a15__/",
+  resume:
+    "https://www.linkedin.com/in/asma-ahmed67/overlay/1761849807562/single-media-viewer/?profileId=ACoAADRSu5IB5sVYbHSyGtnWPhEcVQmgyeDUzAA",
 };
 
-const SKILLS = [
-  "Python",
-  "Java",
-  "JavaScript",
-  "C",
-  "C++",
-  "C#",
-  "Go",
-  "R",
-  "Swift",
-  "HTML",
-  "CSS",
-  "Web Design",
-  "API Integration",
-  "REST APIs",
-  "React",
-  "Redux",
-  "Node.js",
-  "Express.js",
-  "Spring Boot",
-  ".NET",
-  "Thymeleaf",
-  "Bootstrap",
-  "Pygame",
-  "SQL",
-  "MySQL",
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "Azure",
-  "Google Cloud",
-  "Cloud Deployment",
-  "OOP",
-  "Data Structures",
-  "Algorithms",
-  "SDLC",
-  "Agile",
-  "TDD",
-  "Git",
-  "GitHub",
-  "Linux",
-  "Web Development",
-  "Mobile Development",
-  "Android",
+const NAV = [
+  ["#home", "Home"],
+  ["#projects", "Projects"],
+  ["#experience", "Experience"],
+  ["#skills", "Skills"],
+  ["#wins", "Wins"],
+  ["#leadership", "Leadership"],
+  ["#contact", "Contact"],
 ];
 
-const PROJECTS = [
+const ROTATING_ROLES = [
+  "Software Engineering",
+  "AI / ML Systems",
+  "Cloud + Enterprise",
+  "Technology Consulting",
+];
+
+const FEATURED_PROJECTS = [
   {
-    title: "ShareMeal App",
-    blurb:
-      "Cross-platform app connecting donors with local food banks; auth + Azure App Services + REST APIs for listings and real-time updates.",
-    stack: [".NET MAUI", "C#", "Azure", "REST"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    title: "LegalAssist",
+    kicker: "AI product engineering • Founder build",
+    description:
+      "Full-stack AI legal workflow + CRM platform combining case management, legal research, document generation, task tracking, risk classification, and SaaS product thinking.",
+    stack: ["Next.js", "React", "Tailwind", "LLMs", "SaaS"],
+    code: "https://github.com/asma675/LegalAssist",
+    icon: ShieldCheck,
   },
   {
-    title: "GDG Frontend Project",
-    blurb:
-      "Responsive web interface for a GDG challenge with reusable components, hooks, and Tailwind UI.",
-    stack: ["React", "Tailwind", "Vercel"],
-    links: {
-      demo: "#",
-      code: "https://github.com/asma675/gdg-frontend-Asma-Ahmed-Final-Copy",
-    },
+    title: "Forest Intelligence Platform",
+    kicker: "Geospatial AI • Climate resilience",
+    description:
+      "AI-powered wildfire and forest analytics platform using satellite/drone imagery, LiDAR, CNNs, Random Forest and XGBoost for risk, health and sustainability intelligence.",
+    stack: ["Python", "FastAPI", "React", "GIS", "LiDAR", "ML"],
+    code: null,
+    icon: Globe2,
   },
   {
-    title: "PasswordStore",
-    blurb: "Secure password manager with CRUD, encryption, and MVC architecture.",
-    stack: ["Java", "Spring Boot", "Thymeleaf", "H2"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    title: "LLM Guardian",
+    kicker: "AI safety • LLMOps • Observability",
+    description:
+      "Production-minded observability and safety platform for LLM apps with latency/cost telemetry, PII and hallucination signals, monitoring rules and incident workflows.",
+    stack: ["Next.js", "Postgres", "Prisma", "Datadog", "Gemini"],
+    code:
+      "https://github.com/asma675/LLM-Guardian-App_AI-Partner-Catalyst-Accelerate-Innovation-Hackathon",
+    demo: "https://devpost.com/software/llm-guardian-pbunz5",
+    icon: BrainCircuit,
   },
   {
-    title: "DriveWellApp",
-    blurb:
-      "Cross-platform app for tracking automotive data with cloud sync and async data flows.",
-    stack: [".NET MAUI", "C#"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    title: "ChadGPT",
+    kicker: "Full-stack generative AI",
+    description:
+      "ChatGPT-style application with persistent conversations, streaming responses, file uploads, image generation and database-backed memory on a modern Next.js architecture.",
+    stack: ["Next.js", "React", "AI", "Streaming", "Vercel"],
+    code: "https://github.com/asma675/ChadGPT",
+    icon: Terminal,
   },
   {
-    title: "Student Records Portal",
-    blurb:
-      "Secure portal to manage academic records with validation and access control.",
-    stack: ["SQL", "HTML", "CSS"],
-    links: { demo: "#", code: "https://github.com/asma675" },
+    title: "FireWatch AI",
+    kicker: "Public safety • Geospatial decision support",
+    description:
+      "Wildfire early-threat radar for Canada that combines risk visualization, AI-style predictions and emergency resources in a modern decision-support dashboard.",
+    stack: ["React", "AI", "Geospatial", "Public Safety"],
+    code: "https://github.com/asma675/WildfireWatch-AI",
+    demo: "https://wildfire-watch-ai-z1kd.vercel.app",
+    icon: Zap,
+  },
+  {
+    title: "GovGuide AI",
+    kicker: "G7 GovAI Grand Challenge submission",
+    description:
+      "Human-centred policy navigator that restructures dense government content into plain-language summaries, obligations, eligibility signals, required documents and next actions.",
+    stack: ["AI", "GovTech", "UX", "Policy"],
+    code: "https://github.com/asma675/GovGuideAI",
+    demo: "https://www.youtube.com/watch?v=E4givpGrdC0",
+    icon: Sparkles,
+  },
+  {
+    title: "Unseen Gems",
+    kicker: "UofT Hacks • Multi-agent systems",
+    description:
+      "AI discovery platform with four parallel agents, consensus analysis, fault-tolerant fallbacks, smart caching and an interactive 3D globe + dynamic maps.",
+    stack: ["React", "Node.js", "Gemini", "Three.js", "Leaflet"],
+    code: "https://github.com/asma675/Unseen-Gems-UofT-Hacks",
+    icon: Globe2,
+  },
+  {
+    title: "CareerLift AI",
+    kicker: "Sheridan Datathon • Top 5 overall",
+    description:
+      "Résumé intelligence platform using Gemini for job-alignment scoring, missing-skill detection and personalized learning recommendations; Top 2 finalist for Best Use of Gemini.",
+    stack: ["React", "Firebase", "Gemini 2.5", "Node.js"],
+    code: "https://github.com/asma675/CareerLiftAI",
+    demo: "https://www.youtube.com/watch?v=n-F_L20QB0k",
+    icon: Rocket,
   },
 ];
 
 const EXPERIENCE = [
   {
-    role: "IT Assistant / Helpdesk",
-    org: "Niagara College, Welland, ON",
-    when: "Sept 2018 – Apr 2019",
+    role: "Geographic Information System (GIS) Assistant",
+    org: "Ontario Government • Ontario Forest Research Institute (OFRI)",
+    when: "May 2026 — Present",
+    meta: "Sault Ste. Marie, Ontario",
+    icon: Globe2,
     bullets: [
-      "Resolved 100+ weekly hardware/software and account issues, improving turnaround time by ~30%.",
-      "Assisted with software installations, system updates, and hardware configurations for campus-wide IT systems.",
-      "Diagnosed connectivity problems and supported campus-wide installs and system updates.",
-      "Collaborated with technical teams to automate recurring troubleshooting tasks.",
+      "Selected as 1 of 3 interns from 550+ applicants for a competitive environmental AI/GIS research role.",
+      "Work with satellite imagery, geospatial data and spatial analysis for wetland, forest and ecosystem monitoring.",
+      "Build user-friendly GIS workflows and translate technical findings into conservation and decision-support outputs.",
     ],
+    tags: ["Python", "GIS", "Remote Sensing", "Data", "Environmental AI"],
   },
-];
-
-const EDUCATION = [
   {
-    school: "Sheridan College, Oakville, ON",
-    degree:
-      "Bachelor of Science in Computer Science (Co-op), Cloud Computing Specialization - Expected April 2027",
-    gpa: "GPA: 3.27 | 2023–Present",
-    clubs: "Google Developer Club, MSA",
-    coursework:
-      "Software Design, Operating Systems, Programming Principles, Embedded Systems, Cloud Infrastructure, Information Systems Security",
+    role: "Software Engineer & Student Researcher",
+    org: "Cominfo, Inc.",
+    when: "Jan 2026 — Present",
+    meta: "Remote",
+    icon: BrainCircuit,
+    bullets: [
+      "Build production-oriented AI prototypes across LLMs, agents, RAG and autonomous reasoning workflows.",
+      "Experiment with LangGraph/LangChain planning, memory, retrieval, tool use, structured outputs and self-correction.",
+      "Benchmark model workflows across GPT, Claude, Gemini and IBM Granite-style models for quality, latency, relevance and hallucination risk.",
+    ],
+    tags: ["Python", "LangGraph", "LangChain", "RAG", "LLMs"],
+  },
+  {
+    role: "Founder & CEO",
+    org: "LegalAssist",
+    when: "Jan 2026 — Present",
+    meta: "Remote • Mississauga, Ontario",
+    icon: Rocket,
+    bullets: [
+      "Own product vision, architecture, UX and AI integration for a full-stack legal workflow and CRM platform.",
+      "Designed case intelligence, legal research, document generation, tasks/calendar and SaaS monetization flows.",
+      "Built a modular cloud-ready architecture designed for regulated, high-stakes professional workflows.",
+    ],
+    tags: ["Next.js", "Product", "AI", "SaaS", "Architecture"],
+  },
+  {
+    role: "IBM Z Student Ambassador",
+    org: "IBM Z Student Ambassador Program",
+    when: "Dec 2025 — Present",
+    meta: "Oakville, Ontario",
+    icon: Server,
+    bullets: [
+      "Represent IBM on campus through technical workshops, outreach and mentoring around enterprise computing and hybrid cloud.",
+      "Achieved Superstar Tier (highest program level) with 115+ points.",
+      "Led an IBM Z mini-hackathon with 100+ participants, recognized as TMU Tech Week’s Most Impactful Event.",
+    ],
+    tags: ["IBM Z", "z/OS", "Linux on Z", "DevOps", "Hybrid Cloud"],
+  },
+  {
+    role: "President",
+    org: "Enactus Sheridan",
+    when: "Apr 2026 — Present",
+    meta: "Oakville, Ontario",
+    icon: Users,
+    bullets: [
+      "Lead strategy, operations and partnerships for student-led entrepreneurship, sustainability and social-impact initiatives.",
+      "Mentor cross-functional teams in project development, business strategy and competition readiness.",
+    ],
+    tags: ["Leadership", "Strategy", "Social Impact", "Partnerships"],
+  },
+  {
+    role: "Hackathon Team Lead",
+    org: "Multiple organizations",
+    when: "Sep 2025 — Present",
+    meta: "Greater Toronto Area",
+    icon: Trophy,
+    bullets: [
+      "Led cross-functional teams across 15+ major hackathons and fast-build technical challenges.",
+      "Drive sprint planning, role coordination, delivery, technical direction and final pitch strategy under tight deadlines.",
+    ],
+    tags: ["React", "Next.js", "Firebase", "AWS", "Gemini"],
   },
 ];
 
-const ACHIEVEMENTS = [
-  "Recognized for outstanding analytical and troubleshooting ability in IT support role.",
-  "Finalist in GDG Frontend Hackathon for innovative design and technical implementation.",
-  "Developed ShareMeal during GNEC Hackathon 2025 (UN-Affiliated/NGO category), promoting food sharing and sustainability.",
-  "Built an AI-powered Rewriter Tool for Google Chrome Built-in AI Challenge 2025, enhancing content generation through generative AI.",
+const SKILL_GROUPS = [
+  {
+    label: "Languages",
+    icon: Code2,
+    items: ["Python", "TypeScript", "JavaScript", "Java", "C#", "C++", "SQL", "R"],
+  },
+  {
+    label: "AI / ML",
+    icon: BrainCircuit,
+    items: ["LangGraph", "LangChain", "RAG", "LLM evaluation", "scikit-learn", "Random Forest", "XGBoost", "Computer Vision"],
+  },
+  {
+    label: "Full Stack",
+    icon: Terminal,
+    items: ["React", "Next.js", "FastAPI", "Node.js", "REST APIs", "Tailwind", "Spring Boot", ".NET"],
+  },
+  {
+    label: "Cloud / Data",
+    icon: Cloud,
+    items: ["AWS", "Azure", "Google Cloud", "Docker", "PostgreSQL", "MongoDB", "Firebase", "Supabase"],
+  },
+  {
+    label: "Geo / Enterprise",
+    icon: Server,
+    items: ["GIS", "QGIS", "Remote Sensing", "LiDAR", "Leaflet", "IBM Z", "z/OS", "Linux"],
+  },
+  {
+    label: "Ways of Working",
+    icon: Users,
+    items: ["System Design", "Agile", "Git/GitHub", "Technical Leadership", "Product Thinking", "Public Speaking", "Mentoring", "Consulting Mindset"],
+  },
 ];
 
-/* ---------------- Particles ---------------- */
-const particlesOptions = {
-  fullScreen: { enable: false },
-  background: { color: "transparent" },
-  fpsLimit: 60,
-  particles: {
-    number: { value: 40, density: { enable: true, area: 800 } },
-    color: { value: "#06b6d4" },
-    links: {
-      enable: true,
-      distance: 150,
-      color: "#06b6d4",
-      opacity: 0.3,
-      width: 1,
-    },
-    move: { enable: true, speed: 1, outModes: { default: "bounce" } },
-    opacity: { value: 0.3 },
-    shape: { type: "circle" },
-    size: { value: { min: 1, max: 3 } },
+const WINS = [
+  {
+    title: "Most Impactful Event",
+    org: "TMU Tech Week 2026 • IBM Z Mini-Hackathon",
+    detail: "Recognized for leading and organizing a 100+ participant enterprise-tech hackathon.",
+    icon: Trophy,
   },
-  interactivity: {
-    events: { onHover: { enable: true, mode: "repulse" }, resize: true },
-    modes: { repulse: { distance: 100 } },
+  {
+    title: "Top 5 Overall • Top 2 Best Use of Gemini",
+    org: "Sheridan Datathon 2025 • CareerLift AI",
+    detail: "Built and delivered a complete AI product under hackathon constraints.",
+    icon: Award,
   },
-};
+  {
+    title: "Superstar Tier • 115+ points",
+    org: "IBM Z Student Ambassador Program",
+    detail: "Reached the highest ambassador performance tier across the global program structure.",
+    icon: BadgeCheck,
+  },
+  {
+    title: "Honor Roll",
+    org: "Sheridan College • 2023 & 2024",
+    detail: "Academic recognition while completing the Honours BCS in Cloud Computing.",
+    icon: GraduationCap,
+  },
+];
 
-export default function Portfolio() {
+const CREDENTIALS = [
+  "IBM Z & LinuxONE Community Advocate — Level 2",
+  "IBM Z & LinuxONE Community Contributor — Level 1",
+  "IBM Z Xplore — Advanced",
+  "Artificial Intelligence — Foundations 2024",
+  "AI — Artificial Intelligence and Modern Business",
+  "IBM Dev Day: AI Demystified",
+  "Google Cloud Innovator",
+  "Machine Learning with Python",
+  "Foundations of Cybersecurity",
+  "Introduction to DevOps",
+];
+
+const LEADERSHIP = [
+  {
+    title: "President • IBM Z Sheridan",
+    description:
+      "Lead a student organization focused on enterprise computing education, technical workshops, career readiness and collaboration with IBM professionals, faculty and student leaders.",
+    metric: "Enterprise tech + campus leadership",
+  },
+  {
+    title: "Founder • UNSA Sheridan",
+    description:
+      "Founded Sheridan’s United Nations Student Association, grew the community from 0 to 25+ members in the first week, and continue as a technical/events lead focused on SDGs, community outreach and partnerships.",
+    metric: "0 → 25+ members in week one",
+  },
+  {
+    title: "Human Appeal • Volunteer Team Leader",
+    description:
+      "Led and coordinated volunteers during a 3-day humanitarian fundraising campaign supporting orphans and families; personally raised $5K+ and supported campaign execution at scale.",
+    metric: "$5K+ personally raised",
+  },
+  {
+    title: "Public-Sector Experience",
+    description:
+      "Internship experience supporting research, constituent outreach, communications and event operations in a fast-paced Canadian federal office environment.",
+    metric: "Policy + stakeholder exposure",
+  },
+];
+
+const STATS = [
+  ["52+", "Projects in portfolio"],
+  ["15+", "Hackathons led / built"],
+  ["1 of 3", "Selected from 550+"],
+  ["100+", "IBM Z hackathon sign-ups"],
+];
+
+const cn = (...parts) => parts.filter(Boolean).join(" ");
+
+function Reveal({ children, delay = 0, className = "" }) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function SectionHeading({ eyebrow, title, description }) {
+  return (
+    <Reveal className="section-heading">
+      <div className="eyebrow"><Sparkles size={14} /> {eyebrow}</div>
+      <h2>{title}</h2>
+      {description && <p>{description}</p>}
+    </Reveal>
+  );
+}
+
+function GlowButton({ href, children, secondary = false, external = false }) {
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className={cn("button", secondary && "button-secondary")}
+    >
+      {children}
+    </a>
+  );
+}
+
+function SocialLink({ href, label, children }) {
+  return (
+    <a href={href} aria-label={label} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="social-link">
+      {children}
+    </a>
+  );
+}
+
+function AppBackdrop() {
+  return (
+    <div className="site-backdrop" aria-hidden="true">
+      <div className="digital-field" />
+      <div className="aurora aurora-one" />
+      <div className="aurora aurora-two" />
+      <div className="aurora aurora-three" />
+      <div className="grid-plane" />
+      <div className="particle-specks" />
+      <div className="particle-specks particle-specks-two" />
+      <div className="cursor-aura" />
+    </div>
+  );
+}
+
+function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+
   useEffect(() => {
-    const onClick = (e) => {
-      const a = e.target.closest && e.target.closest('a[href^="#"]');
-      if (!a) return;
-      const id = a.getAttribute("href");
-      if (!id || id === "#") return;
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    const timer = setInterval(() => setRoleIndex((x) => (x + 1) % ROTATING_ROLES.length), 2200);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <div
-      className="min-h-screen bg-background text-foreground antialiased relative"
-      style={{
-        backgroundImage:
-          "url('/images/9a05921b-e911-47c3-8e27-fc24776cbc99.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Dark overlay for readability across the whole site */}
-      <div className="absolute inset-0 bg-black/45 -z-10" />
+    <section id="home" className="hero section-shell">
+      <div className="hero-copy">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="availability-pill"
+        >
+          <span className="status-dot" /> Open to SWE • AI/ML • Cloud • Tech Consulting
+        </motion.div>
 
-      {/* Floating particles */}
-      <Particles
-        id="tsparticles"
-        className="pointer-events-none absolute inset-0 -z-20"
-        options={particlesOptions}
-        init={async (engine) => {
-          await loadFull(engine);
-        }}
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="hero-kicker">
+          COMPUTER SCIENCE • CLOUD COMPUTING • SHERIDAN COLLEGE
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.12 }}
+        >
+          I build <span className="text-glow">production-minded tech</span> that connects AI, software and real-world impact.
+        </motion.h1>
+
+        <div className="role-line" aria-live="polite">
+          <span>Focused on</span>
+          <AnimatePresence mode="wait">
+            <motion.strong
+              key={ROTATING_ROLES[roleIndex]}
+              initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+              transition={{ duration: 0.28 }}
+            >
+              {ROTATING_ROLES[roleIndex]}
+            </motion.strong>
+          </AnimatePresence>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.24 }}
+          className="hero-summary"
+        >
+          I’m Asma Ahmed — a software engineer, applied AI builder and cloud-computing student. I currently work across environmental GIS/AI at the Ontario Government, applied AI research at Cominfo, and product engineering through LegalAssist, while leading enterprise-tech and entrepreneurship communities.
+        </motion.p>
+
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.34 }} className="hero-actions">
+          <GlowButton href="#projects">
+            Explore my work <ArrowRight size={17} />
+          </GlowButton>
+          <GlowButton href={LINKS.github} secondary external>
+            <Github size={17} /> GitHub
+          </GlowButton>
+          <GlowButton href={LINKS.linkedin} secondary external>
+            <Linkedin size={17} /> LinkedIn
+          </GlowButton>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="hero-mini-meta">
+          <span><MapPin size={15} /> Greater Toronto Area</span>
+          <span><GraduationCap size={15} /> Honours BCS • Expected Apr 2027</span>
+          <span><BadgeCheck size={15} /> Honor Roll 2023 & 2024</span>
+        </motion.div>
+      </div>
+
+      <motion.div
+        className="hero-visual"
+        initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 0.8, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="orbit orbit-one" />
+        <div className="orbit orbit-two" />
+        <div className="portrait-shell">
+          <div className="portrait-light" />
+          <img src="/images/model.png" alt="Asma Ahmed" className="portrait" />
+          <div className="portrait-gradient" />
+          <div className="portrait-caption">
+            <span className="caption-label">Asma Ahmed</span>
+            <strong>Software • AI • Cloud</strong>
+          </div>
+        </div>
+        <motion.div className="float-card float-card-a" animate={{ y: [0, -10, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}>
+          <BrainCircuit size={18} /> Applied AI
+        </motion.div>
+        <motion.div className="float-card float-card-b" animate={{ y: [0, 9, 0] }} transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}>
+          <Cloud size={18} /> Cloud Systems
+        </motion.div>
+        <motion.div className="float-card float-card-c" animate={{ y: [0, -8, 0] }} transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut" }}>
+          <Globe2 size={18} /> Geospatial AI
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+function SignalStrip() {
+  return (
+    <section className="signal-strip section-shell" aria-label="Portfolio highlights">
+      {STATS.map(([value, label], index) => (
+        <Reveal key={label} delay={index * 0.05}>
+          <div className="stat-card">
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </div>
+        </Reveal>
+      ))}
+    </section>
+  );
+}
+
+function FeaturedProjects() {
+  return (
+    <section id="projects" className="content-section section-shell">
+      <SectionHeading
+        eyebrow="Selected work"
+        title="Projects that show how I think, build and ship."
+        description="Recruiter-first selection: strong software engineering, AI systems, cloud, geospatial intelligence and product thinking — followed by a searchable project vault with the rest of my work."
       />
 
-      {/* Header / Nav */}
-      <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <a href="#home" className="flex items-center gap-2 font-semibold">
-            <div className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">
-              AA
-            </div>
-            <span className="hidden sm:inline">{NAME}</span>
-          </a>
-          <nav className="hidden gap-6 md:flex">
-            {[
-              { href: "#home", label: "Home" },
-              { href: "#skills", label: "Skills" },
-              { href: "#projects", label: "Projects" },
-              { href: "#experience", label: "Experience" },
-              { href: "#education", label: "Education" },
-              { href: "#achievements", label: "Achievements" },
-            ].map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2">
-            <a
-              aria-label="GitHub"
-              href={LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 hover:bg-muted"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              aria-label="LinkedIn"
-              href={LINKS.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 hover:bg-muted"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              aria-label="Email"
-              href={LINKS.email}
-              className="rounded-md p-2 hover:bg-muted"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-            <a
-              aria-label="Instagram"
-              href= "https://www.instagram.com/asma.a15__/"
+      <div className="featured-grid">
+        {FEATURED_PROJECTS.map((project, index) => {
+          const Icon = project.icon;
+          return (
+            <Reveal key={project.title} delay={(index % 4) * 0.04}>
+              <motion.article whileHover={{ y: -8 }} transition={{ type: "spring", stiffness: 260, damping: 22 }} className="project-card glass-card">
+                <div className="project-topline">
+                  <div className="project-icon"><Icon size={21} /></div>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <p className="project-kicker">{project.kicker}</p>
+                <h3>{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="tag-row">
+                  {project.stack.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+                <div className="project-links">
+                  {project.code && (
+                    <a href={project.code} target="_blank" rel="noreferrer"><Github size={16} /> Code <ArrowUpRight size={14} /></a>
+                  )}
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noreferrer"><ExternalLink size={16} /> Demo <ArrowUpRight size={14} /></a>
+                  )}
+                  {!project.code && !project.demo && (
+                    <a href={LINKS.github} target="_blank" rel="noreferrer"><Github size={16} /> Explore GitHub <ArrowUpRight size={14} /></a>
+                  )}
+                </div>
+              </motion.article>
+            </Reveal>
+          );
+        })}
+      </div>
 
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md p-2 hover:bg-muted"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-          </div>
+      <ProjectVault />
+    </section>
+  );
+}
+
+function ProjectVault() {
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState("All");
+  const [showAll, setShowAll] = useState(false);
+  const categories = ["All", "AI / ML", "Geo / Climate", "Full Stack", "Cloud", "Health Tech", "Interactive"];
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return PROJECT_VAULT.filter((p) => {
+      const matchesFilter = filter === "All" || p.category === filter;
+      const matchesQuery = !q || `${p.title} ${p.description} ${p.category}`.toLowerCase().includes(q);
+      return matchesFilter && matchesQuery;
+    });
+  }, [query, filter]);
+
+  const visible = showAll || query || filter !== "All" ? filtered : filtered.slice(0, 12);
+
+  return (
+    <div className="vault glass-card">
+      <div className="vault-heading">
+        <div>
+          <p className="mini-eyebrow">Project vault</p>
+          <h3>52+ builds, prototypes, hackathon projects and coursework.</h3>
+          <p>Search by project name or browse by area. Original portfolio projects are retained here too.</p>
         </div>
-      </header>
+        <div className="vault-count">{filtered.length}<span>matching</span></div>
+      </div>
 
-      {/* Hero */}
-      <section id="home" className="relative overflow-hidden pb-20 pt-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <FadeIn>
-            <p className="text-sm uppercase tracking-widest text-primary/80">
-              Portfolio
-            </p>
-            <h1 className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">
-              {NAME}
-            </h1>
-            <p className="mt-3 text-lg text-muted-foreground">{TAGLINE}</p>
-            <p className="mt-5 max-w-3xl text-balance text-muted-foreground">
-              {INTRO}
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild className="gap-2">
-                <a href={LINKS.resumeUrl} download="Asma_Ahmed_Resume.pdf">
-                  <Download className="h-4 w-4" /> Resume
-                </a>
-              </Button>
-              <Button variant="outline" asChild className="gap-2">
-                <a href={LINKS.resumeUrl} target="_blank" rel="noreferrer">
-                  <ExternalLink className="h-4 w-4" /> View PDF
-                </a>
-              </Button>
-              <Button variant="secondary" asChild className="gap-2">
-                <a href="#projects">
-                  View Projects <ArrowRight className="h-4 w-4" />
-                </a>
-              </Button>
-            </div>
-          </FadeIn>
+      <div className="vault-tools">
+        <label className="search-box">
+          <Search size={17} />
+          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search projects…" />
+        </label>
+        <div className="filter-row">
+          {categories.map((category) => (
+            <button key={category} className={cn("filter-chip", filter === category && "active")} onClick={() => setFilter(category)}>
+              {category}
+            </button>
+          ))}
         </div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-primary/10 to-transparent" />
-      </section>
+      </div>
 
-      {/* Skills */}
-      <Section
-        id="skills"
-        title="Skills & Technologies"
-        subtitle="A snapshot of tools I use regularly."
-      >
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {SKILLS.map((s, i) => (
-            <FadeIn key={s} delay={i * 0.02}>
-              <div className="group rounded-xl border bg-card p-4 text-center shadow-sm transition hover:shadow">
-                <span className="text-sm font-medium">{s}</span>
+      <motion.div layout className="vault-grid">
+        <AnimatePresence mode="popLayout">
+          {visible.map((project) => (
+            <motion.article
+              layout
+              key={project.title}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="vault-item"
+            >
+              <div>
+                <span className="vault-category">{project.category}</span>
+                <h4>{project.title}</h4>
+                <p>{project.description}</p>
               </div>
-            </FadeIn>
+              <div className="vault-links">
+                {project.code && <a href={project.code} target="_blank" rel="noreferrer" aria-label={`${project.title} source code`}><Github size={16} /></a>}
+                {project.demo && <a href={project.demo} target="_blank" rel="noreferrer" aria-label={`${project.title} demo`}><ExternalLink size={16} /></a>}
+              </div>
+            </motion.article>
           ))}
-        </div>
-      </Section>
+        </AnimatePresence>
+      </motion.div>
 
-      {/* Projects */}
-      <Section
-        id="projects"
-        title="Projects"
-        subtitle="Selected work and experiments."
-      >
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {PROJECTS.map((p, i) => (
-            <FadeIn key={p.title} delay={i * 0.04}>
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <span>{p.title}</span>
-                    <span className="text-xs font-normal text-muted-foreground">
-                      {p.stack.join(" · ")}
-                    </span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{p.blurb}</p>
-                  <div className="mt-4 flex gap-2">
-                    <Button size="sm" variant="secondary" asChild>
-                      <a
-                        href={p.links.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1"
-                      >
-                        <ExternalLink className="h-3.5 w-3.5" /> Demo
-                      </a>
-                    </Button>
-                    <Button size="sm" variant="outline" asChild>
-                      <a
-                        href={p.links.code}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1"
-                      >
-                        <Github className="h-3.5 w-3.5" /> Code
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-      </Section>
+      {!query && filter === "All" && filtered.length > 12 && (
+        <button className="vault-more" onClick={() => setShowAll((x) => !x)}>
+          {showAll ? "Show fewer projects" : `Show all ${filtered.length} projects`} <ChevronRight size={16} className={showAll ? "rotate-90" : ""} />
+        </button>
+      )}
+    </div>
+  );
+}
 
-      {/* Experience */}
-      <Section
-        id="experience"
-        title="Relevant Experience"
-        subtitle="Highlights from roles and internships."
-      >
-        <div className="relative mx-auto max-w-3xl">
-          <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-border md:block" />
-          <ul className="space-y-8">
-            {EXPERIENCE.map((e, i) => (
-              <FadeIn key={e.role} delay={i * 0.05}>
-                <li className="relative md:pl-10">
-                  <div className="hidden md:block absolute left-[14px] top-1 h-3 w-3 rounded-full bg-primary" />
-                  <div className="rounded-xl border bg-card p-5 shadow-sm">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="text-base font-semibold">
-                        {e.role}{" "}
-                        <span className="text-muted-foreground font-normal">
-                          • {e.org}
-                        </span>
-                      </h3>
-                      <span className="text-sm text-muted-foreground">
-                        {e.when}
-                      </span>
+function Experience() {
+  return (
+    <section id="experience" className="content-section section-shell">
+      <SectionHeading
+        eyebrow="Experience"
+        title="I’m already working across software, AI, government data and enterprise tech."
+        description="The thread across my roles is consistent: translate ambiguity into useful systems, communicate clearly, and ship work that people can actually use."
+      />
+      <div className="timeline">
+        <div className="timeline-line" />
+        {EXPERIENCE.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <Reveal key={`${item.role}-${item.org}`} delay={index * 0.04}>
+              <article className="timeline-item">
+                <div className="timeline-node"><Icon size={18} /></div>
+                <div className="experience-card glass-card">
+                  <div className="experience-head">
+                    <div>
+                      <p>{item.org}</p>
+                      <h3>{item.role}</h3>
                     </div>
-                    <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-                      {e.bullets.map((b) => (
-                        <li key={b}>{b}</li>
-                      ))}
-                    </ul>
+                    <div className="experience-meta">
+                      <span>{item.when}</span>
+                      <span>{item.meta}</span>
+                    </div>
                   </div>
-                </li>
-              </FadeIn>
-            ))}
-          </ul>
+                  <ul>
+                    {item.bullets.map((bullet) => <li key={bullet}><CheckCircle2 size={15} /> <span>{bullet}</span></li>)}
+                  </ul>
+                  <div className="tag-row compact">
+                    {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
+      </div>
+
+      <Reveal>
+        <div className="legacy-experience glass-card">
+          <BriefcaseBusiness size={20} />
+          <div>
+            <strong>Earlier experience retained from the original portfolio</strong>
+            <p>IT Assistant / Helpdesk at Niagara College — resolved high-volume hardware/software/account issues, supported installations and updates, diagnosed connectivity problems, and collaborated with technical teams on recurring support workflows.</p>
+          </div>
         </div>
-      </Section>
+      </Reveal>
+    </section>
+  );
+}
 
-      {/* Education */}
-      <Section
-        id="education"
-        title="Education"
-        subtitle="Academic background and coursework."
-      >
-        {EDUCATION.map((ed) => (
-          <FadeIn key={ed.school}>
-            <div className="rounded-xl border bg-card p-6 shadow-sm">
-              <h3 className="text-lg font-semibold">{ed.school}</h3>
-              <p className="text-sm text-muted-foreground mt-1">
-                {ed.degree}
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">{ed.gpa}</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                Clubs: {ed.clubs}
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                Relevant Coursework: {ed.coursework}
-              </p>
+function Skills() {
+  const marquee = ["Python", "React", "Next.js", "FastAPI", "LangGraph", "RAG", "PostgreSQL", "Docker", "AWS", "Azure", "GIS", "IBM Z", "System Design"];
+  return (
+    <section id="skills" className="content-section section-shell">
+      <SectionHeading
+        eyebrow="Technical toolkit"
+        title="Breadth for consulting. Depth for engineering."
+        description="I’m strongest when a problem crosses boundaries — backend + frontend, AI + product, data + users, or technical systems + stakeholder communication."
+      />
+
+      <div className="marquee-shell" aria-hidden="true">
+        <div className="marquee-track">
+          {[...marquee, ...marquee].map((item, i) => <span key={`${item}-${i}`}>{item}<span>✦</span></span>)}
+        </div>
+      </div>
+
+      <div className="skill-grid">
+        {SKILL_GROUPS.map((group, index) => {
+          const Icon = group.icon;
+          return (
+            <Reveal key={group.label} delay={index * 0.04}>
+              <motion.article className="skill-card glass-card" whileHover={{ y: -5 }}>
+                <div className="skill-icon"><Icon size={20} /></div>
+                <h3>{group.label}</h3>
+                <div className="skill-list">
+                  {group.items.map((item) => <span key={item}>{item}</span>)}
+                </div>
+              </motion.article>
+            </Reveal>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Wins() {
+  return (
+    <section id="wins" className="content-section section-shell">
+      <SectionHeading
+        eyebrow="Recognition"
+        title="A few signals that I execute under pressure."
+        description="Hackathons, academic recognition, enterprise-tech leadership and current credentials — presented as proof points, not decoration."
+      />
+      <div className="wins-grid">
+        {WINS.map((win, index) => {
+          const Icon = win.icon;
+          return (
+            <Reveal key={win.title} delay={index * 0.05}>
+              <motion.article whileHover={{ scale: 1.015 }} className="win-card glass-card">
+                <div className="win-icon"><Icon size={23} /></div>
+                <h3>{win.title}</h3>
+                <p className="win-org">{win.org}</p>
+                <p>{win.detail}</p>
+              </motion.article>
+            </Reveal>
+          );
+        })}
+      </div>
+      <Reveal>
+        <div className="credentials glass-card">
+          <div className="credentials-head">
+            <div>
+              <p className="mini-eyebrow">Selected credentials</p>
+              <h3>Enterprise, AI, cloud and security upskilling</h3>
             </div>
-          </FadeIn>
-        ))}
-      </Section>
+            <BadgeCheck size={28} />
+          </div>
+          <div className="credential-cloud">
+            {CREDENTIALS.map((credential) => <span key={credential}><CheckCircle2 size={14} /> {credential}</span>)}
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
 
-      {/* Achievements (boxed) */}
-      <Section
-        id="achievements"
-        title="Achievements"
-        subtitle="Recognition & hackathons."
-      >
-        <div className="grid gap-4 max-w-3xl">
-          {ACHIEVEMENTS.map((item, i) => (
-            <FadeIn key={i} delay={i * 0.05}>
-              <div className="rounded-xl border bg-card p-5 shadow-sm">
-                <p className="text-sm text-muted-foreground">{item}</p>
-              </div>
-            </FadeIn>
+function Leadership() {
+  return (
+    <section id="leadership" className="content-section section-shell">
+      <SectionHeading
+        eyebrow="Leadership + impact"
+        title="I like building teams and communities as much as products."
+        description="This is where my consulting side shows up: stakeholder alignment, communication, events, mentoring, partnerships, service and turning ideas into organized execution."
+      />
+      <div className="leadership-layout">
+        <div className="leadership-grid">
+          {LEADERSHIP.map((item, index) => (
+            <Reveal key={item.title} delay={index * 0.04}>
+              <article className="leadership-card glass-card">
+                <HeartHandshake size={20} />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <span>{item.metric}</span>
+              </article>
+            </Reveal>
           ))}
         </div>
-      </Section>
 
-      {/* Footer */}
-      <footer className="border-t py-10">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} {NAME}. All rights reserved.
-            </p>
-            <div className="flex items-center gap-2">
-              <Button asChild variant="ghost" size="sm">
-                <a
-                  href={LINKS.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gap-2 inline-flex items-center"
-                >
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </a>
-              </Button>
-              <Button asChild variant="ghost" size="sm">
-                <a
-                  href={LINKS.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gap-2 inline-flex items-center"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button asChild variant="ghost" size="sm">
-                <a
-                  href={LINKS.email}
-                  className="gap-2 inline-flex items-center"
-                >
-                  <Mail className="h-4 w-4" />
-                  Email
-                </a>
-              </Button>
-              <Button asChild variant="ghost" size="sm">
-                <a
-                  href= "https://www.instagram.com/asma.a15__/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gap-2 inline-flex items-center"
-                >
-                  <Instagram className="h-4 w-4" />
-                  Instagram
-                </a>
-              </Button>
+        <Reveal>
+          <aside className="education-card glass-card">
+            <div className="education-icon"><GraduationCap size={25} /></div>
+            <p className="mini-eyebrow">Education</p>
+            <h3>Sheridan College</h3>
+            <strong>Honours Bachelor of Computer Science • Cloud Computing</strong>
+            <p>2023 — Expected April 2027</p>
+            <div className="education-badges">
+              <span>Honor Roll 2023</span>
+              <span>Honor Roll 2024</span>
+            </div>
+            <div className="education-divider" />
+            <p className="education-copy">Relevant study spans data structures & algorithms, AI/ML, cloud systems, databases, software engineering, networking and enterprise computing.</p>
+          </aside>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="contact-section section-shell">
+      <Reveal>
+        <div className="contact-panel">
+          <div className="contact-orb" />
+          <div className="contact-copy">
+            <p className="mini-eyebrow">Let’s build something useful</p>
+            <h2>Looking for a software engineer who can also speak product, AI and stakeholders?</h2>
+            <p>I’m interested in software engineering internships and early-career tech roles, especially where AI, cloud, enterprise systems, public-sector technology or technology consulting intersect.</p>
+            <div className="contact-actions">
+              <GlowButton href={LINKS.email}><Mail size={17} /> Email me</GlowButton>
+              <GlowButton href={LINKS.linkedin} secondary external><Linkedin size={17} /> Connect on LinkedIn</GlowButton>
+              <GlowButton href={LINKS.github} secondary external><Github size={17} /> Review GitHub</GlowButton>
             </div>
           </div>
+          <div className="contact-terminal" aria-hidden="true">
+            <div className="terminal-top"><span /><span /><span /></div>
+            <code>
+              <span className="term-purple">const</span> candidate = {'{'}<br />
+              &nbsp;&nbsp;name: <span className="term-green">"Asma Ahmed"</span>,<br />
+              &nbsp;&nbsp;focus: [<span className="term-green">"SWE"</span>, <span className="term-green">"AI"</span>, <span className="term-green">"Cloud"</span>],<br />
+              &nbsp;&nbsp;ships: <span className="term-purple">true</span>,<br />
+              &nbsp;&nbsp;curious: <span className="term-purple">true</span><br />
+              {'}'};
+            </code>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+function Header() {
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="site-header">
+      <div className="nav-shell">
+        <a href="#home" className="brand" onClick={() => setOpen(false)}>
+          <span>AA</span>
+          <div><strong>Asma Ahmed</strong><small>Software • AI • Cloud</small></div>
+        </a>
+        <nav className="desktop-nav">
+          {NAV.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
+        </nav>
+        <div className="nav-socials">
+          <SocialLink href={LINKS.github} label="GitHub"><Github size={17} /></SocialLink>
+          <SocialLink href={LINKS.linkedin} label="LinkedIn"><Linkedin size={17} /></SocialLink>
+          <SocialLink href={LINKS.email} label="Email"><Mail size={17} /></SocialLink>
+          <button className="menu-button" onClick={() => setOpen((x) => !x)} aria-label="Toggle navigation">
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+      <AnimatePresence>
+        {open && (
+          <motion.nav initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="mobile-nav">
+            {NAV.map(([href, label]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={16} /></a>)}
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
+
+export default function Portfolio() {
+  useEffect(() => {
+    const root = document.documentElement;
+    const onMove = (event) => {
+      root.style.setProperty("--mouse-x", `${event.clientX}px`);
+      root.style.setProperty("--mouse-y", `${event.clientY}px`);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+
+  return (
+    <div className="portfolio-shell">
+      <AppBackdrop />
+      <Header />
+      <main>
+        <Hero />
+        <SignalStrip />
+        <FeaturedProjects />
+        <Experience />
+        <Skills />
+        <Wins />
+        <Leadership />
+        <Contact />
+      </main>
+      <footer className="site-footer section-shell">
+        <p>© {new Date().getFullYear()} {NAME}. Built with React, motion and a lot of purple glow.</p>
+        <div>
+          <SocialLink href={LINKS.github} label="GitHub"><Github size={17} /></SocialLink>
+          <SocialLink href={LINKS.linkedin} label="LinkedIn"><Linkedin size={17} /></SocialLink>
+          <SocialLink href={LINKS.email} label="Email"><Mail size={17} /></SocialLink>
+          <SocialLink href={LINKS.instagram} label="Instagram"><Instagram size={17} /></SocialLink>
         </div>
       </footer>
     </div>
