@@ -444,7 +444,7 @@ function Hero() {
           transition={{ duration: 0.55, delay: 0.24 }}
           className="hero-summary"
         >
-          I’m Asma Ahmed — a software engineer, applied AI builder and cloud-computing student. I currently work across environmental GIS/AI at the Ontario Government, applied AI research at Cominfo, and product engineering through LegalAssist, while leading enterprise-tech and entrepreneurship communities.
+          I’m Asma Ahmed Syrotkin — a software engineer, applied AI builder and cloud-computing student. I currently work across environmental GIS/AI at the Ontario Government, applied AI research at Cominfo, and product engineering through LegalAssist, while leading enterprise-tech and entrepreneurship communities.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.34 }} className="hero-actions">
@@ -476,7 +476,7 @@ function Hero() {
         <div className="orbit orbit-two" />
         <div className="portrait-shell">
           <div className="portrait-light" />
-          <img src="/images/profile-new.png" alt="Asma Ahmed" className="portrait" />
+          <img src="/images/profile-new.png" alt="Asma Ahmed Syrotkin" className="portrait" />
           <div className="portrait-gradient" />
           <div className="portrait-caption">
             <span className="caption-label">Asma Ahmed</span>
@@ -827,7 +827,7 @@ function Contact() {
             <div className="terminal-top"><span /><span /><span /></div>
             <code>
               <span className="term-purple">const</span> candidate = {'{'}<br />
-              &nbsp;&nbsp;name: <span className="term-green">"Asma Ahmed"</span>,<br />
+              &nbsp;&nbsp;name: <span className="term-green">"Asma Ahmed Syrotkin"</span>,<br />
               &nbsp;&nbsp;focus: [<span className="term-green">"SWE"</span>, <span className="term-green">"AI"</span>, <span className="term-green">"Cloud"</span>],<br />
               &nbsp;&nbsp;ships: <span className="term-purple">true</span>,<br />
               &nbsp;&nbsp;curious: <span className="term-purple">true</span><br />
@@ -847,7 +847,7 @@ function Header() {
       <div className="nav-shell">
         <a href="#home" className="brand" onClick={() => setOpen(false)}>
           <span>AA</span>
-          <div><strong>Asma Ahmed</strong><small>Software • AI • Cloud</small></div>
+          <div><strong>Asma Ahmed Syrotkin</strong><small>Software • AI • Cloud</small></div>
         </a>
         <nav className="desktop-nav">
           {NAV.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
