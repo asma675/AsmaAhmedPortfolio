@@ -35,7 +35,7 @@ import {
 } from "lucide-react";
 import { PROJECT_VAULT } from "./projectData";
 
-const NAME = "Asma Ahmed";
+const NAME = "Asma Ahmed Syrotkin";
 
 const LINKS = {
   github: "https://github.com/asma675",
