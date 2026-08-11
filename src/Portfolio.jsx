@@ -476,7 +476,7 @@ function Hero() {
         <div className="orbit orbit-two" />
         <div className="portrait-shell">
           <div className="portrait-light" />
-          <img src="/images/model.png" alt="Asma Ahmed" className="portrait" />
+          <img src="/images/profile-new.png" alt="Asma Ahmed" className="portrait" />
           <div className="portrait-gradient" />
           <div className="portrait-caption">
             <span className="caption-label">Asma Ahmed</span>
