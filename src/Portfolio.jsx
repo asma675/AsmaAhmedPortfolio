@@ -52,6 +52,7 @@ const NAV = [
   ["#experience", "Experience"],
   ["#skills", "Skills"],
   ["#wins", "Wins"],
+  ["#certificates", "Certificates"],
   ["#leadership", "Leadership"],
   ["#contact", "Contact"],
 ];
@@ -271,9 +272,31 @@ const SKILL_GROUPS = [
 
 const WINS = [
   {
+    title: "2nd Place • IBM Bobathon 2026",
+    org: "IBM • Bobathon",
+    detail:
+      "Placed 2nd in IBM Bobathon 2026 for an AI build, demonstrating rapid prototyping, product thinking and technical delivery under competition constraints.",
+    icon: Trophy,
+  },
+  {
+    title: "MLH Stream Winner • ElevenLabs Track",
+    org: "DeerHacks 2026 • Major League Hacking",
+    detail:
+      "Won the ElevenLabs track for JEE — Just Enough Emotions, an AI communication coach using voice AI for realistic, tone-aware conversation practice built and pitched within 36 hours.",
+    icon: Trophy,
+  },
+  {
+    title: "2nd Place • Shark Tank Sprint",
+    org: "Sheridan Finance Club • Apr 2026",
+    detail:
+      "Placed 2nd overall after developing and pitching an AI-powered sustainability platform focused on upcycling donated goods, reducing fast-fashion waste and supporting UN SDG 12.",
+    icon: Award,
+  },
+  {
     title: "Most Impactful Event",
     org: "TMU Tech Week 2026 • IBM Z Mini-Hackathon",
-    detail: "Recognized for leading and organizing a 100+ participant enterprise-tech hackathon.",
+    detail:
+      "Recognized for leading and organizing a 100+ participant enterprise-tech hackathon focused on hands-on innovation and IBM Z.",
     icon: Trophy,
   },
   {
@@ -281,6 +304,13 @@ const WINS = [
     org: "Sheridan Datathon 2025 • CareerLift AI",
     detail: "Built and delivered a complete AI product under hackathon constraints.",
     icon: Award,
+  },
+  {
+    title: "IBM Z × UNSA Hackathon 2026",
+    org: "IBM Z • UNSA Sheridan",
+    detail:
+      "Helped organize and deliver a student-focused enterprise technology hackathon connecting participants with IBM leaders, technical mentors and hands-on problem solving.",
+    icon: Users,
   },
   {
     title: "Superstar Tier • 115+ points",
@@ -296,20 +326,233 @@ const WINS = [
   },
 ];
 
-const CREDENTIALS = [
-  "IBM Z & LinuxONE Community Advocate — Level 2",
-  "IBM Z & LinuxONE Community Contributor — Level 1",
-  "IBM Z Xplore — Advanced",
-  "Artificial Intelligence — Foundations 2024",
-  "AI — Artificial Intelligence and Modern Business",
-  "IBM Dev Day: AI Demystified",
-  "Google Cloud Innovator",
-  "Machine Learning with Python",
-  "Foundations of Cybersecurity",
-  "Introduction to DevOps",
+const ADDITIONAL_RECOGNITION = [
+  "2nd Place • Tier 1 Basketball • Winter 2026",
+  "Sheridan Degree Entrance Scholarship • 2023",
+  "Dean’s Honors List • Humber College",
+  "Honors Roll • Niagara College • 2019",
+  "Rotary Club of St. Catharines Scholarship • 2018",
+  "2nd Highest Average • Grade 12 Mathematics",
+  "Highest Average • Grade 12 Biology",
+  "Highest Average • Grade 12 Chemistry",
+];
+
+const CERTIFICATES = [
+  {
+    title: "Artificial Intelligence - Foundations 2024",
+    issuer: "Interskill Learning",
+    issued: "Aug 2026",
+    category: "AI / ML",
+    credential: "https://interskill.com/badge/artificial-intelligence-foundations-2024/",
+  },
+  {
+    title: "AI - Artificial Intelligence and Modern Business",
+    issuer: "Interskill Learning",
+    issued: "Aug 2026",
+    category: "AI / ML",
+  },
+  {
+    title: "IBM Z and LinuxONE Community Advocate - 2026 (Level 2)",
+    issuer: "IBM",
+    issued: "Jan 2026",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/37139816-5950-4a08-8125-caef305a67e1/linked_in_profile",
+  },
+  {
+    title: "IBM Z and LinuxONE Community Contributor - 2026 (Level 1)",
+    issuer: "IBM",
+    issued: "Jan 2026",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/5f25b0ea-5a66-41fa-b0e0-81c816029f14/linked_in_profile",
+  },
+  {
+    title: "IBM Z Xplore - Advanced",
+    issuer: "IBM",
+    issued: "Jan 2026",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/8bd5cecc-02ab-4188-9265-a214a5adec23",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/979103836/treasury/",
+  },
+  {
+    title: "IBM Dev Day: AI Demystified",
+    issuer: "IBM",
+    issued: "Feb 2026",
+    category: "AI / ML",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/483076028/treasury/",
+  },
+  {
+    title: "Google Cloud Innovator",
+    issuer: "Google Developers Group",
+    issued: "Nov 2025",
+    category: "Cloud / DevOps",
+    credential: "https://lnkd.in/e7TMd7jH",
+  },
+  {
+    title: "Foundations of User Experience (UX) Design",
+    issuer: "Google",
+    issued: "Dec 2025",
+    category: "UX / Product",
+    grade: "96.72%",
+    credential: "https://www.coursera.org/account/accomplishments/records/U9PSVNWMESZH",
+  },
+  {
+    title: "Generative AI: Introduction and Applications",
+    issuer: "IBM",
+    issued: "Dec 2025",
+    category: "AI / ML",
+    grade: "97.50%",
+    credential: "https://www.coursera.org/account/accomplishments/records/53POW3FZO598",
+  },
+  {
+    title: "Develop Generative AI Applications: Get Started",
+    issuer: "IBM",
+    issued: "Dec 2025",
+    category: "AI / ML",
+    grade: "100%",
+    credential: "https://www.coursera.org/account/accomplishments/records/X0TKETQTHL36",
+  },
+  {
+    title: "GenAI for Application Developers",
+    issuer: "Coursera",
+    issued: "Dec 2025",
+    category: "AI / ML",
+    grade: "100%",
+    credential: "https://www.coursera.org/account/accomplishments/records/TCVLATHSEJQJ",
+  },
+  {
+    title: "IBM Z Xplore - Concepts",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/1d17fb7e-adb3-463e-9d39-56de97c7d9e8/public_url",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/770065137/treasury/",
+  },
+  {
+    title: "Getting Started with Git and GitHub",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "Cloud / DevOps",
+    credential: "https://www.coursera.org/account/accomplishments/records/8T18FCP7R70G",
+  },
+  {
+    title: "Introduction to Systems Architecture",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "SWE / Data",
+    grade: "94.85%",
+    credential: "https://www.coursera.org/account/accomplishments/records/WAQ33MSVYY5A",
+  },
+  {
+    title: "Introduction to DevOps",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "Cloud / DevOps",
+    grade: "91.50%",
+    credential: "https://www.coursera.org/account/accomplishments/records/MI0N25I976IY",
+  },
+  {
+    title: "Foundations of Cybersecurity",
+    issuer: "Google",
+    issued: "Nov 2025",
+    category: "Security",
+    grade: "98.81%",
+    credential: "https://www.coursera.org/account/accomplishments/records/QOECOBX08K5Q",
+  },
+  {
+    title: "IBM Ethical Hacking with Open Source Tools Professional Certificate",
+    issuer: "SkillUp / IBM",
+    issued: "Nov 2025",
+    category: "Security",
+    grade: "100%",
+    credential: "https://www.coursera.org/account/accomplishments/records/9C6RSL5VVZ3T",
+  },
+  {
+    title: "Machine Learning with Python",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "AI / ML",
+    grade: "95.71%",
+    credential: "https://www.coursera.org/account/accomplishments/records/T3CE2E8ER7J9",
+  },
+  {
+    title: "Introduction to Artificial Intelligence (AI)",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "AI / ML",
+    credential: "https://www.coursera.org/account/accomplishments/records/SA13BC7X3U4U",
+  },
+  {
+    title: "Introduction to Software Engineering",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "SWE / Data",
+    grade: "92.80%",
+    credential: "https://www.coursera.org/account/accomplishments/records/ZEZFB6MF92OH",
+  },
+  {
+    title: "IBM Developer for z/OS Basics",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/20941abc-ef7a-4ceb-843d-83add31799e9/linked_in_profile",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1899520890/treasury/",
+  },
+  {
+    title: "IBM z/OS Security Essentials",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/0d565253-275b-40b9-8acc-6b11a26c5a09/linked_in_profile",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1881562459/treasury/",
+  },
+  {
+    title: "Introduction to IBM z/OS",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/f7690fd3-4b03-4f7f-9b70-c91f1579a783/linked_in_profile",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1877300024/treasury/",
+  },
+  {
+    title: "IBM Z Resiliency",
+    issuer: "IBM",
+    issued: "Nov 2025",
+    category: "IBM Z",
+    credential: "https://www.credly.com/badges/bec27cde-7e02-49b2-8235-27dcd8471e84/linked_in_profile",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1868362721/treasury/",
+  },
+  {
+    title: "Understanding and Visualizing Data with Python",
+    issuer: "University of Michigan",
+    issued: "Nov 2025",
+    category: "SWE / Data",
+    grade: "95.50%",
+    credential: "https://www.coursera.org/account/accomplishments/verify/Y0KZMU59A74H",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1119277089/treasury/",
+  },
+  {
+    title: "MongoDB Certificates",
+    issuer: "MongoDB",
+    issued: "Mar 2025",
+    category: "SWE / Data",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1125182885/treasury/",
+  },
+  {
+    title: "MLPAO Medical Laboratory Assistant/Technician (MLA/T) Certification",
+    issuer: "Medical Laboratory Professionals' Association of Ontario",
+    issued: "Sep 2025",
+    category: "Other",
+    media: "https://www.linkedin.com/in/asma-ahmed67/overlay/Certifications/1417632734/treasury/",
+  },
 ];
 
 const LEADERSHIP = [
+  {
+    title: "President • Enactus Sheridan",
+    description:
+      "Lead strategy, operations and partnerships for student-led entrepreneurship, sustainability and social-impact initiatives while mentoring cross-functional teams in project development, business strategy and competition readiness.",
+    metric: "Strategy • entrepreneurship • social impact",
+  },
   {
     title: "President • IBM Z Sheridan",
     description:
@@ -734,15 +977,15 @@ function Wins() {
     <section id="wins" className="content-section section-shell">
       <SectionHeading
         eyebrow="Recognition"
-        title="A few signals that I execute under pressure."
-        description="Hackathons, academic recognition, enterprise-tech leadership and current credentials — presented as proof points, not decoration."
+        title="Wins, awards and proof that I execute under pressure."
+        description="Competition placements, hackathon wins, technical leadership and academic recognition — presented as evidence of how I build, lead and deliver."
       />
       <div className="wins-grid">
         {WINS.map((win, index) => {
           const Icon = win.icon;
           return (
-            <Reveal key={win.title} delay={index * 0.05}>
-              <motion.article whileHover={{ scale: 1.015 }} className="win-card glass-card">
+            <Reveal key={win.title} delay={index * 0.04}>
+              <motion.article whileHover={{ scale: 1.015, y: -4 }} className="win-card glass-card">
                 <div className="win-icon"><Icon size={23} /></div>
                 <h3>{win.title}</h3>
                 <p className="win-org">{win.org}</p>
@@ -752,20 +995,133 @@ function Wins() {
           );
         })}
       </div>
+
       <Reveal>
         <div className="credentials glass-card">
           <div className="credentials-head">
             <div>
-              <p className="mini-eyebrow">Selected credentials</p>
-              <h3>Enterprise, AI, cloud and security upskilling</h3>
+              <p className="mini-eyebrow">Additional recognition</p>
+              <h3>Academic, scholarship and team achievements</h3>
             </div>
-            <BadgeCheck size={28} />
+            <Award size={28} />
           </div>
           <div className="credential-cloud">
-            {CREDENTIALS.map((credential) => <span key={credential}><CheckCircle2 size={14} /> {credential}</span>)}
+            {ADDITIONAL_RECOGNITION.map((item) => (
+              <span key={item}><CheckCircle2 size={14} /> {item}</span>
+            ))}
           </div>
         </div>
       </Reveal>
+    </section>
+  );
+}
+
+function Certificates() {
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState("All");
+  const [showAll, setShowAll] = useState(false);
+  const categories = ["All", "AI / ML", "IBM Z", "Cloud / DevOps", "Security", "SWE / Data", "UX / Product", "Other"];
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return CERTIFICATES.filter((certificate) => {
+      const matchesFilter = filter === "All" || certificate.category === filter;
+      const haystack = `${certificate.title} ${certificate.issuer} ${certificate.category} ${certificate.issued}`.toLowerCase();
+      return matchesFilter && (!q || haystack.includes(q));
+    });
+  }, [query, filter]);
+
+  const visible = showAll || query || filter !== "All" ? filtered : filtered.slice(0, 9);
+
+  return (
+    <section id="certificates" className="content-section section-shell">
+      <SectionHeading
+        eyebrow="Certificates + credentials"
+        title="Continuous learning across AI, software, cloud, security and enterprise systems."
+        description="A searchable credential wall with direct verification links where available. Badge/media links open the certificate or supporting image hosted on the original credential platform or LinkedIn."
+      />
+
+      <div className="vault glass-card">
+        <div className="vault-heading">
+          <div>
+            <p className="mini-eyebrow">Credential library</p>
+            <h3>{CERTIFICATES.length} selected certificates and professional credentials.</h3>
+            <p>Filter by technical area or search by issuer, course or platform.</p>
+          </div>
+          <div className="vault-count">{filtered.length}<span>matching</span></div>
+        </div>
+
+        <div className="vault-tools">
+          <label className="search-box">
+            <Search size={17} />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search certificates…"
+            />
+          </label>
+          <div className="filter-row">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={cn("filter-chip", filter === category && "active")}
+                onClick={() => setFilter(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <motion.div layout className="vault-grid">
+          <AnimatePresence mode="popLayout">
+            {visible.map((certificate) => (
+              <motion.article
+                layout
+                key={`${certificate.title}-${certificate.issuer}`}
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                whileHover={{ y: -5 }}
+                className="vault-item"
+              >
+                <div>
+                  <div className="project-topline">
+                    <div className="project-icon"><BadgeCheck size={20} /></div>
+                    <span>{certificate.issued}</span>
+                  </div>
+                  <span className="vault-category">{certificate.category}</span>
+                  <h4>{certificate.title}</h4>
+                  <p>{certificate.issuer}</p>
+                  <div className="tag-row compact">
+                    {certificate.grade && <span>Grade {certificate.grade}</span>}
+                    <span>{certificate.issued}</span>
+                  </div>
+                </div>
+
+                <div className="project-links">
+                  {certificate.credential && (
+                    <a href={certificate.credential} target="_blank" rel="noreferrer">
+                      <BadgeCheck size={16} /> Verify <ArrowUpRight size={14} />
+                    </a>
+                  )}
+                  {certificate.media && (
+                    <a href={certificate.media} target="_blank" rel="noreferrer">
+                      <ExternalLink size={16} /> Badge / media <ArrowUpRight size={14} />
+                    </a>
+                  )}
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {!query && filter === "All" && filtered.length > 9 && (
+          <button className="vault-more" onClick={() => setShowAll((x) => !x)}>
+            {showAll ? "Show fewer certificates" : `Show all ${filtered.length} certificates`} <ChevronRight size={16} className={showAll ? "rotate-90" : ""} />
+          </button>
+        )}
+      </div>
     </section>
   );
 }
@@ -899,6 +1255,7 @@ export default function Portfolio() {
         <Experience />
         <Skills />
         <Wins />
+        <Certificates />
         <Leadership />
         <Contact />
       </main>
