@@ -582,7 +582,7 @@ function ProjectVault() {
         <div>
           <p className="mini-eyebrow">Project vault</p>
           <h3>52+ builds, prototypes, hackathon projects and coursework.</h3>
-          <p>Search by project name or browse by area. Original portfolio projects are retained here too.</p>
+          <p>Search by project name or browse by area.</p>
         </div>
         <div className="vault-count">{filtered.length}<span>matching</span></div>
       </div>
