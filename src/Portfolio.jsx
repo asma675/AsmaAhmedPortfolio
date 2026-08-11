@@ -675,16 +675,79 @@ function Experience() {
         })}
       </div>
 
-      <Reveal>
-        <div className="legacy-experience glass-card">
-          <BriefcaseBusiness size={20} />
-          <div>
-            <strong>Earlier experience retained from the original portfolio</strong>
-            <p>IT Assistant / Helpdesk at Niagara College — resolved high-volume hardware/software/account issues, supported installations and updates, diagnosed connectivity problems, and collaborated with technical teams on recurring support workflows.</p>
-          </div>
-        </div>
-      </Reveal>
-    </section>
+     <div className="experience-card group relative overflow-hidden rounded-3xl border border-purple-400/20 bg-white/[0.04] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-purple-300/40 hover:bg-white/[0.06] hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] md:p-8">
+
+  {/* glow */}
+  <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-purple-500/10 blur-3xl transition-all duration-500 group-hover:bg-purple-400/20" />
+
+  <div className="relative z-10">
+
+    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-purple-300">
+      Niagara College
+    </p>
+
+    <h3 className="text-2xl font-semibold text-white md:text-3xl">
+      IT Assistant / Helpdesk
+    </h3>
+
+    <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/55">
+      <span>Information Technology</span>
+      <span>Ontario, Canada</span>
+    </div>
+
+    <ul className="mt-6 space-y-3 text-sm leading-7 text-white/70 md:text-base">
+      <li className="flex gap-3">
+        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.8)]" />
+        <span>
+          Resolved high-volume hardware, software, account and access issues for
+          students and staff.
+        </span>
+      </li>
+
+      <li className="flex gap-3">
+        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.8)]" />
+        <span>
+          Supported software installations, workstation updates and technical
+          troubleshooting across campus systems.
+        </span>
+      </li>
+
+      <li className="flex gap-3">
+        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.8)]" />
+        <span>
+          Diagnosed connectivity, login and device issues while providing clear
+          end-user support.
+        </span>
+      </li>
+
+      <li className="flex gap-3">
+        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.8)]" />
+        <span>
+          Collaborated with technical teams to escalate recurring issues and
+          improve support workflows.
+        </span>
+      </li>
+    </ul>
+
+    <div className="mt-6 flex flex-wrap gap-2">
+      {[
+        "IT Support",
+        "Troubleshooting",
+        "Hardware",
+        "Software",
+        "Networking",
+        "Technical Support",
+      ].map((skill) => (
+        <span
+          key={skill}
+          className="rounded-full border border-purple-400/20 bg-purple-400/10 px-3 py-1.5 text-xs font-medium text-purple-200 transition-colors duration-300 hover:border-purple-300/40 hover:bg-purple-400/15"
+        >
+          {skill}
+        </span>
+      ))}
+    </div>
+
+  </div>
   );
 }
 
